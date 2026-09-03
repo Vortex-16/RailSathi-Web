@@ -4,36 +4,62 @@ import {
   Smartphone, 
   ShieldCheck, 
   CheckCircle2, 
-  HelpCircle, 
   Copy, 
   Check, 
-  ChevronRight, 
-  ArrowRight, 
   ExternalLink,
-  Settings,
   Sparkles,
-  AlertCircle,
-  FileCheck
+  Lock,
+  ArrowRight
 } from 'lucide-react';
 import { 
   OFFICIAL_APK_DOWNLOAD_URL, 
   APK_VERSION, 
   APK_SIZE, 
   MIN_ANDROID_VERSION,
-  TARGET_ANDROID_VERSION,
-  SHA256_CHECKSUM 
+  SHA256_CHECKSUM,
+  GITHUB_REPO_URL
 } from '../data/railwayData';
+import { LanguageCode } from '../types';
+import { TRANSLATIONS } from '../data/translations';
 
-export const InstallationGuide: React.FC<{ seniorMode: boolean }> = ({ seniorMode }) => {
+interface InstallationGuideProps {
+  currentLang: LanguageCode;
+  seniorMode?: boolean;
+}
+
+export const InstallationGuide: React.FC<InstallationGuideProps> = ({ currentLang, seniorMode }) => {
+  const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
   const [selectedBrand, setSelectedBrand] = useState<'STOCK' | 'SAMSUNG' | 'XIAOMI' | 'ONEPLUS'>('STOCK');
   const [copiedSha, setCopiedSha] = useState(false);
-  const [quickStartStep, setQuickStartStep] = useState<number>(1);
 
   const handleCopySha = () => {
     navigator.clipboard.writeText(SHA256_CHECKSUM);
     setCopiedSha(true);
     setTimeout(() => setCopiedSha(false), 2000);
   };
+
+  const simpleFourSteps = [
+    {
+      num: '1',
+      title: t.instStep1Title,
+      desc: t.instStep1Desc,
+    },
+    {
+      num: '2',
+      title: t.instStep2Title,
+      desc: t.instStep2Desc,
+    },
+    {
+      num: '3',
+      title: t.instStep3Title,
+      desc: t.instStep3Desc,
+    },
+    {
+      num: '4',
+      title: t.instStep4Title,
+      desc: t.instStep4Desc,
+    },
+  ];
 
   const brandInstructions = {
     STOCK: {
@@ -74,233 +100,143 @@ export const InstallationGuide: React.FC<{ seniorMode: boolean }> = ({ seniorMod
     }
   };
 
-  const quickStartSteps = [
-    {
-      step: 1,
-      title: 'Language Selection',
-      desc: 'Pick your regional mother tongue from 6 Indian languages (Hindi, Bengali, Marathi, Tamil, Telugu, English).',
-      badge: 'Step 1 of 4'
-    },
-    {
-      step: 2,
-      title: 'Select Traveler Role',
-      desc: 'Choose Commuter / Passenger profile to access coach formations, schedules, and hunger signals.',
-      badge: 'Step 2 of 4'
-    },
-    {
-      step: 3,
-      title: 'Set Daily Commute Route',
-      desc: 'Select your home and work railway stations (e.g. Sealdah to Ranaghat or Churchgate to Borivali) for 1-tap departure alerts.',
-      badge: 'Step 3 of 4'
-    },
-    {
-      step: 4,
-      title: 'Ready for the 30s Halt!',
-      desc: 'Track your coach live, send tea orders before reaching the platform, and save 85% mobile battery life.',
-      badge: 'Complete'
-    }
-  ];
-
   return (
-    <section id="installation-guide" className="py-14 sm:py-20 bg-white border-b border-slate-200/80">
+    <section id="install-guide" className="py-16 sm:py-24 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-800 border border-blue-200 mb-3">
-            <Smartphone className="w-3.5 h-3.5 text-blue-700" />
-            Seamless Onboarding
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 text-xs font-bold tracking-wide uppercase mb-4">
+            <Smartphone className="w-3.5 h-3.5 text-emerald-700" />
+            <span>{t.installBadge}</span>
           </div>
-          <h2 className={`font-black text-slate-900 tracking-tight ${seniorMode ? 'text-3xl sm:text-4xl' : 'text-2xl sm:text-3xl'}`}>
-            Installation Guide & Quick-Start Walkthrough
+          <h2 className={`font-black text-slate-900 tracking-tight mb-4 ${seniorMode ? 'text-3xl sm:text-4xl' : 'text-2xl sm:text-3xl lg:text-4xl'}`}>
+            {t.installHeadline}
           </h2>
-          <p className="mt-2 text-slate-600 text-sm sm:text-base">
-            Get RailSaathi running on your Android smartphone in under 2 minutes. Follow the step-by-step sideloading walkthrough below.
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+            {t.installSubhead}
           </p>
         </div>
 
-        {/* Master APK Download Box */}
-        <div className="max-w-4xl mx-auto p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-blue-950 via-blue-900 to-slate-900 text-white shadow-xl mb-12">
-          <div className="flex flex-wrap items-center justify-between gap-6 pb-6 border-b border-blue-800/60">
-            <div className="space-y-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
-                Official Production Release
+        {/* Master Reassuring Step-by-Step Box */}
+        <div className="max-w-4xl mx-auto rounded-3xl bg-slate-50 border-2 border-slate-200 p-6 sm:p-10 shadow-sm mb-16">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-8 border-b border-slate-200 gap-4">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 flex items-center gap-1.5">
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <span>{t.instSafeBanner}</span>
               </span>
-              <h3 className="text-2xl font-black">RailSaathi Android Package ({APK_VERSION})</h3>
-              <p className="text-xs text-blue-200">
-                Signed APK • {MIN_ANDROID_VERSION} up to {TARGET_ANDROID_VERSION}
-              </p>
+              <h3 className="text-xl sm:text-2xl font-black text-slate-900 mt-1">
+                {t.instBoxTitle}
+              </h3>
             </div>
-
+            
             <a
               id="btn-guide-download-apk"
               href={OFFICIAL_APK_DOWNLOAD_URL}
               download="RailSathi.apk"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-6 py-3.5 rounded-xl shadow-md transition transform hover:-translate-y-0.5 active:translate-y-0 text-sm sm:text-base"
+              className="inline-flex items-center justify-center gap-2 bg-blue-900 hover:bg-blue-950 text-white font-bold px-5 py-3 rounded-xl shadow-md transition text-sm shrink-0"
             >
-              <Download className="w-5 h-5 text-slate-950" />
-              <span>Download RailSathi.apk ({APK_SIZE})</span>
+              <Download className="w-4 h-4 text-amber-400" />
+              <span>{t.instDwnApkBtn} ({APK_SIZE})</span>
             </a>
           </div>
 
-          <div className="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-            <div className="p-3 bg-white/5 rounded-xl border border-white/10">
-              <div className="text-slate-400 uppercase font-bold text-[10px]">Package Size</div>
-              <div className="text-base font-black text-white font-mono mt-0.5">{APK_SIZE}</div>
-              <div className="text-[11px] text-blue-300">Fast download over 3G/4G</div>
-            </div>
-
-            <div className="p-3 bg-white/5 rounded-xl border border-white/10">
-              <div className="text-slate-400 uppercase font-bold text-[10px]">Android Compatibility</div>
-              <div className="text-base font-black text-white font-mono mt-0.5">8.0+ (Oreo to Android 15)</div>
-              <div className="text-[11px] text-blue-300">Jetpack Compose M3</div>
-            </div>
-
-            <div className="p-3 bg-white/5 rounded-xl border border-white/10">
-              <div className="text-slate-400 uppercase font-bold text-[10px]">Security Integrity</div>
-              <button
-                onClick={handleCopySha}
-                className="text-left w-full hover:text-amber-300 transition"
-                title="Click to copy SHA-256 hash"
-              >
-                <div className="text-xs font-mono font-bold text-amber-300 truncate mt-1 flex items-center justify-between">
-                  <span>{SHA256_CHECKSUM.slice(0, 16)}...</span>
-                  {copiedSha ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+          {/* 4 Simple Steps Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8">
+            {simpleFourSteps.map((s) => (
+              <div key={s.num} className="p-5 rounded-2xl bg-white border border-slate-200 shadow-2xs flex gap-4">
+                <div className="w-10 h-10 rounded-xl bg-blue-900 text-amber-400 font-black text-lg flex items-center justify-center shrink-0 shadow-xs">
+                  {s.num}
                 </div>
-              </button>
-              <div className="text-[11px] text-blue-300">Verified SHA-256 Checksum</div>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h4 className="font-bold text-slate-900 text-base">{s.title}</h4>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    {s.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Trust and Safety Banner inside box */}
+          <div className="mt-8 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-950 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+            <div className="flex items-center gap-2.5">
+              <Lock className="w-4 h-4 text-emerald-700 shrink-0" />
+              <span>
+                <strong>{t.instPrivacyTitle}:</strong> {t.instPrivacyDesc}
+              </span>
             </div>
+            <button
+              onClick={handleCopySha}
+              className="font-mono text-emerald-800 hover:text-emerald-950 flex items-center gap-1 shrink-0 underline cursor-pointer"
+            >
+              {copiedSha ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+              <span>{copiedSha ? t.instCopiedSha : t.instVerifyShaBtn}</span>
+            </button>
           </div>
         </div>
 
-        {/* 4-Step Sideloading Walkthrough */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <h3 className="text-lg font-extrabold text-slate-900 mb-4 flex items-center gap-2">
-            <Settings className="w-5 h-5 text-blue-800" />
-            <span>How to Install the APK on Android</span>
+        {/* Brand-Specific Sideloading Walkthrough Tabs */}
+        <div className="max-w-4xl mx-auto p-6 sm:p-8 rounded-3xl bg-slate-900 text-white shadow-xl border border-slate-800">
+          <h3 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
+            <span>{t.instBrandTitle}</span>
           </h3>
+          <p className="text-xs text-slate-400 mb-6">
+            {t.instBrandDesc}
+          </p>
 
-          {/* Phone Brand Selector */}
+          {/* Brand Selector Buttons */}
           <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 mb-6">
             {(['STOCK', 'SAMSUNG', 'XIAOMI', 'ONEPLUS'] as const).map(brand => (
               <button
                 key={brand}
+                id={`btn-brand-${brand.toLowerCase()}`}
                 onClick={() => setSelectedBrand(brand)}
-                className={`px-3.5 py-2 rounded-xl text-xs font-bold transition ${
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
                   selectedBrand === brand
-                    ? 'bg-blue-900 text-white shadow-xs'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    ? 'bg-amber-400 text-slate-950 shadow-md'
+                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'
                 }`}
               >
-                {brand === 'STOCK' ? 'Pixel / Stock Android' :
-                 brand === 'SAMSUNG' ? 'Samsung Galaxy' :
-                 brand === 'XIAOMI' ? 'Xiaomi / Redmi' : 'OnePlus / Realme'}
+                {brand === 'STOCK' ? 'Pixel / Moto' : brand === 'SAMSUNG' ? 'Samsung' : brand === 'XIAOMI' ? 'Xiaomi / Redmi' : 'OnePlus / Realme'}
               </button>
             ))}
           </div>
 
-          {/* Steps List for Selected Brand */}
-          <div className="p-6 rounded-3xl bg-slate-50 border border-slate-200 space-y-4">
-            <h4 className="text-sm font-extrabold text-blue-900">
+          {/* Brand Steps Display */}
+          <div className="p-4 rounded-2xl bg-slate-800/80 border border-slate-700">
+            <h4 className="text-sm font-bold text-amber-300 mb-3">
               {brandInstructions[selectedBrand].title}
             </h4>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <ol className="space-y-2 text-xs sm:text-sm text-slate-300">
               {brandInstructions[selectedBrand].steps.map((step, idx) => (
-                <div key={idx} className="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs flex items-start gap-3">
-                  <span className="w-7 h-7 rounded-xl bg-blue-100 text-blue-900 flex items-center justify-center font-black text-xs shrink-0">
+                <li key={idx} className="flex items-start gap-2.5">
+                  <span className="w-5 h-5 rounded-full bg-slate-700 text-amber-300 flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">
                     {idx + 1}
                   </span>
-                  <p className="text-xs text-slate-700 font-medium leading-relaxed mt-0.5">
-                    {step}
-                  </p>
-                </div>
+                  <span>{step}</span>
+                </li>
               ))}
-            </div>
+            </ol>
+          </div>
 
-            <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200 flex items-start gap-2.5 text-xs text-amber-900">
-              <AlertCircle className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
-              <div>
-                <strong>Why does Android show "File might be harmful"?</strong> This is standard Android security notice whenever downloading apps outside the Google Play Store. RailSaathi contains zero adware, requires no root, and only requests location permission when active travel is engaged.
-              </div>
-            </div>
+          <div className="mt-6 pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between text-xs text-slate-400 gap-2">
+            <span>{t.instMinReq}: {MIN_ANDROID_VERSION}</span>
+            <a 
+              href={GITHUB_REPO_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="text-amber-400 hover:underline flex items-center gap-1"
+            >
+              <span>{t.instViewGithub}</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
           </div>
         </div>
 
-        {/* 60-Second Quick-Start Walkthrough */}
-        <div className="max-w-4xl mx-auto p-6 sm:p-8 rounded-3xl bg-blue-50/70 border border-blue-200">
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-800">
-                First Launch Walkthrough
-              </span>
-              <h3 className="text-xl font-black text-slate-900">
-                60-Second Onboarding Guide
-              </h3>
-            </div>
-
-            <div className="flex items-center gap-1">
-              {[1, 2, 3, 4].map(s => (
-                <button
-                  key={s}
-                  onClick={() => setQuickStartStep(s)}
-                  className={`w-8 h-8 rounded-lg font-bold text-xs transition ${
-                    quickStartStep === s
-                      ? 'bg-blue-900 text-white shadow-xs'
-                      : 'bg-white text-slate-600 hover:bg-blue-100 border border-slate-200'
-                  }`}
-                >
-                  {s}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="p-6 rounded-2xl bg-white border border-blue-100 shadow-2xs space-y-4">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-blue-800 uppercase tracking-wider">
-                {quickStartSteps[quickStartStep - 1].badge}
-              </span>
-              <span className="text-xs text-slate-400 font-mono">Step {quickStartStep} of 4</span>
-            </div>
-
-            <h4 className="text-lg font-extrabold text-slate-900">
-              {quickStartSteps[quickStartStep - 1].title}
-            </h4>
-
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              {quickStartSteps[quickStartStep - 1].desc}
-            </p>
-
-            <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-              <button
-                disabled={quickStartStep === 1}
-                onClick={() => setQuickStartStep(p => Math.max(1, p - 1))}
-                className="text-xs font-bold text-slate-600 hover:text-slate-900 disabled:opacity-30"
-              >
-                ← Previous Step
-              </button>
-
-              {quickStartStep < 4 ? (
-                <button
-                  onClick={() => setQuickStartStep(p => Math.min(4, p + 1))}
-                  className="inline-flex items-center gap-1.5 bg-blue-900 text-white font-bold text-xs px-4 py-2 rounded-lg hover:bg-blue-950 transition"
-                >
-                  <span>Next Step</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </button>
-              ) : (
-                <a
-                  href={OFFICIAL_APK_DOWNLOAD_URL}
-                  download="RailSathi.apk"
-                  className="inline-flex items-center gap-1.5 bg-emerald-600 text-white font-bold text-xs px-4 py-2 rounded-lg hover:bg-emerald-700 transition"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Download Now</span>
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-export type LanguageCode = 'en' | 'hi' | 'mr' | 'ta' | 'te' | 'bn';
+export type LanguageCode = 'en' | 'bn' | 'hi' | 'ta' | 'ur' | 'mr' | 'te';
 
 export type UserRole = 'TRAVELER' | 'VENDOR' | 'STATION_STAFF';
 

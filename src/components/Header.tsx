@@ -33,11 +33,10 @@ interface HeaderProps {
 
 const LANGUAGES: { code: LanguageCode; label: string; native: string }[] = [
   { code: 'en', label: 'English', native: 'English' },
-  { code: 'hi', label: 'Hindi', native: 'हिन्दी' },
-  { code: 'mr', label: 'Marathi', native: 'मराठी' },
   { code: 'bn', label: 'Bengali', native: 'বাংলা' },
+  { code: 'hi', label: 'Hindi', native: 'हिन्दी' },
   { code: 'ta', label: 'Tamil', native: 'தமிழ்' },
-  { code: 'te', label: 'Telugu', native: 'తెలుగు' },
+  { code: 'ur', label: 'Urdu', native: 'اردو' },
 ];
 
 export const Header: React.FC<HeaderProps> = ({
@@ -54,14 +53,14 @@ export const Header: React.FC<HeaderProps> = ({
   onNavigate,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
-  const t = TRANSLATIONS[currentLang];
+  const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
 
   const navItems = [
-    { id: 'user-flows', label: 'Live App Flows' },
-    { id: 'coach-radar', label: 'EMU Coach Radar' },
-    { id: 'offline-timetables', label: 'Offline Timetable' },
-    { id: 'installation-guide', label: 'Install Guide' },
-    { id: 'low-bandwidth', label: 'Network & Specs' },
+    { id: 'difference', label: t.navDifference },
+    { id: 'commuters', label: t.navCommuters },
+    { id: 'vendors', label: t.navVendors },
+    { id: 'features', label: t.navFeatures },
+    { id: 'install-guide', label: t.navInstall },
   ];
 
   const handleNavClick = (id: string) => {
@@ -105,11 +104,11 @@ export const Header: React.FC<HeaderProps> = ({
                   RailSaathi
                 </span>
                 <span className="text-[10px] sm:text-xs font-semibold px-1.5 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200">
-                  रेलसाथी
+                  {t.appNativeName}
                 </span>
               </div>
               <p className="text-[11px] font-medium text-slate-500 hidden md:block">
-                Indian Railways Smart Commute & Vendor Companion
+                {t.appTagline}
               </p>
             </div>
           </div>
@@ -152,12 +151,12 @@ export const Header: React.FC<HeaderProps> = ({
                 <>
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                   <Wifi className="w-3.5 h-3.5" />
-                  <span>Online</span>
+                  <span>{t.online}</span>
                 </>
               ) : (
                 <>
                   <WifiOff className="w-3.5 h-3.5" />
-                  <span>Tunnel Mode</span>
+                  <span>{t.tunnelMode}</span>
                 </>
               )}
             </button>
@@ -174,7 +173,7 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               <Gauge className="w-3.5 h-3.5" />
-              <span>{lowBandwidthMode ? '2G Saver ON' : 'Data Saver'}</span>
+              <span>{lowBandwidthMode ? t.dataSaverOn : t.dataSaver}</span>
             </button>
 
             {/* Senior Mode Toggle */}
@@ -189,7 +188,7 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               <Eye className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Senior Mode</span>
+              <span className="hidden sm:inline">{t.seniorMode}</span>
             </button>
 
             {/* Language Selector */}
@@ -220,7 +219,7 @@ export const Header: React.FC<HeaderProps> = ({
               className="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-blue-900 to-blue-800 hover:from-blue-950 hover:to-blue-900 text-white font-semibold text-xs px-3.5 py-2 rounded-lg shadow-sm transition transform hover:-translate-y-0.5 active:translate-y-0"
             >
               <Download className="w-3.5 h-3.5 text-amber-400" />
-              <span>Get APK ({APK_VERSION})</span>
+              <span>{t.getApk}</span>
             </a>
 
             {/* PWA Install Button */}
