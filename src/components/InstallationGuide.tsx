@@ -108,13 +108,13 @@ export const InstallationGuide: React.FC<InstallationGuideProps> = ({ currentLan
         <div className="max-w-3xl mx-auto text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 text-xs font-bold tracking-wide uppercase mb-4">
             <Smartphone className="w-3.5 h-3.5 text-emerald-700" />
-            <span>{t.installBadge}</span>
+            <span>{t.instBadge || 'Verified Android APK'}</span>
           </div>
           <h2 className={`font-black text-slate-900 tracking-tight mb-4 ${seniorMode ? 'text-3xl sm:text-4xl' : 'text-2xl sm:text-3xl lg:text-4xl'}`}>
-            {t.installHeadline}
+            {t.instTitle || 'Easy 30-Second Sideloading'}
           </h2>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            {t.installSubhead}
+            {t.instSubhead || 'Install directly onto your Android smartphone. No Google Play account or mobile data needed.'}
           </p>
         </div>
 
@@ -124,10 +124,10 @@ export const InstallationGuide: React.FC<InstallationGuideProps> = ({ currentLan
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                <span>{t.instSafeBanner}</span>
+                <span>{t.instSafe || 'Safe & Verified Official Build'}</span>
               </span>
               <h3 className="text-xl sm:text-2xl font-black text-slate-900 mt-1">
-                {t.instBoxTitle}
+                4-Step Installation
               </h3>
             </div>
             
@@ -138,7 +138,7 @@ export const InstallationGuide: React.FC<InstallationGuideProps> = ({ currentLan
               className="inline-flex items-center justify-center gap-2 bg-blue-900 hover:bg-blue-950 text-white font-bold px-5 py-3 rounded-xl shadow-md transition text-sm shrink-0"
             >
               <Download className="w-4 h-4 text-amber-400" />
-              <span>{t.instDwnApkBtn} ({APK_SIZE})</span>
+              <span>{t.downloadApkBtn || t.downloadBtn || 'Download APK'} ({APK_SIZE})</span>
             </a>
           </div>
 
@@ -166,7 +166,7 @@ export const InstallationGuide: React.FC<InstallationGuideProps> = ({ currentLan
             <div className="flex items-center gap-2.5">
               <Lock className="w-4 h-4 text-emerald-700 shrink-0" />
               <span>
-                <strong>{t.instPrivacyTitle}:</strong> {t.instPrivacyDesc}
+                <strong>Privacy Guaranteed:</strong> {t.instPrivacy || 'No internet or backend server required. Zero personal telemetry.'}
               </span>
             </div>
             <button
@@ -174,7 +174,7 @@ export const InstallationGuide: React.FC<InstallationGuideProps> = ({ currentLan
               className="font-mono text-emerald-800 hover:text-emerald-950 flex items-center gap-1 shrink-0 underline cursor-pointer"
             >
               {copiedSha ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copiedSha ? t.instCopiedSha : t.instVerifyShaBtn}</span>
+              <span>{copiedSha ? 'Copied SHA-256!' : (t.instCopySha || 'Copy SHA-256')}</span>
             </button>
           </div>
         </div>
@@ -182,10 +182,10 @@ export const InstallationGuide: React.FC<InstallationGuideProps> = ({ currentLan
         {/* Brand-Specific Sideloading Walkthrough Tabs */}
         <div className="max-w-4xl mx-auto p-6 sm:p-8 rounded-3xl bg-slate-900 text-white shadow-xl border border-slate-800">
           <h3 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
-            <span>{t.instBrandTitle}</span>
+            <span>{t.brandGuideTitle || 'Brand-Specific Instructions'}</span>
           </h3>
           <p className="text-xs text-slate-400 mb-6">
-            {t.instBrandDesc}
+            {t.brandGuideSub || 'Select your smartphone brand below to see the exact quick permission toggle:'}
           </p>
 
           {/* Brand Selector Buttons */}
@@ -224,14 +224,14 @@ export const InstallationGuide: React.FC<InstallationGuideProps> = ({ currentLan
           </div>
 
           <div className="mt-6 pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between text-xs text-slate-400 gap-2">
-            <span>{t.instMinReq}: {MIN_ANDROID_VERSION}</span>
+            <span>Requires {MIN_ANDROID_VERSION}</span>
             <a 
               href={GITHUB_REPO_URL}
               target="_blank"
               rel="noreferrer"
               className="text-amber-400 hover:underline flex items-center gap-1"
             >
-              <span>{t.instViewGithub}</span>
+              <span>{t.footerGitHub || 'Inspect Source on GitHub'}</span>
               <ExternalLink className="w-3 h-3" />
             </a>
           </div>

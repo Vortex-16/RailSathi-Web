@@ -22,13 +22,13 @@ export const CoreFeaturesGrid: React.FC<CoreFeaturesGridProps> = ({ currentLang,
         <div className="max-w-3xl mx-auto text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-100 text-blue-900 border border-blue-200 text-xs font-bold tracking-wide uppercase mb-4">
             <Train className="w-3.5 h-3.5 text-blue-700" />
-            <span>{t.featuresBadge}</span>
+            <span>{t.featBadge}</span>
           </div>
           <h2 className={`font-black tracking-tight text-slate-900 mb-4 ${seniorMode ? 'text-3xl sm:text-4xl' : 'text-2xl sm:text-3xl lg:text-4xl'}`}>
-            {t.featuresHeadline}
+            {t.featTitle}
           </h2>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            {t.featuresSubhead}
+            {t.featSubhead}
           </p>
         </div>
 
@@ -42,14 +42,14 @@ export const CoreFeaturesGrid: React.FC<CoreFeaturesGridProps> = ({ currentLang,
                 <BatteryCharging className="w-6 h-6" />
               </div>
               <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-2">
-                {t.feat1Title}
+                {t.f1Title}
               </h3>
               <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                {t.feat1Desc}
+                {t.f1Desc}
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-slate-200/80 text-[11px] font-bold text-amber-700">
-              {t.feat1Sub}
+              {t.f1Tag}
             </div>
           </div>
 
@@ -60,14 +60,14 @@ export const CoreFeaturesGrid: React.FC<CoreFeaturesGridProps> = ({ currentLang,
                 <WifiOff className="w-6 h-6" />
               </div>
               <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-2">
-                {t.feat2Title}
+                {t.f2Title}
               </h3>
               <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                {t.feat2Desc}
+                {t.f2Desc}
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-slate-200/80 text-[11px] font-bold text-blue-700">
-              {t.feat2Sub}
+              {t.f2Tag}
             </div>
           </div>
 
@@ -78,14 +78,14 @@ export const CoreFeaturesGrid: React.FC<CoreFeaturesGridProps> = ({ currentLang,
                 <Compass className="w-6 h-6" />
               </div>
               <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-2">
-                {t.feat3Title}
+                {t.f3Title}
               </h3>
               <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                {t.feat3Desc}
+                {t.f3Desc}
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-slate-200/80 text-[11px] font-bold text-purple-700">
-              {t.feat3Sub}
+              {t.f3Tag}
             </div>
           </div>
 
@@ -96,14 +96,14 @@ export const CoreFeaturesGrid: React.FC<CoreFeaturesGridProps> = ({ currentLang,
                 <ShieldCheck className="w-6 h-6" />
               </div>
               <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-2">
-                {t.feat4Title}
+                {t.f4Title}
               </h3>
               <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                {t.feat4Desc}
+                {t.f4Desc}
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-slate-200/80 text-[11px] font-bold text-emerald-700">
-              {t.feat4Sub}
+              {t.f4Tag}
             </div>
           </div>
 
@@ -121,7 +121,7 @@ export const CoreFeaturesGrid: React.FC<CoreFeaturesGridProps> = ({ currentLang,
             }`}
           >
             <Compass className="w-4 h-4 text-amber-400" />
-            <span>{activeInteractiveTool === 'RADAR' ? t.hideRadarBtn : t.showRadarBtn}</span>
+            <span>{activeInteractiveTool === 'RADAR' ? t.hideRadar : t.toggleRadar}</span>
             {activeInteractiveTool === 'RADAR' ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </button>
 
@@ -135,7 +135,7 @@ export const CoreFeaturesGrid: React.FC<CoreFeaturesGridProps> = ({ currentLang,
             }`}
           >
             <Train className="w-4 h-4 text-emerald-500" />
-            <span>{activeInteractiveTool === 'TIMETABLE' ? t.hideTimetableBtn : t.showTimetableBtn}</span>
+            <span>{activeInteractiveTool === 'TIMETABLE' ? t.hideTimetable : t.toggleTimetable}</span>
             {activeInteractiveTool === 'TIMETABLE' ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </button>
         </div>

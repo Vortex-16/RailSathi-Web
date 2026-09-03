@@ -42,11 +42,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, seniorMode, currentL
           </div>
 
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight mb-4">
-            {t.footerCtaHeadline}
+            {t.footerCtaTitle || t.footerCtaHeadline || 'Ready for a smoother, hunger-free local train commute?'}
           </h2>
 
           <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mb-8 leading-relaxed">
-            {t.footerCtaSubhead}
+            {t.footerCtaSub || t.footerCtaSubhead || "Join thousands of daily suburban passengers in Mumbai, Kolkata, and Chennai. Download the signed APK today and enjoy tea, snacks, and water delivered right to your coach seat."}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -57,7 +57,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, seniorMode, currentL
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-black px-8 py-4 rounded-2xl shadow-xl shadow-amber-500/10 transition transform hover:-translate-y-0.5 text-base"
             >
               <Download className="w-5 h-5 text-slate-950" />
-              <span>{t.footerCtaBtn} ({APK_SIZE})</span>
+              <span>{t.footerCtaDownload || t.footerCtaBtn || 'Download RailSaathi APK'} ({APK_SIZE})</span>
             </a>
 
             <a
@@ -67,7 +67,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, seniorMode, currentL
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-slate-200 font-bold px-6 py-4 rounded-2xl border border-slate-700 transition text-sm"
             >
               <Github className="w-4 h-4" />
-              <span>GitHub Repository</span>
+              <span>{t.footerGitHub || 'GitHub Repository'}</span>
               <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
             </a>
 
@@ -76,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, seniorMode, currentL
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-slate-200 font-bold px-6 py-4 rounded-2xl border border-slate-700 transition text-sm"
             >
               <Mail className="w-4 h-4 text-amber-400" />
-              <span>Contact Team</span>
+              <span>{t.footerContactTeam || 'Contact Team'}</span>
             </a>
           </div>
         </div>
@@ -99,7 +99,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, seniorMode, currentL
             </div>
 
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
-              {t.footerTagline}
+              {t.appTagline || t.footerTagline || "Smart mobile companion for India's 24 million daily suburban train commuters."}
             </p>
 
             <div className="flex flex-wrap items-center gap-2 pt-1 text-[11px]">
@@ -115,7 +115,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, seniorMode, currentL
           {/* Quick Navigation Links */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-              {t.footerNavTitle}
+              {t.footerNavTitle || 'Quick Navigation'}
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
@@ -123,7 +123,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, seniorMode, currentL
                   onClick={() => onNavigate('difference')}
                   className="hover:text-white transition cursor-pointer"
                 >
-                  {t.footerDiffLink}
+                  {t.navDifference || t.footerDiffLink || 'The Difference'}
                 </button>
               </li>
               <li>
@@ -131,7 +131,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, seniorMode, currentL
                   onClick={() => onNavigate('commuters')}
                   className="hover:text-white transition cursor-pointer"
                 >
-                  {t.footerCommutersLink}
+                  {t.navCommuters || t.footerCommutersLink || 'For Commuters'}
                 </button>
               </li>
               <li>
@@ -139,7 +139,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, seniorMode, currentL
                   onClick={() => onNavigate('vendors')}
                   className="hover:text-white transition cursor-pointer"
                 >
-                  {t.footerVendorsLink}
+                  {t.navVendors || t.footerVendorsLink || 'For Vendors'}
                 </button>
               </li>
               <li>
@@ -147,7 +147,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, seniorMode, currentL
                   onClick={() => onNavigate('features')}
                   className="hover:text-white transition cursor-pointer"
                 >
-                  {t.footerFeaturesLink}
+                  {t.navFeatures || t.footerFeaturesLink || 'Features'}
                 </button>
               </li>
               <li>
@@ -155,7 +155,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, seniorMode, currentL
                   onClick={() => onNavigate('install-guide')}
                   className="hover:text-white transition cursor-pointer"
                 >
-                  {t.footerInstallLink}
+                  {t.navInstall || t.footerInstallLink || 'How to Install'}
                 </button>
               </li>
             </ul>
@@ -164,10 +164,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, seniorMode, currentL
           {/* Contact & Legal */}
           <div className="lg:col-span-4 space-y-4">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-              {t.footerContactTitle}
+              {t.footerContactTitle || 'Get in Touch & Contribute'}
             </h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              {t.footerContactSub}
+              Have suggestions for your suburban line (Western, Central, Eastern, or Southern Railway)? Send feedback or report an issue.
             </p>
             <div className="space-y-2 text-xs">
               <a 

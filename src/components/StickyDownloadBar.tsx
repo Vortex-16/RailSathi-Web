@@ -46,7 +46,7 @@ export const StickyDownloadBar: React.FC<StickyDownloadBarProps> = ({ currentLan
               </span>
             </div>
             <div className="text-[11px] text-slate-400 truncate">
-              {t.stickyText} • {APK_SIZE} • Free
+              {t.stickySub || t.stickyText || 'Instant hunger signal on local trains'} • {APK_SIZE} • Free
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@ export const StickyDownloadBar: React.FC<StickyDownloadBarProps> = ({ currentLan
             className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-black px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl shadow-lg transition transform active:scale-95 text-xs sm:text-sm"
           >
             <Download className="w-4 h-4 text-slate-950" />
-            <span>{t.stickyBtn}</span>
+            <span>{t.downloadBtn || t.stickyBtn || 'Download APK'}</span>
           </a>
           
           <button

@@ -60,13 +60,13 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
         <div className="max-w-3xl mx-auto text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-100 text-blue-900 border border-blue-200 text-xs font-bold tracking-wide uppercase mb-4">
             <Train className="w-3.5 h-3.5 text-blue-700" />
-            <span>{t.stepsBadge}</span>
+            <span>{t.commuterBadge || t.stepsBadge || 'Built For Suburban Commuters'}</span>
           </div>
           <h2 className={`font-black tracking-tight text-slate-900 mb-4 ${seniorMode ? 'text-3xl sm:text-4xl' : 'text-2xl sm:text-3xl lg:text-4xl'}`}>
-            {t.stepsHeadline}
+            {t.commuterTitle || t.stepsHeadline || 'How Commuters Get Food in 3 Easy Steps'}
           </h2>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            {t.stepsSubhead}
+            {t.commuterSubhead || t.stepsSubhead || 'Never risk missing your local train again. Order right from your coach without stepping onto the crowded platform.'}
           </p>
         </div>
 
@@ -91,7 +91,7 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
             </p>
             <div className="mt-6 pt-4 border-t border-slate-200/80 text-xs font-semibold text-blue-800 flex items-center gap-1.5">
               <Check className="w-4 h-4 text-emerald-600" />
-              <span>{t.step1Sub}</span>
+              <span>{t.step1Sub || 'Offline timetable auto-populates stops'}</span>
             </div>
           </div>
 
@@ -113,7 +113,7 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
             </p>
             <div className="mt-6 pt-4 border-t border-slate-200/80 text-xs font-semibold text-amber-800 flex items-center gap-1.5">
               <Check className="w-4 h-4 text-emerald-600" />
-              <span>{t.step2Sub}</span>
+              <span>{t.step2Sub || 'Broadcasting across all compartments'}</span>
             </div>
           </div>
 
@@ -135,7 +135,7 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
             </p>
             <div className="mt-6 pt-4 border-t border-slate-200/80 text-xs font-semibold text-emerald-800 flex items-center gap-1.5">
               <Check className="w-4 h-4 text-emerald-600" />
-              <span>{t.step3Sub}</span>
+              <span>{t.step3Sub || 'Hassle-free UPI or exact cash'}</span>
             </div>
           </div>
 
@@ -147,12 +147,12 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
             <div>
               <div className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-amber-400" />
-                <span className="text-xs font-bold uppercase tracking-wider text-amber-400">{t.simBadge}</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-amber-400">{t.simBadge || 'Interactive Simulator'}</span>
               </div>
-              <h4 className="text-xl font-black text-white mt-1">{t.simTitle}</h4>
+              <h4 className="text-xl font-black text-white mt-1">{t.simTitle || 'Send a Hunger Signal'}</h4>
             </div>
             <span className="text-xs bg-slate-800 text-slate-300 px-3 py-1.5 rounded-full border border-slate-700 font-mono">
-              {t.simTrain}
+              {t.simTrain || 'Simulated EMU Local • Thane Special'}
             </span>
           </div>
 
@@ -160,7 +160,7 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
             {/* Step A: Choose Food */}
             <div>
               <label className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 block">
-                {t.simStep1Label}
+                {t.simCraving || t.simStep1Label || '1. Choose Item'}
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {foodChoices.map((food) => {
@@ -197,7 +197,7 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 block">
-                  {t.simStep2Label}
+                  {t.simSelectCoach || t.simStep2Label || '2. Coach / Compartment'}
                 </label>
                 <select
                   value={selectedCoach}
@@ -217,7 +217,7 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
 
               <div>
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 block">
-                  {t.simStep3Label}
+                  {t.simStep3Label || '3. Seat / Window Note (Optional)'}
                 </label>
                 <input
                   type="text"
@@ -240,9 +240,9 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
                     ✓
                   </div>
                   <div>
-                    <div className="font-bold text-white text-sm">{t.simBroadcastSuccess} ({selectedCoach})</div>
+                    <div className="font-bold text-white text-sm">{t.simBroadcastActive || t.simBroadcastSuccess || 'Hunger Signal Active!'} ({selectedCoach})</div>
                     <div className="text-xs text-emerald-300">
-                      {t.simVendorAccepted} • ₹{selectedItem.price}
+                      {t.simOrderPlaced || t.simVendorAccepted || 'Vendor notified and approaching'} • ₹{selectedItem.price}
                     </div>
                   </div>
                 </div>
@@ -250,7 +250,7 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
                   onClick={() => setSignalSent(false)}
                   className="text-xs bg-emerald-800 hover:bg-emerald-700 text-white px-3 py-1.5 rounded-lg font-semibold transition cursor-pointer"
                 >
-                  {t.simResetBtn}
+                  {t.simReset || t.simResetBtn || 'Send Another Signal'}
                 </button>
               </div>
             ) : (
@@ -261,11 +261,11 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
                 className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-black flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 transition transform active:scale-98 cursor-pointer"
               >
                 {isSimulating ? (
-                  <span>{t.simBroadcasting}</span>
+                  <span>{t.simSignalBroadcasting || t.simBroadcasting || 'Broadcasting Signal to Nearby Hawkers...'}</span>
                 ) : (
                   <>
                     <BellRing className="w-5 h-5 text-slate-950" />
-                    <span>{t.simSendBtn} {selectedItem.name} (₹{selectedItem.price})</span>
+                    <span>{t.simSendSignal || t.simSendBtn || 'Send Hunger Signal'} - {selectedItem.name} (₹{selectedItem.price})</span>
                   </>
                 )}
               </button>

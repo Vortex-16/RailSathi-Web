@@ -22,7 +22,7 @@ export const VendorBenefits: React.FC<VendorBenefitsProps> = ({ currentLang, sen
             <span>{t.vendorBadge}</span>
           </div>
           <h2 className={`font-black tracking-tight text-slate-900 mb-4 ${seniorMode ? 'text-3xl sm:text-4xl' : 'text-2xl sm:text-3xl lg:text-4xl'}`}>
-            {t.vendorHeadline}
+            {t.vendorTitle}
           </h2>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
             {t.vendorSubhead}
@@ -39,15 +39,15 @@ export const VendorBenefits: React.FC<VendorBenefitsProps> = ({ currentLang, sen
                 <Eye className="w-6 h-6 text-blue-800" />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">
-                {t.vBen1Title}
+                {t.vb1Title}
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                {t.vBen1Desc}
+                {t.vb1Desc}
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-blue-800 flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              <span>{t.vBen1Sub}</span>
+              <span>{t.vb1Sub}</span>
             </div>
           </div>
 
@@ -58,15 +58,15 @@ export const VendorBenefits: React.FC<VendorBenefitsProps> = ({ currentLang, sen
                 <Users className="w-6 h-6 text-amber-700" />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">
-                {t.vBen2Title}
+                {t.vb2Title}
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                {t.vBen2Desc}
+                {t.vb2Desc}
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-amber-800 flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              <span>{t.vBen2Sub}</span>
+              <span>{t.vb2Sub}</span>
             </div>
           </div>
 
@@ -77,15 +77,15 @@ export const VendorBenefits: React.FC<VendorBenefitsProps> = ({ currentLang, sen
                 <Banknote className="w-6 h-6 text-emerald-700" />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">
-                {t.vBen3Title}
+                {t.vb3Title}
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                {t.vBen3Desc}
+                {t.vb3Desc}
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-emerald-800 flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              <span>{t.vBen3Sub}</span>
+              <span>{t.vb3Sub}</span>
             </div>
           </div>
 
@@ -96,15 +96,15 @@ export const VendorBenefits: React.FC<VendorBenefitsProps> = ({ currentLang, sen
                 <Languages className="w-6 h-6 text-purple-700" />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">
-                {t.vBen4Title}
+                {t.vb4Title}
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                {t.vBen4Desc}
+                {t.vb4Desc}
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-purple-800 flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              <span>{t.vBen4Sub}</span>
+              <span>{t.vb4Sub}</span>
             </div>
           </div>
 
@@ -121,8 +121,8 @@ export const VendorBenefits: React.FC<VendorBenefitsProps> = ({ currentLang, sen
                 "{t.vendorQuote}"
               </p>
               <div className="mt-3 flex flex-wrap items-center justify-center sm:justify-start gap-2 text-xs text-slate-500">
-                <strong className="text-slate-900 font-bold">{t.vendorAuthor}</strong>
-                <span>• {t.vendorStation}</span>
+                <strong className="text-slate-900 font-bold">{t.vendorQuoteAuthor}</strong>
+                <span>• {t.vendorQuoteRole}</span>
                 <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">{t.vendorVerified}</span>
               </div>
             </div>
