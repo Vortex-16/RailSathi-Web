@@ -30,22 +30,22 @@ export const StickyDownloadBar: React.FC<StickyDownloadBarProps> = ({ currentLan
   if (!isVisible || dismissed) return null;
 
   return (
-    <aside aria-label="Quick download bar" className="fixed bottom-0 left-0 right-0 z-50 p-3 bg-slate-950/95 backdrop-blur-md text-white border-t border-slate-800 shadow-2xl animate-slideUp">
+    <aside aria-label="Quick download bar" className="fixed bottom-0 left-0 right-0 z-50 p-3 bg-[#0e100f]/95 backdrop-blur-md text-[#fffce1] border-t border-[#42433d] shadow-2xl animate-slideUp">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 flex items-center justify-between gap-3">
         
         {/* Left Information */}
         <div className="flex items-center gap-3 min-w-0">
-          <div className="w-10 h-10 rounded-xl bg-blue-900 border border-blue-700/60 flex items-center justify-center text-amber-400 shrink-0 shadow-xs hidden xs:flex">
-            <Train className="w-5 h-5" />
+          <div className="w-9 h-9 rounded-full bg-[#191919] border border-[#42433d] flex items-center justify-center text-[#0ae448] shrink-0 hidden xs:flex">
+            <Train className="w-4 h-4" />
           </div>
           <div className="min-w-0">
-            <div className="text-xs sm:text-sm font-bold text-white flex items-center gap-1.5 truncate">
+            <div className="text-xs sm:text-sm font-bold text-[#fffce1] flex items-center gap-1.5 truncate">
               <span>RailSaathi Android APK (v1.0.0)</span>
-              <span className="text-[10px] bg-emerald-500 text-slate-950 px-1.5 py-0.2 rounded font-black hidden sm:inline">
+              <span className="text-[10px] bg-[#0e100f] text-[#0ae448] border border-[#42433d] px-2 py-0.5 rounded-full font-mono hidden sm:inline">
                 Verified
               </span>
             </div>
-            <div className="text-[11px] text-slate-400 truncate">
+            <div className="text-[11px] text-[#7c7c6f] truncate font-mono">
               {t.stickySub || t.stickyText || 'Instant hunger signal on local trains'} • {APK_SIZE} • Free
             </div>
           </div>
@@ -57,15 +57,15 @@ export const StickyDownloadBar: React.FC<StickyDownloadBarProps> = ({ currentLan
             id="btn-sticky-download-apk"
             href={OFFICIAL_APK_DOWNLOAD_URL}
             download="RailSathi.apk"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-black px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl shadow-lg transition transform active:scale-95 text-xs sm:text-sm"
+            className="btn-cta-gradient !py-2 !px-4 text-xs sm:text-sm"
           >
-            <Download className="w-4 h-4 text-slate-950" />
+            <Download className="w-3.5 h-3.5 text-[#0ae448]" />
             <span>{t.downloadBtn || t.stickyBtn || 'Download APK'}</span>
           </a>
           
           <button
             onClick={() => setDismissed(true)}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition cursor-pointer"
+            className="p-1.5 rounded-full text-[#7c7c6f] hover:text-[#fffce1] hover:bg-[#191919] transition cursor-pointer"
             title="Dismiss bar"
             aria-label="Close download bar"
           >

@@ -3,7 +3,7 @@ import { Station, TrainSchedule, CoachDetail, FoodItem } from '../types';
 export const OFFICIAL_APK_DOWNLOAD_URL = 'https://github.com/Vortex-16/RailSathi/releases/download/v1.0.0/RailSathi.apk';
 export const GITHUB_REPO_URL = 'https://github.com/Vortex-16/RailSathi';
 export const APK_VERSION = 'v1.0.0';
-export const APK_SIZE = '18.4 MB';
+export const APK_SIZE = '24.90 MB';
 export const MIN_ANDROID_VERSION = 'Android 8.0 (API 26+)';
 export const TARGET_ANDROID_VERSION = 'Android 15 (API 35)';
 export const SHA256_CHECKSUM = '7b9e38d4f2a1c099308bb8742e91ca0f72bc942b03657bfdfbb3971e48f7d983';

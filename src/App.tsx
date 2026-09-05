@@ -37,7 +37,7 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen bg-white text-slate-900 flex flex-col font-sans transition-all selection:bg-amber-400 selection:text-slate-950 ${
+    <div className={`min-h-screen bg-[#0e100f] text-[#fffce1] flex flex-col font-sans transition-all selection:bg-[#0ae448] selection:text-[#0e100f] ${
       seniorMode ? 'text-lg' : 'text-base'
     }`}>
       {/* Top Sticky Header */}

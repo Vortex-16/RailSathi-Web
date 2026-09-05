@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Compass, BellRing, Check, Coffee, Droplets, Sparkles, Train, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { LanguageCode } from '../types';
 import { TRANSLATIONS } from '../data/translations';
+import { ScrollReveal } from './ScrollReveal';
 
 interface CommuterStepsProps {
   currentLang: LanguageCode;
@@ -53,105 +54,119 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
   };
 
   return (
-    <section id="commuters" className="py-16 sm:py-24 bg-white border-b border-slate-200">
+    <section id="commuters" className="py-16 sm:py-24 bg-[#0e100f] border-b border-[#42433d]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-100 text-blue-900 border border-blue-200 text-xs font-bold tracking-wide uppercase mb-4">
-            <Train className="w-3.5 h-3.5 text-blue-700" />
+        <ScrollReveal className="max-w-3xl mx-auto text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#191919] border border-[#42433d] text-xs font-mono text-[#00bae2] mb-4">
+            <span>{'{'}</span>
             <span>{t.commuterBadge || t.stepsBadge || 'Built For Suburban Commuters'}</span>
+            <span>{'}'}</span>
           </div>
-          <h2 className={`font-black tracking-tight text-slate-900 mb-4 ${seniorMode ? 'text-3xl sm:text-4xl' : 'text-2xl sm:text-3xl lg:text-4xl'}`}>
+          <h2 className={`font-semibold tracking-[-0.03em] text-[#fffce1] mb-4 ${seniorMode ? 'text-3xl sm:text-4xl' : 'text-3xl sm:text-4xl lg:text-5xl'}`}>
             {t.commuterTitle || t.stepsHeadline || 'How Commuters Get Food in 3 Easy Steps'}
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+          <p className="text-[#7c7c6f] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
             {t.commuterSubhead || t.stepsSubhead || 'Never risk missing your local train again. Order right from your coach without stepping onto the crowded platform.'}
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* 3 Step Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-16">
           
           {/* Step 1 */}
-          <div className="relative p-6 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-2xs hover:shadow-md transition group">
-            <div className="flex items-center justify-between mb-6">
-              <span className="text-4xl sm:text-5xl font-black text-blue-900/20 group-hover:text-blue-900/40 transition">
-                01
-              </span>
-              <div className="w-12 h-12 rounded-2xl bg-blue-900 text-amber-400 flex items-center justify-center shadow-md">
-                <Compass className="w-6 h-6" />
+          <ScrollReveal delay={0.08} className="h-full">
+            <div className="h-full relative p-6 sm:p-8 rounded-xl bg-[#191919] border border-[#42433d] flex flex-col justify-between group">
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-3xl sm:text-4xl font-mono font-bold text-[#00bae2]">
+                    01
+                  </span>
+                  <div className="w-10 h-10 rounded-full border border-[#00bae2]/50 bg-[#0e100f] text-[#00bae2] flex items-center justify-center">
+                    <Compass className="w-5 h-5" />
+                  </div>
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-[#fffce1] mb-2">
+                  {t.step1Title}
+                </h3>
+                <p className="text-[#7c7c6f] text-sm leading-relaxed">
+                  {t.step1Desc}
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-[#42433d] text-xs font-mono text-[#00bae2] flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-[#0ae448]" />
+                <span>{t.step1Sub || 'Offline timetable auto-populates stops'}</span>
               </div>
             </div>
-            <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">
-              {t.step1Title}
-            </h3>
-            <p className="text-slate-600 text-sm leading-relaxed">
-              {t.step1Desc}
-            </p>
-            <div className="mt-6 pt-4 border-t border-slate-200/80 text-xs font-semibold text-blue-800 flex items-center gap-1.5">
-              <Check className="w-4 h-4 text-emerald-600" />
-              <span>{t.step1Sub || 'Offline timetable auto-populates stops'}</span>
-            </div>
-          </div>
+          </ScrollReveal>
 
           {/* Step 2 */}
-          <div className="relative p-6 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-2xs hover:shadow-md transition group">
-            <div className="flex items-center justify-between mb-6">
-              <span className="text-4xl sm:text-5xl font-black text-amber-600/20 group-hover:text-amber-600/40 transition">
-                02
-              </span>
-              <div className="w-12 h-12 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center shadow-md">
-                <BellRing className="w-6 h-6" />
+          <ScrollReveal delay={0.16} className="h-full">
+            <div className="h-full relative p-6 sm:p-8 rounded-xl bg-[#191919] border border-[#42433d] flex flex-col justify-between group">
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-3xl sm:text-4xl font-mono font-bold text-[#ff8709]">
+                    02
+                  </span>
+                  <div className="w-10 h-10 rounded-full border border-[#ff8709]/50 bg-[#0e100f] text-[#ff8709] flex items-center justify-center">
+                    <BellRing className="w-5 h-5" />
+                  </div>
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-[#fffce1] mb-2">
+                  {t.step2Title}
+                </h3>
+                <p className="text-[#7c7c6f] text-sm leading-relaxed">
+                  {t.step2Desc}
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-[#42433d] text-xs font-mono text-[#ff8709] flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-[#0ae448]" />
+                <span>{t.step2Sub || 'Broadcasting across all compartments'}</span>
               </div>
             </div>
-            <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">
-              {t.step2Title}
-            </h3>
-            <p className="text-slate-600 text-sm leading-relaxed">
-              {t.step2Desc}
-            </p>
-            <div className="mt-6 pt-4 border-t border-slate-200/80 text-xs font-semibold text-amber-800 flex items-center gap-1.5">
-              <Check className="w-4 h-4 text-emerald-600" />
-              <span>{t.step2Sub || 'Broadcasting across all compartments'}</span>
-            </div>
-          </div>
+          </ScrollReveal>
 
           {/* Step 3 */}
-          <div className="relative p-6 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-2xs hover:shadow-md transition group">
-            <div className="flex items-center justify-between mb-6">
-              <span className="text-4xl sm:text-5xl font-black text-emerald-600/20 group-hover:text-emerald-600/40 transition">
-                03
-              </span>
-              <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shadow-md">
-                <CheckCircle2 className="w-6 h-6" />
+          <ScrollReveal delay={0.24} className="h-full">
+            <div className="h-full relative p-6 sm:p-8 rounded-xl bg-[#191919] border border-[#42433d] flex flex-col justify-between group">
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-3xl sm:text-4xl font-mono font-bold text-[#0ae448]">
+                    03
+                  </span>
+                  <div className="w-10 h-10 rounded-full border border-[#0ae448]/50 bg-[#0e100f] text-[#0ae448] flex items-center justify-center">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </div>
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-[#fffce1] mb-2">
+                  {t.step3Title}
+                </h3>
+                <p className="text-[#7c7c6f] text-sm leading-relaxed">
+                  {t.step3Desc}
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-[#42433d] text-xs font-mono text-[#0ae448] flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-[#0ae448]" />
+                <span>{t.step3Sub || 'Hassle-free UPI or exact cash'}</span>
               </div>
             </div>
-            <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">
-              {t.step3Title}
-            </h3>
-            <p className="text-slate-600 text-sm leading-relaxed">
-              {t.step3Desc}
-            </p>
-            <div className="mt-6 pt-4 border-t border-slate-200/80 text-xs font-semibold text-emerald-800 flex items-center gap-1.5">
-              <Check className="w-4 h-4 text-emerald-600" />
-              <span>{t.step3Sub || 'Hassle-free UPI or exact cash'}</span>
-            </div>
-          </div>
+          </ScrollReveal>
 
         </div>
 
         {/* Interactive Commuter Hunger Signal Mini-Simulator */}
-        <div className="max-w-3xl mx-auto rounded-3xl bg-gradient-to-b from-slate-900 to-slate-950 text-white p-6 sm:p-8 shadow-2xl border border-slate-800">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-800 gap-4">
+        <ScrollReveal delay={0.1} className="max-w-3xl mx-auto">
+          <div className="rounded-2xl bg-[#191919] text-[#fffce1] p-6 sm:p-8 border border-[#42433d]">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#42433d] gap-4">
             <div>
               <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-amber-400" />
-                <span className="text-xs font-bold uppercase tracking-wider text-amber-400">{t.simBadge || 'Interactive Simulator'}</span>
+                <Sparkles className="w-4 h-4 text-[#ff8709]" />
+                <span className="text-xs font-mono uppercase tracking-wider text-[#ff8709]">{t.simBadge || 'Interactive Simulator'}</span>
               </div>
-              <h4 className="text-xl font-black text-white mt-1">{t.simTitle || 'Send a Hunger Signal'}</h4>
+              <h4 className="text-xl font-bold text-[#fffce1] mt-1">{t.simTitle || 'Send a Hunger Signal'}</h4>
             </div>
-            <span className="text-xs bg-slate-800 text-slate-300 px-3 py-1.5 rounded-full border border-slate-700 font-mono">
+            <span className="text-xs bg-[#0e100f] text-[#7c7c6f] px-3 py-1 rounded-full border border-[#42433d] font-mono">
               {t.simTrain || 'Simulated EMU Local • Thane Special'}
             </span>
           </div>
@@ -159,7 +174,7 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
           <div className="py-6 space-y-6">
             {/* Step A: Choose Food */}
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 block">
+              <label className="text-xs font-mono uppercase tracking-wider text-[#7c7c6f] mb-3 block">
                 {t.simCraving || t.simStep1Label || '1. Choose Item'}
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -174,17 +189,17 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
                       }}
                       className={`flex items-center justify-between p-3 rounded-xl border text-left transition cursor-pointer ${
                         isSelected
-                          ? 'bg-amber-400/10 border-amber-400 text-white shadow-xs'
-                          : 'bg-slate-800/60 border-slate-700 text-slate-300 hover:bg-slate-800'
+                          ? 'bg-[#0e100f] border-[#ff8709] text-[#fffce1]'
+                          : 'bg-[#0e100f] border-[#42433d] text-[#7c7c6f] hover:text-[#fffce1] hover:border-[#7c7c6f]'
                       }`}
                     >
                       <div>
-                        <div className="text-sm font-bold flex items-center gap-1.5">
+                        <div className="text-sm font-semibold flex items-center gap-1.5">
                           <span>{food.name}</span>
                         </div>
-                        <div className="text-xs text-slate-400 mt-0.5">{food.native}</div>
+                        <div className="text-xs text-[#7c7c6f] mt-0.5">{food.native}</div>
                       </div>
-                      <span className="text-sm font-black text-amber-400 bg-slate-900/80 px-2 py-1 rounded-md border border-slate-700 shrink-0">
+                      <span className="text-xs font-mono font-bold text-[#ff8709] bg-[#191919] px-2.5 py-1 rounded-full border border-[#42433d] shrink-0">
                         ₹{food.price}
                       </span>
                     </button>
@@ -196,7 +211,7 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
             {/* Step B: Coach and Seat Details */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 block">
+                <label className="text-xs font-mono uppercase tracking-wider text-[#7c7c6f] mb-2 block">
                   {t.simSelectCoach || t.simStep2Label || '2. Coach / Compartment'}
                 </label>
                 <select
@@ -205,7 +220,7 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
                     setSelectedCoach(e.target.value);
                     setSignalSent(false);
                   }}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-hidden focus:border-amber-400"
+                  className="w-full bg-[#0e100f] border border-[#42433d] rounded-xl px-3 py-2.5 text-sm text-[#fffce1] focus:outline-hidden focus:border-[#fffce1]"
                 >
                   <option>GS-1 (Coach 2 - General)</option>
                   <option>GS-2 (Coach 4 - Middle)</option>
@@ -216,7 +231,7 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
               </div>
 
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 block">
+                <label className="text-xs font-mono uppercase tracking-wider text-[#7c7c6f] mb-2 block">
                   {t.simStep3Label || '3. Seat / Window Note (Optional)'}
                 </label>
                 <input
@@ -227,28 +242,28 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
                     setSignalSent(false);
                   }}
                   placeholder="e.g. Near Door 2, Window"
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-hidden focus:border-amber-400"
+                  className="w-full bg-[#0e100f] border border-[#42433d] rounded-xl px-3 py-2.5 text-sm text-[#fffce1] focus:outline-hidden focus:border-[#fffce1]"
                 />
               </div>
             </div>
 
             {/* Signal Result or CTA */}
             {signalSent ? (
-              <div className="p-4 rounded-2xl bg-emerald-950/80 border border-emerald-500/60 text-emerald-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-fadeIn">
+              <div className="p-4 rounded-xl bg-[#0e100f] border border-[#0ae448]/60 text-[#fffce1] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center font-black shrink-0">
+                  <div className="w-9 h-9 rounded-full border border-[#0ae448] text-[#0ae448] flex items-center justify-center font-bold shrink-0">
                     ✓
                   </div>
                   <div>
-                    <div className="font-bold text-white text-sm">{t.simBroadcastActive || t.simBroadcastSuccess || 'Hunger Signal Active!'} ({selectedCoach})</div>
-                    <div className="text-xs text-emerald-300">
+                    <div className="font-bold text-sm text-[#fffce1]">{t.simBroadcastActive || t.simBroadcastSuccess || 'Hunger Signal Active!'} ({selectedCoach})</div>
+                    <div className="text-xs font-mono text-[#0ae448]">
                       {t.simOrderPlaced || t.simVendorAccepted || 'Vendor notified and approaching'} • ₹{selectedItem.price}
                     </div>
                   </div>
                 </div>
                 <button
                   onClick={() => setSignalSent(false)}
-                  className="text-xs bg-emerald-800 hover:bg-emerald-700 text-white px-3 py-1.5 rounded-lg font-semibold transition cursor-pointer"
+                  className="btn-ghost-cream !py-1.5 !px-3 text-xs"
                 >
                   {t.simReset || t.simResetBtn || 'Send Another Signal'}
                 </button>
@@ -258,13 +273,13 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
                 id="btn-simulate-hunger-signal"
                 onClick={handleSendSignal}
                 disabled={isSimulating}
-                className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-black flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 transition transform active:scale-98 cursor-pointer"
+                className="w-full py-3.5 px-6 rounded-full border border-[#0ae448] text-[#fffce1] hover:bg-[#0ae448]/15 font-bold flex items-center justify-center gap-2 transition cursor-pointer text-sm"
               >
                 {isSimulating ? (
-                  <span>{t.simSignalBroadcasting || t.simBroadcasting || 'Broadcasting Signal to Nearby Hawkers...'}</span>
+                  <span className="font-mono">{t.simSignalBroadcasting || t.simBroadcasting || 'Broadcasting Signal to Nearby Hawkers...'}</span>
                 ) : (
                   <>
-                    <BellRing className="w-5 h-5 text-slate-950" />
+                    <BellRing className="w-4 h-4 text-[#0ae448]" />
                     <span>{t.simSendSignal || t.simSendBtn || 'Send Hunger Signal'} - {selectedItem.name} (₹{selectedItem.price})</span>
                   </>
                 )}
@@ -272,6 +287,7 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
             )}
           </div>
         </div>
+        </ScrollReveal>
 
       </div>
     </section>
