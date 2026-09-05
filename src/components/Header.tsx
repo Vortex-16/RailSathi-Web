@@ -101,11 +101,20 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <>
-      {/* Announcement Banner: In normal page flow so it smoothly scrolls away when scrolling down */}
+    <header
+      ref={headerRef}
+      className={`sticky top-0 z-40 w-full transition-all duration-300 bg-[#0e100f]/95 backdrop-blur-md ${
+        isScrolled 
+          ? 'shadow-[0_8px_30px_rgba(0,0,0,0.85)]' 
+          : ''
+      }`}
+    >
+      {/* Announcement Banner: Smoothly collapses on scroll to maximize viewport height */}
       <div 
         id="announcement-banner"
-        className="w-full bg-[#191919] border-b border-[#42433d] py-1.5 px-3 sm:px-4 text-center text-[11px] sm:text-xs tracking-tight text-[#fffce1] flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 font-mono select-none"
+        className={`w-full bg-[#191919] border-b border-[#42433d] px-3 sm:px-4 text-center text-[11px] sm:text-xs tracking-tight text-[#fffce1] flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 font-mono select-none transition-all duration-300 overflow-hidden ${
+          isScrolled ? 'max-h-0 py-0 opacity-0 border-b-0 pointer-events-none' : 'max-h-12 py-1.5 opacity-100'
+        }`}
       >
         <span className="text-[#0ae448] font-bold shrink-0">{'{'} RailSaathi® 24.90 MB {'}'}</span>
         <span className="text-[#7c7c6f] hidden xs:inline">|</span>
@@ -113,7 +122,7 @@ export const Header: React.FC<HeaderProps> = ({
         <span className="hidden md:inline text-[#7c7c6f]">· Zero Mobile Internet Required</span>
       </div>
 
-      {/* Offline Alert Banner (also scrolls with document flow) */}
+      {/* Offline Alert Banner */}
       {(!isOnline || simulatedOffline) && (
         <div className="bg-[#191919] border-b border-[#ff8709] text-[#ff8709] px-3 sm:px-4 py-1.5 text-xs font-mono flex items-center justify-between transition-all duration-300 gap-2">
           <div className="flex items-center gap-2 truncate">
@@ -131,18 +140,12 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       )}
 
-      {/* Sticky Top Navbar: Locks to top-0 when user scrolls down */}
-      <header
-        ref={headerRef}
-        className={`sticky top-0 z-40 w-full border-b transition-all duration-300 bg-[#0e100f]/95 backdrop-blur-md ${
-          isScrolled 
-            ? 'shadow-[0_8px_30px_rgba(0,0,0,0.85)] border-[#42433d]' 
-            : 'border-[#42433d]/70'
-        }`}
-      >
-
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14 sm:h-18">
+      {/* Main Navbar Bar */}
+      <div className={`w-full border-b transition-colors duration-300 ${
+        isScrolled ? 'border-[#42433d]' : 'border-[#42433d]/70'
+      }`}>
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-14 sm:h-18">
           {/* Logo & Identity (Hindi word removed) */}
           <div 
             onClick={() => handleNavClick('hero')} 
@@ -319,6 +322,7 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
       </div>
+    </div>
 
     {/* Mobile Navigation Dropdown with Smooth CSS Expand/Fade Transition */}
     <div
@@ -386,6 +390,5 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
     </div>
   </header>
-</>
   );
 };
