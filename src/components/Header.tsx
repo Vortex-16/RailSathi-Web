@@ -6,11 +6,7 @@ import {
   Gauge, 
   Eye, 
   Globe, 
-  Download, 
-  Menu, 
-  X,
-  Sparkles,
-  ShieldCheck
+  Download
 } from 'lucide-react';
 import { LanguageCode } from '../types';
 import { TRANSLATIONS } from '../data/translations';
@@ -27,7 +23,7 @@ interface HeaderProps {
   onToggleSimulateOffline: () => void;
   lowBandwidthMode: boolean;
   onToggleLowBandwidth: () => void;
-  activeSection: string;
+  activeSection?: string;
   onNavigate: (sectionId: string) => void;
 }
 
@@ -53,6 +49,13 @@ export const Header: React.FC<HeaderProps> = ({
   onNavigate,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const headerRef = React.useRef<HTMLElement>(null);
+  const headerBaseRef = React.useRef<HTMLDivElement>(null);
+  const [headerHeight, setHeaderHeight] = React.useState<number>(() => {
+    return (!isOnline || simulatedOffline) ? 120 : 88;
+  });
+
   const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
 
   const navItems = [
@@ -63,13 +66,68 @@ export const Header: React.FC<HeaderProps> = ({
     { id: 'install-guide', label: t.navInstall },
   ];
 
+  // Measure base header height so content underneath starts cleanly
+  React.useEffect(() => {
+    const updateHeight = () => {
+      if (headerBaseRef.current) {
+        setHeaderHeight(headerBaseRef.current.offsetHeight);
+      }
+    };
+
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+    return () => window.removeEventListener('resize', updateHeight);
+  }, [isOnline, simulatedOffline, seniorMode, currentLang]);
+
+  // Track window scroll position for elevated header styling
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 8);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Keyboard escape & outside click handlers to smoothly close mobile menu
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (mobileMenuOpen && headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [mobileMenuOpen]);
+
   const handleNavClick = (id: string) => {
     onNavigate(id);
     setMobileMenuOpen(false);
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-[#42433d] bg-[#0e100f]/95 backdrop-blur-md transition-all">
+    <>
+      <header
+        ref={headerRef}
+        className={`fixed top-0 left-0 right-0 z-40 w-full border-b transition-all duration-300 bg-[#0e100f]/95 backdrop-blur-md ${
+          isScrolled 
+            ? 'shadow-[0_8px_30px_rgba(0,0,0,0.85)] border-[#42433d]' 
+            : 'border-[#42433d]/70'
+        }`}
+      >
+        <div ref={headerBaseRef} className="w-full">
       {/* Announcement Banner: Full-bleed band, cream text on near-black, centered single line */}
       <div className="w-full bg-[#191919] border-b border-[#42433d] py-1 px-3 sm:px-4 text-center text-[11px] sm:text-xs tracking-tight text-[#fffce1] flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 font-mono">
         <span className="text-[#0ae448] font-bold shrink-0">{'{'} RailSaathi® 24.90 MB {'}'}</span>
@@ -230,70 +288,125 @@ export const Header: React.FC<HeaderProps> = ({
               <PWAInstallButton compact={true} />
             </div>
 
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Menu Toggle with Smooth CSS 3-Bar Morph Transition */}
             <button
               id="btn-mobile-menu"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-1.5 sm:p-2 rounded-full border border-[#42433d] text-[#fffce1] hover:bg-[#191919] cursor-pointer"
-              aria-label="Toggle Navigation Menu"
+              type="button"
+              onClick={() => setMobileMenuOpen(prev => !prev)}
+              className={`lg:hidden w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#0ae448]/50 ${
+                mobileMenuOpen 
+                  ? 'border-[#0ae448] bg-[#191919] text-[#0ae448] shadow-[0_0_12px_rgba(10,228,72,0.25)]' 
+                  : 'border-[#42433d] bg-[#191919]/90 text-[#fffce1] hover:border-[#0ae448]/50 hover:bg-[#191919]'
+              }`}
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              <span className="sr-only">{mobileMenuOpen ? 'Close menu' : 'Open menu'}</span>
+              <div className="w-5 h-3.5 relative flex flex-col justify-between items-center pointer-events-none">
+                {/* Top bar - translates down and rotates 45deg */}
+                <span
+                  className={`w-5 h-[2px] rounded-full transition-all duration-300 ease-in-out transform origin-center ${
+                    mobileMenuOpen
+                      ? 'rotate-45 translate-y-[6px] bg-[#0ae448]'
+                      : 'bg-[#fffce1]'
+                  }`}
+                />
+                {/* Middle bar - smoothly scales down and fades out */}
+                <span
+                  className={`w-5 h-[2px] rounded-full transition-all duration-200 ease-in-out ${
+                    mobileMenuOpen
+                      ? 'opacity-0 scale-x-0 bg-[#0ae448]'
+                      : 'opacity-100 bg-[#fffce1]'
+                  }`}
+                />
+                {/* Bottom bar - translates up and rotates -45deg */}
+                <span
+                  className={`w-5 h-[2px] rounded-full transition-all duration-300 ease-in-out transform origin-center ${
+                    mobileMenuOpen
+                      ? '-rotate-45 -translate-y-[6px] bg-[#0ae448]'
+                      : 'bg-[#fffce1]'
+                  }`}
+                />
+              </div>
             </button>
           </div>
         </div>
-
-        {/* Mobile Navigation Dropdown */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-[#42433d] space-y-3">
-            <div className="grid grid-cols-1 gap-1 pb-3">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-medium text-[#7c7c6f] hover:text-[#fffce1] hover:bg-[#191919] text-sm cursor-pointer"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-
-            <div className="pt-3 border-t border-[#42433d] flex flex-col gap-2.5">
-              <div className="flex items-center justify-between text-xs text-[#7c7c6f] px-1">
-                <span>Tunnel Mode Simulator</span>
-                <button
-                  onClick={onToggleSimulateOffline}
-                  className="font-mono text-[#0ae448] underline cursor-pointer"
-                >
-                  {simulatedOffline ? 'Switch Online' : 'Simulate Offline'}
-                </button>
-              </div>
-
-              <div className="flex items-center justify-between text-xs text-[#7c7c6f] px-1">
-                <span>2G/3G Low-Data Mode</span>
-                <button
-                  onClick={onToggleLowBandwidth}
-                  className="font-mono text-[#00bae2] underline cursor-pointer"
-                >
-                  {lowBandwidthMode ? 'Turn Off' : 'Turn On'}
-                </button>
-              </div>
-
-              <a
-                href={OFFICIAL_APK_DOWNLOAD_URL}
-                download="RailSathi.apk"
-                className="w-full mt-2 inline-flex items-center justify-center gap-2 border border-[#0ae448] text-[#fffce1] font-semibold text-sm py-2.5 rounded-full bg-[#191919] hover:bg-[#0ae448]/10 shadow-[0_0_15px_rgba(10,228,72,0.2)]"
-              >
-                <Download className="w-4 h-4 text-[#0ae448]" />
-                <span>Download Android APK (24.90 MB)</span>
-              </a>
-
-              <div className="mt-1">
-                <PWAInstallButton compact={false} />
-              </div>
-            </div>
-          </div>
-        )}
       </div>
-    </header>
+    </div>
+
+    {/* Mobile Navigation Dropdown with Smooth CSS Expand/Fade Transition */}
+    <div
+      className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+        mobileMenuOpen
+          ? 'max-h-[600px] opacity-100 border-t border-[#42433d]'
+          : 'max-h-0 opacity-0 border-t-0 pointer-events-none'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 space-y-3 bg-[#0e100f]/98 backdrop-blur-xl">
+        <div className="grid grid-cols-1 gap-1 pb-3">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => handleNavClick(item.id)}
+                className={`w-full text-left px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 cursor-pointer flex items-center justify-between ${
+                  isActive
+                    ? 'bg-[#191919] text-[#0ae448] font-semibold border border-[#0ae448]/30'
+                    : 'text-[#7c7c6f] hover:text-[#fffce1] hover:bg-[#191919]'
+                }`}
+              >
+                <span>{item.label}</span>
+                <span className="text-xs opacity-50 font-mono">#</span>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="pt-3 border-t border-[#42433d] flex flex-col gap-2.5">
+          <div className="flex items-center justify-between text-xs text-[#7c7c6f] px-1">
+            <span>Tunnel Mode Simulator</span>
+            <button
+              onClick={onToggleSimulateOffline}
+              className="font-mono text-[#0ae448] underline cursor-pointer hover:text-[#abff84] transition-colors"
+            >
+              {simulatedOffline ? 'Switch Online' : 'Simulate Offline'}
+            </button>
+          </div>
+
+          <div className="flex items-center justify-between text-xs text-[#7c7c6f] px-1">
+            <span>2G/3G Low-Data Mode</span>
+            <button
+              onClick={onToggleLowBandwidth}
+              className="font-mono text-[#00bae2] underline cursor-pointer hover:text-[#fffce1] transition-colors"
+            >
+              {lowBandwidthMode ? 'Turn Off' : 'Turn On'}
+            </button>
+          </div>
+
+          <a
+            href={OFFICIAL_APK_DOWNLOAD_URL}
+            download="RailSathi.apk"
+            className="w-full mt-2 inline-flex items-center justify-center gap-2 border border-[#0ae448] text-[#fffce1] font-semibold text-sm py-2.5 rounded-full bg-[#191919] hover:bg-[#0ae448]/10 shadow-[0_0_15px_rgba(10,228,72,0.2)] transition-colors active:scale-[0.99]"
+          >
+            <Download className="w-4 h-4 text-[#0ae448]" />
+            <span>Download Android APK (24.90 MB)</span>
+          </a>
+
+          <div className="mt-1">
+            <PWAInstallButton compact={false} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {/* Dynamic spacer below fixed header to maintain natural document flow */}
+  <div 
+    style={{ height: `${headerHeight}px` }} 
+    className="w-full shrink-0 transition-[height] duration-200 pointer-events-none" 
+    aria-hidden="true" 
+  />
+</>
   );
 };

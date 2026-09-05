@@ -23,12 +23,33 @@ export default function App() {
   const [lowBandwidthMode, setLowBandwidthMode] = useState<boolean>(false);
   const [userRole, setUserRole] = useState<UserRole>('TRAVELER');
 
+  const [activeSection, setActiveSection] = useState<string>('hero');
+
   const { isOnline, simulatedOffline, toggleSimulatedOffline } = useOnlineStatus();
 
   React.useEffect(() => {
     document.documentElement.lang = currentLang;
     document.documentElement.dir = currentLang === 'ur' ? 'rtl' : 'ltr';
   }, [currentLang]);
+
+  // Track active section for high-contrast header navigation highlighting
+  React.useEffect(() => {
+    const sectionIds = ['hero', 'difference', 'commuters', 'vendors', 'features', 'install-guide'];
+    const handleScroll = () => {
+      const scrollY = window.scrollY + 140;
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const id = sectionIds[i];
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= scrollY) {
+          setActiveSection(id);
+          break;
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleNavigate = (sectionId: string) => {
     const el = document.getElementById(sectionId);
@@ -44,7 +65,7 @@ export default function App() {
       {/* GSAP Scroll Progress Bar */}
       <GSAPScrollProgress />
 
-      {/* Top Sticky Header */}
+      {/* Top Fixed Header */}
       <Header
         currentLang={currentLang}
         onLanguageChange={setCurrentLang}
@@ -55,6 +76,7 @@ export default function App() {
         onToggleSimulateOffline={toggleSimulatedOffline}
         lowBandwidthMode={lowBandwidthMode}
         onToggleLowBandwidth={() => setLowBandwidthMode(prev => !prev)}
+        activeSection={activeSection}
         onNavigate={handleNavigate}
       />
 
