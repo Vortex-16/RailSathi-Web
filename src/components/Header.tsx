@@ -51,10 +51,6 @@ export const Header: React.FC<HeaderProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
   const headerRef = React.useRef<HTMLElement>(null);
-  const headerBaseRef = React.useRef<HTMLDivElement>(null);
-  const [headerHeight, setHeaderHeight] = React.useState<number>(() => {
-    return (!isOnline || simulatedOffline) ? 120 : 88;
-  });
 
   const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
 
@@ -66,23 +62,10 @@ export const Header: React.FC<HeaderProps> = ({
     { id: 'install-guide', label: t.navInstall },
   ];
 
-  // Measure base header height so content underneath starts cleanly
-  React.useEffect(() => {
-    const updateHeight = () => {
-      if (headerBaseRef.current) {
-        setHeaderHeight(headerBaseRef.current.offsetHeight);
-      }
-    };
-
-    updateHeight();
-    window.addEventListener('resize', updateHeight);
-    return () => window.removeEventListener('resize', updateHeight);
-  }, [isOnline, simulatedOffline, seniorMode, currentLang]);
-
   // Track window scroll position for elevated header styling
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 8);
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -119,26 +102,20 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <>
-      <header
-        ref={headerRef}
-        className={`fixed top-0 left-0 right-0 z-40 w-full border-b transition-all duration-300 bg-[#0e100f]/95 backdrop-blur-md ${
-          isScrolled 
-            ? 'shadow-[0_8px_30px_rgba(0,0,0,0.85)] border-[#42433d]' 
-            : 'border-[#42433d]/70'
-        }`}
+      {/* Announcement Banner: In normal page flow so it smoothly scrolls away when scrolling down */}
+      <div 
+        id="announcement-banner"
+        className="w-full bg-[#191919] border-b border-[#42433d] py-1.5 px-3 sm:px-4 text-center text-[11px] sm:text-xs tracking-tight text-[#fffce1] flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 font-mono select-none"
       >
-        <div ref={headerBaseRef} className="w-full">
-      {/* Announcement Banner: Full-bleed band, cream text on near-black, centered single line */}
-      <div className="w-full bg-[#191919] border-b border-[#42433d] py-1 px-3 sm:px-4 text-center text-[11px] sm:text-xs tracking-tight text-[#fffce1] flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 font-mono">
         <span className="text-[#0ae448] font-bold shrink-0">{'{'} RailSaathi® 24.90 MB {'}'}</span>
         <span className="text-[#7c7c6f] hidden xs:inline">|</span>
         <span className="text-[#fffce1] truncate">100% Offline SQLite Railway Mesh</span>
         <span className="hidden md:inline text-[#7c7c6f]">· Zero Mobile Internet Required</span>
       </div>
 
-      {/* Offline Alert Banner if simulated or real offline */}
+      {/* Offline Alert Banner (also scrolls with document flow) */}
       {(!isOnline || simulatedOffline) && (
-        <div className="bg-[#191919] border-b border-[#ff8709] text-[#ff8709] px-3 sm:px-4 py-1.5 text-xs font-mono flex items-center justify-between transition gap-2">
+        <div className="bg-[#191919] border-b border-[#ff8709] text-[#ff8709] px-3 sm:px-4 py-1.5 text-xs font-mono flex items-center justify-between transition-all duration-300 gap-2">
           <div className="flex items-center gap-2 truncate">
             <WifiOff className="w-3.5 h-3.5 animate-pulse shrink-0" />
             <span className="truncate">
@@ -147,12 +124,22 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
           <button
             onClick={onToggleSimulateOffline}
-            className="text-[11px] bg-[#42433d] hover:bg-[#7c7c6f] text-[#fffce1] px-2 py-0.5 rounded-full font-medium transition cursor-pointer shrink-0"
+            className="text-[11px] bg-[#42433d] hover:bg-[#7c7c6f] active:scale-95 text-[#fffce1] px-2.5 py-0.5 rounded-full font-medium transition-all duration-200 cursor-pointer shrink-0"
           >
             {simulatedOffline ? 'Online' : 'Dismiss'}
           </button>
         </div>
       )}
+
+      {/* Sticky Top Navbar: Locks to top-0 when user scrolls down */}
+      <header
+        ref={headerRef}
+        className={`sticky top-0 z-40 w-full border-b transition-all duration-300 bg-[#0e100f]/95 backdrop-blur-md ${
+          isScrolled 
+            ? 'shadow-[0_8px_30px_rgba(0,0,0,0.85)] border-[#42433d]' 
+            : 'border-[#42433d]/70'
+        }`}
+      >
 
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-18">
@@ -332,7 +319,6 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
       </div>
-    </div>
 
     {/* Mobile Navigation Dropdown with Smooth CSS Expand/Fade Transition */}
     <div
@@ -400,13 +386,6 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
     </div>
   </header>
-
-  {/* Dynamic spacer below fixed header to maintain natural document flow */}
-  <div 
-    style={{ height: `${headerHeight}px` }} 
-    className="w-full shrink-0 transition-[height] duration-200 pointer-events-none" 
-    aria-hidden="true" 
-  />
 </>
   );
 };

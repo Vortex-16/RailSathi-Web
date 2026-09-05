@@ -19,7 +19,10 @@ import {
   BellRing,
   ArrowRight,
   Sparkles,
-  MapPin
+  MapPin,
+  Radio,
+  Database,
+  Wifi
 } from 'lucide-react';
 
 if (typeof window !== 'undefined') {
@@ -54,6 +57,8 @@ export const Hero: React.FC<HeroProps> = ({
   const [copiedSha, setCopiedSha] = useState(false);
   const [showQrModal, setShowQrModal] = useState(false);
   const [internalRole, setInternalRole] = useState<UserRole>('TRAVELER');
+  const [activeDockTab, setActiveDockTab] = useState<'train' | 'radar' | 'chai' | 'offline'>('train');
+  const [islandExpanded, setIslandExpanded] = useState(false);
   const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
 
   const heroContainerRef = useRef<HTMLDivElement>(null);
@@ -331,121 +336,219 @@ export const Hero: React.FC<HeroProps> = ({
 
           </div>
 
-          {/* Right Column: Phone Preview Mockup in Dark Canvas Studio Style */}
+          {/* Right Column: Authentic iPhone 16 / 17 Pro Titanium Mockup with Fixed iOS Dock */}
           <div className="lg:col-span-5 flex justify-center">
-            <div ref={phoneRef} className="relative w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[360px] rounded-[36px] bg-[#191919] p-2.5 sm:p-3.5 border border-[#42433d]">
-              
-              {/* Speaker & Camera Notch */}
-              <div className="absolute top-5 left-1/2 -translate-x-1/2 w-28 h-4 bg-[#0e100f] rounded-full flex items-center justify-center gap-2 z-20 border border-[#42433d]">
-                <div className="w-2 h-2 rounded-full bg-[#42433d]" />
-                <div className="w-1.5 h-1.5 rounded-full bg-[#00bae2]" />
-              </div>
+            <div 
+              ref={phoneRef} 
+              className="relative w-full max-w-[290px] xs:max-w-[330px] sm:max-w-[370px] rounded-[50px] sm:rounded-[54px] bg-gradient-to-b from-[#2e2d35] via-[#1a191f] to-[#121115] p-2.5 sm:p-3 border-[3.5px] border-[#3e3d48] shadow-[0_30px_90px_rgba(0,0,0,0.95),0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_2px_rgba(255,255,255,0.22)] select-none"
+            >
+              {/* iPhone 16 / 17 Physical Hardware Buttons on Titanium Edge */}
+              {/* Left Side: Action Button + Volume Up + Volume Down */}
+              <div className="absolute -left-[5.5px] top-20 w-[3.5px] h-5 bg-[#4c4b56] rounded-l-sm border-l border-white/20 shadow-sm" title="Action Button" />
+              <div className="absolute -left-[5.5px] top-29 w-[3.5px] h-10 bg-[#4c4b56] rounded-l-sm border-l border-white/20 shadow-sm" title="Volume Up" />
+              <div className="absolute -left-[5.5px] top-42 w-[3.5px] h-10 bg-[#4c4b56] rounded-l-sm border-l border-white/20 shadow-sm" title="Volume Down" />
 
-              {/* Phone Screen Canvas */}
-              <div className="rounded-[28px] bg-[#0e100f] overflow-hidden border border-[#42433d] text-[#fffce1] font-sans">
+              {/* Right Side: Power/Siri Button + iPhone 16/17 Camera Control Button */}
+              <div className="absolute -right-[5.5px] top-28 w-[3.5px] h-13 bg-[#4c4b56] rounded-r-sm border-r border-white/20 shadow-sm" title="Side Button" />
+              <div 
+                className="absolute -right-[5.5px] top-64 w-[3.5px] h-16 bg-gradient-to-b from-[#3e3d48] via-[#0ae448]/80 to-[#3e3d48] rounded-r-sm border-r border-[#0ae448]/60 shadow-[0_0_8px_rgba(10,228,72,0.4)] cursor-pointer" 
+                title="iPhone 16/17 Camera Control & Haptic Sensor"
+              />
+
+              {/* Top Earpiece Speaker Slit */}
+              <div className="w-12 h-[2.5px] bg-[#0c0c0f] rounded-full mx-auto -mb-1 relative z-30" />
+
+              {/* Phone Screen Canvas: Full Height with Internal Scroll & Fixed Dock */}
+              <div className="rounded-[40px] sm:rounded-[44px] bg-[#0e100f] overflow-hidden border border-[#27262e] text-[#fffce1] font-sans flex flex-col h-[580px] sm:h-[620px] relative shadow-inner">
                 
-                {/* Android Status Bar */}
-                <div className="bg-[#191919] text-[#fffce1] px-5 pt-3.5 pb-2 flex items-center justify-between text-[11px] font-mono border-b border-[#42433d]">
-                  <span>08:42</span>
-                  <div className="flex items-center gap-1.5 text-[10px]">
-                    <span className="text-[#0ae448] font-bold">{t.mockupGps}</span>
-                    <BatteryCharging className="w-3 h-3 text-[#ff8709]" />
-                    <span>88%</span>
+                {/* iOS 18/19 Status Bar with Authentic Dynamic Island */}
+                <div className="bg-[#141417]/95 backdrop-blur-md px-4 pt-3 pb-2 flex items-center justify-between border-b border-[#2e2d36] shrink-0 z-30 relative">
+                  {/* Left: iOS Clock */}
+                  <span className="text-xs font-semibold tracking-tight text-[#fffce1] w-12 text-left">
+                    9:41
+                  </span>
+
+                  {/* Center: Dynamic Island (iPhone 16/17 signature, interactive) */}
+                  <div
+                    onClick={() => setIslandExpanded(prev => !prev)}
+                    className={`h-7 bg-black rounded-full flex items-center justify-between px-2.5 border border-[#27272f] shadow-md transition-all duration-300 cursor-pointer select-none ${
+                      islandExpanded ? 'w-44 px-3' : 'w-28 sm:w-30'
+                    }`}
+                    title="Tap to toggle Dynamic Island Live Activity"
+                  >
+                    {islandExpanded ? (
+                      <div className="w-full flex items-center justify-between text-[9px] font-mono text-[#fffce1] animate-in fade-in duration-200">
+                        <div className="flex items-center gap-1 text-[#0ae448]">
+                          <Train className="w-3 h-3" />
+                          <span className="font-bold">12951</span>
+                        </div>
+                        <span className="text-[#00bae2]">82 km/h</span>
+                        <span className="text-[#ff8709]">Dum Dum 4m</span>
+                      </div>
+                    ) : (
+                      <>
+                        <div className="flex items-center gap-1.5">
+                          <Train className="w-3 h-3 text-[#0ae448] shrink-0" />
+                          <span className="text-[10px] font-mono text-[#0ae448] font-bold">12951</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          {/* Microphone/GPS Activity Dot */}
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#ff8709] animate-pulse" />
+                          {/* Camera specular lens */}
+                          <div className="w-2.5 h-2.5 rounded-full bg-[#070714] border border-[#1c1b2c] flex items-center justify-center relative">
+                            <div className="w-1 h-1 rounded-full bg-[#00bae2]/70" />
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </div>
+
+                  {/* Right: iOS Cellular, Offline Mesh, Battery Capsule */}
+                  <div className="flex items-center gap-1.5 text-[10px] w-14 justify-end">
+                    {/* Stepped Cellular Bars */}
+                    <div className="flex items-end gap-[1.5px] h-2.5" title="Cellular Offline Mesh Active">
+                      <span className="w-[2px] h-1 bg-[#fffce1] rounded-xs" />
+                      <span className="w-[2px] h-1.5 bg-[#fffce1] rounded-xs" />
+                      <span className="w-[2px] h-2 bg-[#fffce1] rounded-xs" />
+                      <span className="w-[2px] h-2.5 bg-[#0ae448] rounded-xs" />
+                    </div>
+                    {/* Battery Capsule with 94% Green Fill */}
+                    <div className="flex items-center gap-0.5">
+                      <span className="text-[9px] font-semibold">94</span>
+                      <div className="w-4 h-2 rounded-[3px] border border-[#fffce1]/80 p-[1px] flex items-center">
+                        <div className="h-full w-4/5 bg-[#0ae448] rounded-[1px]" />
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                {/* App Bar */}
-                <div className="bg-[#191919] text-[#fffce1] px-3.5 py-3 flex items-center justify-between border-b border-[#42433d] gap-2">
+                {/* App Navigation Bar with Role Toggle Pill */}
+                <div className="bg-[#141417]/80 backdrop-blur-sm px-3.5 py-2.5 flex items-center justify-between border-b border-[#2e2d36] gap-2 shrink-0">
                   <div className="flex items-center gap-2 truncate">
-                    <div className="w-7 h-7 rounded-full bg-[#0e100f] border border-[#0ae448]/50 flex items-center justify-center shrink-0">
-                      <Train className="w-3.5 h-3.5 text-[#0ae448]" />
+                    <div className="w-6 h-6 rounded-full bg-[#0e100f] border border-[#0ae448]/60 flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(10,228,72,0.2)]">
+                      <Train className="w-3 h-3 text-[#0ae448]" />
                     </div>
                     <div className="truncate">
-                      <div className="text-xs font-bold leading-tight truncate">RailSaathi</div>
-                      <div className="text-[10px] text-[#7c7c6f] truncate">
-                        {activeRole === 'TRAVELER' ? t.mockupTravelerMode : t.mockupVendorMode}
+                      <div className="text-xs font-bold leading-tight flex items-center gap-1.5">
+                        <span>RailSaathi</span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0ae448] animate-ping" />
+                      </div>
+                      <div className="text-[10px] text-[#7c7c6f]">
+                        {activeRole === 'TRAVELER' ? 'Passenger Coach Mode' : 'Hawker Radar Mode'}
                       </div>
                     </div>
                   </div>
-                  <span className="text-[10px] font-mono text-[#0ae448] border border-[#0ae448]/40 bg-[#0e100f] px-2 py-0.5 rounded-full shrink-0">
-                    {t.mockupOfflineReady}
-                  </span>
+
+                  {/* In-Mockup Role Switcher Segmented Pill */}
+                  <div className="flex items-center p-0.5 rounded-full bg-[#0e100f] border border-[#3e3d48] text-[9px] font-mono">
+                    <button
+                      onClick={() => handleRoleSelect('TRAVELER')}
+                      className={`px-2 py-0.5 rounded-full transition-all duration-200 cursor-pointer ${
+                        activeRole === 'TRAVELER'
+                          ? 'bg-[#0ae448] text-[#0e100f] font-bold shadow-xs'
+                          : 'text-[#7c7c6f] hover:text-[#fffce1]'
+                      }`}
+                    >
+                      Commuter
+                    </button>
+                    <button
+                      onClick={() => handleRoleSelect('VENDOR')}
+                      className={`px-2 py-0.5 rounded-full transition-all duration-200 cursor-pointer ${
+                        activeRole === 'VENDOR'
+                          ? 'bg-[#ff8709] text-[#0e100f] font-bold shadow-xs'
+                          : 'text-[#7c7c6f] hover:text-[#fffce1]'
+                      }`}
+                    >
+                      Vendor
+                    </button>
+                  </div>
                 </div>
 
-                {/* Body Content changes depending on activeRole */}
-                <div className="p-3.5 space-y-3">
+                {/* Scrollable Screen Content Area (Smooth scrolling inside the phone canvas) */}
+                <div className="flex-1 overflow-y-auto px-3 py-2.5 space-y-2.5 scrollbar-thin">
                   
-                  {activeRole === 'TRAVELER' ? (
-                    <>
-                      {/* Active Train Card */}
-                      <div className="p-3 rounded-xl bg-[#191919] border border-[#42433d]">
-                        <div className="flex items-center justify-between text-[11px] font-mono text-[#7c7c6f] mb-1">
-                          <span>{t.mockupActiveSignal}</span>
-                          <span className="text-[#0ae448] bg-[#0e100f] border border-[#0ae448]/40 px-1.5 py-0.5 rounded text-[10px] font-bold">ON TIME</span>
+                  {/* Dynamic View 1: My Train & Coach GS-1 status */}
+                  {(activeDockTab === 'train' || (activeDockTab !== 'radar' && activeDockTab !== 'chai' && activeDockTab !== 'offline' && activeRole === 'TRAVELER')) && (
+                    <div className="p-3 rounded-2xl bg-[#17171c] border border-[#3a3945] shadow-sm transition-all duration-200">
+                      <div className="flex items-center justify-between text-[11px] font-mono text-[#7c7c6f] mb-1">
+                        <span className="flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#0ae448] animate-pulse" />
+                          {t.mockupActiveSignal}
+                        </span>
+                        <span className="text-[#0ae448] bg-[#0e100f] border border-[#0ae448]/40 px-1.5 py-0.5 rounded text-[10px] font-bold">
+                          ON TIME
+                        </span>
+                      </div>
+                      <div className="text-sm font-bold text-[#fffce1]">Sealdah - Ranaghat Local</div>
+                      <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#2e2d38] text-[11px]">
+                        <div>
+                          <span className="text-[#7c7c6f] block text-[9px] uppercase font-mono">Your Coach</span>
+                          <span className="font-bold text-[#00bae2]">GS-1 (Coach 2)</span>
                         </div>
-                        <div className="text-sm font-bold text-[#fffce1]">Sealdah - Ranaghat Local</div>
-                        <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#42433d] text-[11px]">
-                          <div>
-                            <span className="text-[#7c7c6f] block text-[9px]">YOUR COACH</span>
-                            <span className="font-bold text-[#00bae2]">GS-1 (Coach 2)</span>
-                          </div>
-                          <div className="text-right">
-                            <span className="text-[#7c7c6f] block text-[9px]">NEXT HALT</span>
-                            <span className="font-bold text-[#fffce1]">Dum Dum (45s halt)</span>
-                          </div>
+                        <div className="text-right">
+                          <span className="text-[#7c7c6f] block text-[9px] uppercase font-mono">Next Halt</span>
+                          <span className="font-bold text-[#fffce1]">Dum Dum (45s halt)</span>
                         </div>
                       </div>
+                    </div>
+                  )}
 
-                      {/* Active Hunger Signal */}
-                      <div className="p-3 rounded-xl bg-[#191919] border border-[#ff8709]/50">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <span className="flex h-2 w-2 rounded-full bg-[#ff8709] animate-ping" />
-                            <span className="text-xs font-bold text-[#ff8709] font-mono uppercase tracking-wide">
-                              {t.mockupHungerActive}
-                            </span>
-                          </div>
-                          <span className="text-xs font-mono font-bold text-[#ff8709] border border-[#ff8709]/50 px-2 py-0.5 rounded-full bg-[#0e100f]">
-                            ₹20
+                  {/* Dynamic View 2: Chai SOS Hunger Signal Alert */}
+                  {(activeDockTab === 'chai' || (activeDockTab === 'train' && activeRole === 'TRAVELER')) && (
+                    <div className="p-3 rounded-2xl bg-[#17171c] border border-[#ff8709]/50 shadow-sm transition-all duration-200">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="flex h-2 w-2 rounded-full bg-[#ff8709] animate-ping" />
+                          <span className="text-xs font-bold text-[#ff8709] font-mono uppercase tracking-wide">
+                            {t.mockupHungerActive}
                           </span>
                         </div>
-                        <p className="text-[11px] text-[#fffce1] mt-1.5">
-                          1x Kadak Chai (₹10) + 1x Roasted Badam (₹10)
-                        </p>
-                        <div className="mt-2 flex items-center justify-between text-[10px] bg-[#0e100f] p-2 rounded-lg border border-[#42433d]">
-                          <span className="text-[#7c7c6f]">{t.mockupVendorIncoming}</span>
-                          <span className="text-[#0ae448] font-bold font-mono">{t.mockupReachingDoor}</span>
-                        </div>
+                        <span className="text-xs font-mono font-bold text-[#ff8709] border border-[#ff8709]/50 px-2 py-0.5 rounded-full bg-[#0e100f]">
+                          ₹20
+                        </span>
                       </div>
-                    </>
-                  ) : (
+                      <p className="text-[11px] text-[#fffce1] mt-1.5">
+                        1x Kadak Masala Chai (₹10) + 1x Roasted Badam (₹10)
+                      </p>
+                      <div className="mt-2 flex items-center justify-between text-[10px] bg-[#0e100f] p-2 rounded-xl border border-[#2e2d38]">
+                        <span className="text-[#7c7c6f]">{t.mockupVendorIncoming}</span>
+                        <span className="text-[#0ae448] font-bold font-mono">{t.mockupReachingDoor}</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Dynamic View 3: Hawker Radar View */}
+                  {(activeDockTab === 'radar' || activeRole === 'VENDOR') && (
                     <>
-                      {/* Vendor Radar View */}
-                      <div className="p-3 rounded-xl bg-[#191919] border border-[#42433d]">
+                      <div className="p-3 rounded-2xl bg-[#17171c] border border-[#3a3945] shadow-sm transition-all duration-200">
                         <div className="flex items-center justify-between text-[11px] font-mono text-[#7c7c6f] mb-1">
-                          <span>{t.mockupRadarActive}</span>
-                          <span className="text-[#00bae2] bg-[#0e100f] border border-[#00bae2]/40 px-1.5 py-0.5 rounded text-[10px] font-bold">4 SIGNALS</span>
+                          <span className="flex items-center gap-1.5 text-[#00bae2]">
+                            <Radio className="w-3 h-3 animate-pulse" />
+                            {t.mockupRadarActive}
+                          </span>
+                          <span className="text-[#00bae2] bg-[#0e100f] border border-[#00bae2]/40 px-1.5 py-0.5 rounded text-[10px] font-bold">
+                            4 SIGNALS
+                          </span>
                         </div>
-                        <div className="text-sm font-bold text-[#fffce1]">Your Item: Cutting Chai & Samosa</div>
-                        <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#42433d] text-[11px]">
+                        <div className="text-sm font-bold text-[#fffce1]">Item: Cutting Chai & Samosa</div>
+                        <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#2e2d38] text-[11px]">
                           <div>
-                            <span className="text-[#7c7c6f] block text-[9px]">YOUR POSITION</span>
+                            <span className="text-[#7c7c6f] block text-[9px] uppercase font-mono">Your Position</span>
                             <span className="font-bold text-[#0ae448]">Coach 4 (VND-1)</span>
                           </div>
                           <div className="text-right">
-                            <span className="text-[#7c7c6f] block text-[9px]">EST. EARNING</span>
+                            <span className="text-[#7c7c6f] block text-[9px] uppercase font-mono">Est. Earning</span>
                             <span className="font-bold text-[#ff8709]">₹65 Pending</span>
                           </div>
                         </div>
                       </div>
 
-                      {/* Incoming Passenger Request Alert */}
-                      <div className="p-3 rounded-xl bg-[#191919] border border-[#0ae448]/50">
+                      <div className="p-3 rounded-2xl bg-[#17171c] border border-[#0ae448]/50 shadow-sm transition-all duration-200">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-1.5">
                             <BellRing className="w-3.5 h-3.5 text-[#0ae448] animate-bounce" />
                             <span className="text-xs font-bold text-[#0ae448] uppercase font-mono">
-                              Signal from Coach GS-1
+                              Coach GS-1 Signal
                             </span>
                           </div>
                           <span className="text-xs font-mono font-bold text-[#0ae448] border border-[#0ae448]/40 px-2 py-0.5 rounded-full bg-[#0e100f]">
@@ -456,10 +559,16 @@ export const Hero: React.FC<HeroProps> = ({
                           1x Masala Chai + 1x Roasted Badam (Window Seat 24)
                         </p>
                         <div className="mt-2 flex gap-1.5">
-                          <button className="flex-1 bg-[#0ae448] text-[#0e100f] text-[10px] font-bold py-1.5 rounded-full text-center cursor-pointer">
+                          <button 
+                            onClick={() => setActiveDockTab('train')}
+                            className="flex-1 bg-[#0ae448] hover:bg-[#abff84] text-[#0e100f] text-[10px] font-bold py-1.5 rounded-full text-center transition-all duration-200 active:scale-95 cursor-pointer shadow-xs"
+                          >
                             {t.mockupAcceptOrder}
                           </button>
-                          <button className="bg-[#42433d] text-[#fffce1] text-[10px] font-semibold px-2.5 py-1.5 rounded-full cursor-pointer">
+                          <button 
+                            onClick={() => setActiveDockTab('train')}
+                            className="bg-[#2e2d38] hover:bg-[#3e3d48] text-[#fffce1] text-[10px] font-semibold px-2.5 py-1.5 rounded-full transition-all duration-200 active:scale-95 cursor-pointer"
+                          >
                             {t.mockupSkip}
                           </button>
                         </div>
@@ -467,49 +576,178 @@ export const Hero: React.FC<HeroProps> = ({
                     </>
                   )}
 
+                  {/* Dynamic View 4: Offline SQLite Mesh Health Card */}
+                  {activeDockTab === 'offline' && (
+                    <div className="p-3 rounded-2xl bg-[#17171c] border border-[#9d95ff]/50 shadow-sm transition-all duration-200">
+                      <div className="flex items-center justify-between text-[11px] font-mono text-[#9d95ff] mb-1">
+                        <span className="flex items-center gap-1">
+                          <Database className="w-3 h-3 text-[#9d95ff]" />
+                          Local SQLite DB
+                        </span>
+                        <span className="text-[#0ae448] bg-[#0e100f] border border-[#0ae448]/40 px-1.5 py-0.5 rounded text-[10px] font-bold">
+                          24.90 MB
+                        </span>
+                      </div>
+                      <div className="text-xs font-bold text-[#fffce1]">100% Offline Railway Mesh Active</div>
+                      <div className="mt-2 text-[10px] text-[#7c7c6f] space-y-1">
+                        <div className="flex justify-between">
+                          <span>Mobile Internet Usage:</span>
+                          <span className="text-[#0ae448] font-bold">0.00 KB</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Peer Mesh Hops:</span>
+                          <span className="text-[#00bae2] font-bold">14 Coaches Linked</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Station Index:</span>
+                          <span className="text-[#fffce1] font-bold">8,420 Offline Halts</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   {/* 12-Car EMU Formation Strip */}
-                  <div className="p-2.5 rounded-xl bg-[#191919] border border-[#42433d]">
+                  <div className="p-2.5 rounded-2xl bg-[#17171c] border border-[#3a3945]">
                     <div className="flex items-center justify-between text-[10px] font-mono text-[#7c7c6f] mb-1.5">
                       <span>{t.mockupFormationTitle}</span>
                       <span className="text-[#00bae2]">Engine ➔</span>
                     </div>
                     <div className="grid grid-cols-6 gap-1">
-                      <div className="bg-[#0e100f] border border-[#9d95ff]/40 rounded p-1 text-center">
+                      <div className="bg-[#0e100f] border border-[#9d95ff]/40 rounded-lg p-1 text-center">
                         <div className="text-[9px] font-bold text-[#9d95ff]">D-MC</div>
                         <div className="text-[8px] text-[#9d95ff]">♿</div>
                       </div>
-                      <div className="bg-[#00bae2]/20 border border-[#00bae2] text-[#00bae2] rounded p-1 text-center">
+                      <div className="bg-[#00bae2]/20 border border-[#00bae2] text-[#00bae2] rounded-lg p-1 text-center shadow-xs">
                         <div className="text-[9px] font-bold">GS-1</div>
                         <div className="text-[8px]">You</div>
                       </div>
-                      <div className="bg-[#0e100f] border border-[#fec5fb]/40 rounded p-1 text-center">
+                      <div className="bg-[#0e100f] border border-[#fec5fb]/40 rounded-lg p-1 text-center">
                         <div className="text-[9px] font-bold text-[#fec5fb]">L-1</div>
                         <div className="text-[8px] text-[#fec5fb]">Ladies</div>
                       </div>
-                      <div className="bg-[#0e100f] border border-[#ff8709]/40 rounded p-1 text-center">
+                      <div className="bg-[#0e100f] border border-[#ff8709]/40 rounded-lg p-1 text-center">
                         <div className="text-[9px] font-bold text-[#ff8709]">VND</div>
                         <div className="text-[8px] text-[#ff8709]">Hawker</div>
                       </div>
-                      <div className="bg-[#0e100f] border border-[#42433d] rounded p-1 text-center">
+                      <div className="bg-[#0e100f] border border-[#2e2d38] rounded-lg p-1 text-center">
                         <div className="text-[9px] font-bold text-[#7c7c6f]">GS-2</div>
                         <div className="text-[8px] text-[#7c7c6f]">Mid</div>
                       </div>
-                      <div className="bg-[#0e100f] border border-[#42433d] rounded p-1 text-center">
+                      <div className="bg-[#0e100f] border border-[#2e2d38] rounded-lg p-1 text-center">
                         <div className="text-[9px] font-bold text-[#7c7c6f]">+7 Cars</div>
                         <div className="text-[8px] text-[#7c7c6f]">...</div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Bottom Action in Mockup */}
+                  {/* Navigation CTA inside mockup */}
                   <button
                     onClick={() => onNavigate(activeRole === 'TRAVELER' ? 'commuters' : 'vendors')}
-                    className="w-full py-2.5 rounded-full border border-[#fffce1] text-[#fffce1] hover:bg-[#fffce1]/10 font-bold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer"
+                    className="w-full py-2 rounded-full border border-[#fffce1]/80 hover:border-[#fffce1] text-[#fffce1] hover:bg-[#fffce1]/10 font-bold text-xs flex items-center justify-center gap-1.5 transition-all duration-200 cursor-pointer active:scale-98 shadow-xs"
                   >
                     <span>{activeRole === 'TRAVELER' ? t.mockupExploreCommuter : t.mockupExploreVendor}</span>
                     <ArrowRight className="w-3.5 h-3.5 text-[#0ae448]" />
                   </button>
 
+                </div>
+
+                {/* iPhone 16 / 17 Fixed Frosted Glass Bottom Dock with Authentic iOS Squircles & Home Bar */}
+                <div className="sticky bottom-0 left-0 right-0 p-2 pb-1.5 bg-gradient-to-t from-[#0e100f] via-[#0e100f]/95 to-transparent backdrop-blur-xl border-t border-[#3a3945]/40 z-20 shrink-0">
+                  {/* Floating Frosted Glass Dock Pill */}
+                  <div className="w-full bg-[#1e1e24]/90 backdrop-blur-2xl border border-white/12 rounded-[22px] px-2.5 py-1.5 shadow-[0_10px_25px_rgba(0,0,0,0.8)] flex items-center justify-between gap-1">
+                    
+                    {/* Dock Icon 1: Train (Active Train View) */}
+                    <button
+                      onClick={() => {
+                        setActiveDockTab('train');
+                        if (activeRole !== 'TRAVELER') handleRoleSelect('TRAVELER');
+                      }}
+                      className={`flex-1 flex flex-col items-center gap-0.5 py-1 rounded-xl transition-all duration-200 cursor-pointer group active:scale-90 ${
+                        activeDockTab === 'train' ? 'scale-105' : 'opacity-75 hover:opacity-100'
+                      }`}
+                      title="Train & EMU Formation"
+                    >
+                      <div className={`w-8 h-8 rounded-[10px] flex items-center justify-center transition-all duration-200 shadow-sm ${
+                        activeDockTab === 'train'
+                          ? 'bg-gradient-to-br from-[#0ae448] to-[#046c21] text-[#0e100f] ring-2 ring-[#0ae448]/60 shadow-[0_0_12px_rgba(10,228,72,0.4)]'
+                          : 'bg-[#2a2933] text-[#fffce1] group-hover:bg-[#34333f]'
+                      }`}>
+                        <Train className="w-4 h-4" />
+                      </div>
+                      <span className="text-[9px] font-medium tracking-tight text-[#fffce1]">Train</span>
+                    </button>
+
+                    {/* Dock Icon 2: Radar (Vendor / Signal Radar) */}
+                    <button
+                      onClick={() => {
+                        setActiveDockTab('radar');
+                        if (activeRole !== 'VENDOR') handleRoleSelect('VENDOR');
+                      }}
+                      className={`flex-1 flex flex-col items-center gap-0.5 py-1 rounded-xl transition-all duration-200 cursor-pointer group active:scale-90 ${
+                        activeDockTab === 'radar' ? 'scale-105' : 'opacity-75 hover:opacity-100'
+                      }`}
+                      title="Live Hawker Radar"
+                    >
+                      <div className={`w-8 h-8 rounded-[10px] flex items-center justify-center transition-all duration-200 shadow-sm ${
+                        activeDockTab === 'radar'
+                          ? 'bg-gradient-to-br from-[#00bae2] to-[#014e7a] text-[#fffce1] ring-2 ring-[#00bae2]/60 shadow-[0_0_12px_rgba(0,186,226,0.4)]'
+                          : 'bg-[#2a2933] text-[#fffce1] group-hover:bg-[#34333f]'
+                      }`}>
+                        <Radio className="w-4 h-4" />
+                      </div>
+                      <span className="text-[9px] font-medium tracking-tight text-[#fffce1]">Radar</span>
+                    </button>
+
+                    {/* Dock Icon 3: Chai SOS (Hunger Signal Order) */}
+                    <button
+                      onClick={() => {
+                        setActiveDockTab('chai');
+                        if (activeRole !== 'TRAVELER') handleRoleSelect('TRAVELER');
+                      }}
+                      className={`flex-1 flex flex-col items-center gap-0.5 py-1 rounded-xl transition-all duration-200 cursor-pointer group active:scale-90 ${
+                        activeDockTab === 'chai' ? 'scale-105' : 'opacity-75 hover:opacity-100'
+                      }`}
+                      title="Chai & Food SOS"
+                    >
+                      <div className={`w-8 h-8 rounded-[10px] flex items-center justify-center transition-all duration-200 shadow-sm relative ${
+                        activeDockTab === 'chai'
+                          ? 'bg-gradient-to-br from-[#ff8709] to-[#8f4100] text-[#fffce1] ring-2 ring-[#ff8709]/60 shadow-[0_0_12px_rgba(255,135,9,0.4)]'
+                          : 'bg-[#2a2933] text-[#fffce1] group-hover:bg-[#34333f]'
+                      }`}>
+                        <Coffee className="w-4 h-4" />
+                        <span className="absolute -top-1 -right-1 px-1 bg-[#ff8709] text-[8px] font-bold text-[#0e100f] rounded-full">₹10</span>
+                      </div>
+                      <span className="text-[9px] font-medium tracking-tight text-[#fffce1]">Chai SOS</span>
+                    </button>
+
+                    {/* Dock Icon 4: Offline DB (SQLite Mesh Engine) */}
+                    <button
+                      onClick={() => setActiveDockTab('offline')}
+                      className={`flex-1 flex flex-col items-center gap-0.5 py-1 rounded-xl transition-all duration-200 cursor-pointer group active:scale-90 ${
+                        activeDockTab === 'offline' ? 'scale-105' : 'opacity-75 hover:opacity-100'
+                      }`}
+                      title="Offline SQLite Mesh"
+                    >
+                      <div className={`w-8 h-8 rounded-[10px] flex items-center justify-center transition-all duration-200 shadow-sm relative ${
+                        activeDockTab === 'offline'
+                          ? 'bg-gradient-to-br from-[#9d95ff] to-[#4537b0] text-[#fffce1] ring-2 ring-[#9d95ff]/60 shadow-[0_0_12px_rgba(157,149,255,0.4)]'
+                          : 'bg-[#2a2933] text-[#fffce1] group-hover:bg-[#34333f]'
+                      }`}>
+                        <Database className="w-4 h-4" />
+                        <span className="absolute -top-1 -right-1 px-1 bg-[#0ae448] text-[8px] font-bold text-[#0e100f] rounded-full">24M</span>
+                      </div>
+                      <span className="text-[9px] font-medium tracking-tight text-[#fffce1]">Offline DB</span>
+                    </button>
+
+                  </div>
+
+                  {/* Authentic iOS Home Bar Indicator (Fixed bottom pill) */}
+                  <div className="pt-1.5 pb-0.5 flex justify-center">
+                    <div 
+                      className="w-28 sm:w-32 h-1 bg-white/70 hover:bg-white rounded-full transition-all duration-200 shadow-xs cursor-pointer active:scale-95" 
+                      title="iPhone Home Indicator"
+                    />
+                  </div>
                 </div>
 
               </div>
