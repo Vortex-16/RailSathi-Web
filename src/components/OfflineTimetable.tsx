@@ -161,21 +161,21 @@ export const OfflineTimetable: React.FC<{ seniorMode: boolean }> = ({ seniorMode
 
           {/* Departure Board for Selected Station */}
           <div className="lg:col-span-7 space-y-4">
-            <div className="p-6 rounded-2xl bg-[#191919] border border-[#42433d] space-y-4">
-              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#42433d]">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#191919] border border-[#42433d] space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#42433d]">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-[#0e100f] text-[#0ae448] border border-[#42433d]">
+                    <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-[#0e100f] text-[#0ae448] border border-[#42433d] shrink-0">
                       {selectedStation.code}
                     </span>
-                    <h3 className="text-xl font-bold text-[#fffce1]">{selectedStation.name}</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-[#fffce1]">{selectedStation.name}</h3>
                   </div>
                   <div className="text-xs text-[#7c7c6f] mt-1 font-mono">
                     {selectedStation.suburbanLine} • Zone: {selectedStation.zone}
                   </div>
                 </div>
 
-                <div className="text-right">
+                <div className="sm:text-right">
                   <span className="text-[10px] text-[#7c7c6f] uppercase font-mono font-bold block">Daily Passenger Traffic</span>
                   <span className="text-sm font-bold text-[#00bae2] font-mono">{selectedStation.dailyFootfall}</span>
                 </div>
@@ -191,20 +191,20 @@ export const OfflineTimetable: React.FC<{ seniorMode: boolean }> = ({ seniorMode
                   {SAMPLE_TRAINS.map(train => (
                     <div
                       key={train.trainNumber}
-                      className="p-3.5 rounded-xl border border-[#42433d] bg-[#0e100f] flex items-center justify-between transition"
+                      className="p-3 sm:p-3.5 rounded-xl border border-[#42433d] bg-[#0e100f] flex items-center justify-between transition gap-2"
                     >
-                      <div className="space-y-1">
-                        <div className="flex items-center gap-2">
+                      <div className="space-y-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                           <span className="text-xs font-mono font-bold text-[#00bae2]">#{train.trainNumber}</span>
-                          <span className="text-xs font-bold text-[#fffce1]">{train.trainName}</span>
-                          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#191919] text-[#ff8709] border border-[#42433d]">
+                          <span className="text-xs font-bold text-[#fffce1] truncate">{train.trainName}</span>
+                          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#191919] text-[#ff8709] border border-[#42433d] shrink-0">
                             {train.type}
                           </span>
                         </div>
-                        <div className="text-xs text-[#7c7c6f] flex items-center gap-3 font-mono">
-                          <span>Origin: {train.origin}</span>
+                        <div className="text-[11px] sm:text-xs text-[#7c7c6f] flex flex-wrap items-center gap-1.5 sm:gap-2 font-mono">
+                          <span>{train.origin}</span>
                           <span>➔</span>
-                          <span>Dest: {train.destination}</span>
+                          <span>{train.destination}</span>
                         </div>
                       </div>
 
@@ -213,7 +213,7 @@ export const OfflineTimetable: React.FC<{ seniorMode: boolean }> = ({ seniorMode
                           {train.departureTime}
                         </div>
                         <div className="text-[10px] font-mono font-semibold text-[#0ae448] bg-[#191919] border border-[#42433d] px-2 py-0.5 rounded-full inline-block mt-0.5">
-                          Platform 2
+                          Plat 2
                         </div>
                       </div>
                     </div>
@@ -221,9 +221,9 @@ export const OfflineTimetable: React.FC<{ seniorMode: boolean }> = ({ seniorMode
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-[#0e100f] border border-[#42433d] text-xs text-[#7c7c6f] font-mono flex items-center justify-between">
-                <span>Database Sync Status: <strong className="text-[#fffce1]">Pre-bundled (Room v1.0)</strong></span>
-                <span className="text-[#0ae448] font-bold flex items-center gap-1">
+              <div className="p-3 sm:p-3.5 rounded-xl bg-[#0e100f] border border-[#42433d] text-xs text-[#7c7c6f] font-mono flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <span>Database Sync: <strong className="text-[#fffce1]">Pre-bundled (Room v1.0)</strong></span>
+                <span className="text-[#0ae448] font-bold flex items-center gap-1 shrink-0">
                   <span className="w-2 h-2 rounded-full bg-[#0ae448]" />
                   0 KB Data Consumed
                 </span>

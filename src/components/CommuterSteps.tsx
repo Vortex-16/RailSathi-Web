@@ -273,14 +273,14 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
                 id="btn-simulate-hunger-signal"
                 onClick={handleSendSignal}
                 disabled={isSimulating}
-                className="w-full py-3.5 px-6 rounded-full border border-[#0ae448] text-[#fffce1] hover:bg-[#0ae448]/15 font-bold flex items-center justify-center gap-2 transition cursor-pointer text-sm"
+                className="w-full py-3 px-4 sm:py-3.5 sm:px-6 rounded-full border border-[#0ae448] text-[#fffce1] hover:bg-[#0ae448]/15 font-bold flex items-center justify-center gap-2 transition cursor-pointer text-xs sm:text-sm"
               >
                 {isSimulating ? (
-                  <span className="font-mono">{t.simSignalBroadcasting || t.simBroadcasting || 'Broadcasting Signal to Nearby Hawkers...'}</span>
+                  <span className="font-mono text-center">{t.simSignalBroadcasting || t.simBroadcasting || 'Broadcasting Signal to Nearby Hawkers...'}</span>
                 ) : (
                   <>
-                    <BellRing className="w-4 h-4 text-[#0ae448]" />
-                    <span>{t.simSendSignal || t.simSendBtn || 'Send Hunger Signal'} - {selectedItem.name} (₹{selectedItem.price})</span>
+                    <BellRing className="w-4 h-4 text-[#0ae448] shrink-0" />
+                    <span className="text-center">{t.simSendSignal || t.simSendBtn || 'Send Hunger Signal'} • ₹{selectedItem.price}</span>
                   </>
                 )}
               </button>

@@ -25,6 +25,13 @@
     background-color: #0e100f;
     color: #fffce1;
     font-family: 'DM Sans', 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  html {
+    overflow-x: hidden;
+    width: 100%;
   }
 }
 
@@ -38,13 +45,20 @@
   color: #fffce1;
   border: 1px solid #fffce1;
   border-radius: 100px;
-  padding: 0.85rem 1.5rem;
-  font-size: 1.125rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
-  line-height: 1.05;
+  line-height: 1.15;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .btn-ghost-cream {
+    padding: 0.85rem 1.5rem;
+    font-size: 1.125rem;
+  }
 }
 
 .btn-ghost-cream:hover {
@@ -85,14 +99,21 @@
   background: transparent;
   color: #fffce1;
   border-radius: 100px;
-  padding: 0.85rem 1.6rem;
-  font-size: 1.125rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
-  line-height: 1.05;
+  line-height: 1.15;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 1;
+}
+
+@media (min-width: 640px) {
+  .btn-cta-gradient {
+    padding: 0.85rem 1.6rem;
+    font-size: 1.125rem;
+  }
 }
 
 .btn-cta-gradient::before {

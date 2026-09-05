@@ -102,7 +102,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, seniorMode, currentL
               </div>
               <div>
                 <span className="text-lg font-bold text-[#fffce1] tracking-tight">RailSaathi</span>
-                <span className="ml-2 text-xs font-mono text-[#0ae448]">रेलसाथी</span>
               </div>
             </div>
 

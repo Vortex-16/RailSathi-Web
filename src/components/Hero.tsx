@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
   Download, 
   Play, 
@@ -19,6 +21,10 @@ import {
   Sparkles,
   MapPin
 } from 'lucide-react';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 import { 
   OFFICIAL_APK_DOWNLOAD_URL, 
   GITHUB_REPO_URL, 
@@ -50,6 +56,67 @@ export const Hero: React.FC<HeroProps> = ({
   const [internalRole, setInternalRole] = useState<UserRole>('TRAVELER');
   const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
 
+  const heroContainerRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const phoneRef = useRef<HTMLDivElement>(null);
+  const ctaGroupRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = heroContainerRef.current;
+    if (!el) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      tl.from('.hero-badge-item', {
+        opacity: 0,
+        y: 16,
+        stagger: 0.08,
+        duration: 0.6,
+      })
+      .from(headlineRef.current, {
+        opacity: 0,
+        y: 32,
+        duration: 0.85,
+      }, '-=0.3')
+      .from('.hero-sub-item', {
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+      }, '-=0.5')
+      .from(ctaGroupRef.current, {
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+      }, '-=0.4')
+      .from(phoneRef.current, {
+        opacity: 0,
+        y: 45,
+        scale: 0.96,
+        duration: 0.9,
+      }, '-=0.6');
+
+      // Scroll-triggered subtle parallax on phone mockup
+      if (phoneRef.current) {
+        gsap.to(phoneRef.current, {
+          y: -35,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 0.3,
+          },
+        });
+      }
+    }, heroContainerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const activeRole = propRole || internalRole;
 
   const handleRoleSelect = (role: UserRole) => {
@@ -64,7 +131,7 @@ export const Hero: React.FC<HeroProps> = ({
   };
 
   return (
-    <div id="hero" className="relative overflow-hidden pt-10 pb-16 sm:pt-16 sm:pb-24 bg-[#0e100f] border-b border-[#42433d]">
+    <div id="hero" ref={heroContainerRef} className="relative overflow-hidden pt-10 pb-16 sm:pt-16 sm:pb-24 bg-[#0e100f] border-b border-[#42433d]">
       {/* Soft 3D Organic Ambient Blobs (Pink, Blue, Green) */}
       <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-gradient-to-br from-[#00bae2]/10 to-[#9d95ff]/10 blur-3xl pointer-events-none" />
       <div className="absolute top-1/4 -right-24 w-80 h-80 rounded-full bg-gradient-to-bl from-[#fec5fb]/10 to-[#0ae448]/10 blur-3xl pointer-events-none" />
@@ -73,15 +140,15 @@ export const Hero: React.FC<HeroProps> = ({
         
         {/* Curly-Bracket Annotation Eyebrow & Category Label */}
         <div className="flex flex-wrap items-center gap-2.5 mb-6">
-          <span className="font-mono text-xs sm:text-sm text-[#fffce1] tracking-tight">
+          <span className="hero-badge-item font-mono text-xs sm:text-sm text-[#fffce1] tracking-tight">
             {'{'} RailSaathi® Suburban Companion {'}'}
           </span>
           
-          <span className="font-mono text-xs text-[#0ae448] px-3 py-1 rounded-full border border-[#42433d] bg-[#191919]">
+          <span className="hero-badge-item font-mono text-xs text-[#0ae448] px-3 py-1 rounded-full border border-[#42433d] bg-[#191919]">
             APK {APK_VERSION} • {APK_SIZE}
           </span>
 
-          <span className="font-mono text-xs text-[#fec5fb] px-3 py-1 rounded-full border border-[#42433d] bg-[#191919]">
+          <span className="hero-badge-item font-mono text-xs text-[#fec5fb] px-3 py-1 rounded-full border border-[#42433d] bg-[#191919]">
             {'{'} 100% Offline SQLite {'}'}
           </span>
         </div>
@@ -93,21 +160,21 @@ export const Hero: React.FC<HeroProps> = ({
           <div className="lg:col-span-7 space-y-6">
             
             {/* Bold Display Headline (Mori style, massive, -0.02em tracking, carved cream type) */}
-            <h1 className={`font-semibold tracking-[-0.03em] text-[#fffce1] leading-[0.98] ${
-              seniorMode ? 'text-4xl sm:text-5xl lg:text-6xl' : 'text-3xl sm:text-5xl lg:text-6xl xl:text-7xl'
+            <h1 ref={headlineRef} className={`font-semibold tracking-[-0.03em] text-[#fffce1] leading-[0.98] break-words ${
+              seniorMode ? 'text-3xl xs:text-4xl sm:text-5xl lg:text-6xl' : 'text-2xl xs:text-3xl sm:text-5xl lg:text-6xl xl:text-7xl'
             }`}>
               {t.heroHeadline}
             </h1>
 
             {/* Sub-headline */}
-            <p className={`text-[#7c7c6f] leading-relaxed max-w-2xl text-[17px] sm:text-[19px] ${
+            <p className={`hero-sub-item text-[#7c7c6f] leading-relaxed max-w-2xl text-[17px] sm:text-[19px] ${
               seniorMode ? 'text-lg sm:text-xl font-medium text-[#fffce1]' : ''
             }`}>
               {t.heroSubheadline}
             </p>
 
             {/* Interactive Role Switcher Toggle */}
-            <div className="pt-2">
+            <div className="hero-sub-item pt-2">
               <div className="text-xs font-mono uppercase tracking-wider text-[#7c7c6f] mb-2 flex items-center gap-1.5">
                 <span className="text-[#0ae448]">{'{'}</span>
                 <span>{t.roleSelectLabel}</span>
@@ -142,7 +209,7 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
 
             {/* Dynamic Role Benefit Highlight Banner on #191919 Surface */}
-            <div className="p-4 rounded-xl border border-[#42433d] bg-[#191919] transition-all">
+            <div className="hero-sub-item p-4 rounded-xl border border-[#42433d] bg-[#191919] transition-all">
               {activeRole === 'TRAVELER' ? (
                 <div className="flex items-start gap-3.5">
                   <div className="p-2.5 rounded-full bg-[#ff8709]/15 text-[#ff8709] border border-[#ff8709]/40 shrink-0">
@@ -175,7 +242,7 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
 
             {/* Download & Action Buttons: Outlined Only (Primary Gradient Pill & Cream Ghost Pill) */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+            <div ref={ctaGroupRef} className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               {/* Primary CTA: Gradient-Stroked CTA Pill */}
               <a
                 id="btn-hero-download-apk"
@@ -227,8 +294,8 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
 
           {/* Right Column: Phone Preview Mockup in Dark Canvas Studio Style */}
-          <div className="lg:col-span-5">
-            <div className="relative mx-auto max-w-[300px] xs:max-w-[330px] sm:max-w-[360px] rounded-[36px] bg-[#191919] p-3 sm:p-3.5 border border-[#42433d]">
+          <div className="lg:col-span-5 flex justify-center">
+            <div ref={phoneRef} className="relative w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[360px] rounded-[36px] bg-[#191919] p-2.5 sm:p-3.5 border border-[#42433d]">
               
               {/* Speaker & Camera Notch */}
               <div className="absolute top-5 left-1/2 -translate-x-1/2 w-28 h-4 bg-[#0e100f] rounded-full flex items-center justify-center gap-2 z-20 border border-[#42433d]">
@@ -250,19 +317,19 @@ export const Hero: React.FC<HeroProps> = ({
                 </div>
 
                 {/* App Bar */}
-                <div className="bg-[#191919] text-[#fffce1] px-4 py-3 flex items-center justify-between border-b border-[#42433d]">
-                  <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full bg-[#0e100f] border border-[#0ae448]/50 flex items-center justify-center">
+                <div className="bg-[#191919] text-[#fffce1] px-3.5 py-3 flex items-center justify-between border-b border-[#42433d] gap-2">
+                  <div className="flex items-center gap-2 truncate">
+                    <div className="w-7 h-7 rounded-full bg-[#0e100f] border border-[#0ae448]/50 flex items-center justify-center shrink-0">
                       <Train className="w-3.5 h-3.5 text-[#0ae448]" />
                     </div>
-                    <div>
-                      <div className="text-xs font-bold leading-tight">RailSaathi • {t.appNativeName}</div>
-                      <div className="text-[10px] text-[#7c7c6f]">
+                    <div className="truncate">
+                      <div className="text-xs font-bold leading-tight truncate">RailSaathi</div>
+                      <div className="text-[10px] text-[#7c7c6f] truncate">
                         {activeRole === 'TRAVELER' ? t.mockupTravelerMode : t.mockupVendorMode}
                       </div>
                     </div>
                   </div>
-                  <span className="text-[10px] font-mono text-[#0ae448] border border-[#0ae448]/40 bg-[#0e100f] px-2 py-0.5 rounded-full">
+                  <span className="text-[10px] font-mono text-[#0ae448] border border-[#0ae448]/40 bg-[#0e100f] px-2 py-0.5 rounded-full shrink-0">
                     {t.mockupOfflineReady}
                   </span>
                 </div>

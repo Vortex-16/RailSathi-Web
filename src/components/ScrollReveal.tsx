@@ -1,5 +1,10 @@
-import React from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface ScrollRevealProps {
   children: React.ReactNode;
@@ -9,57 +14,95 @@ interface ScrollRevealProps {
   duration?: number;
   className?: string;
   id?: string;
-  threshold?: number;
+  threshold?: string; // e.g. "top 85%"
+  staggerChildren?: number | string; // selector like "> *" or number for direct children
 }
 
 export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   children,
   delay = 0,
   direction = 'up',
-  distance = 28,
-  duration = 0.55,
+  distance = 36,
+  duration = 0.8,
   className = '',
   id,
+  threshold = 'top 88%',
+  staggerChildren,
 }) => {
-  const shouldReduceMotion = useReducedMotion();
+  const elRef = useRef<HTMLDivElement>(null);
 
-  if (shouldReduceMotion) {
-    return (
-      <div id={id} className={className}>
-        {children}
-      </div>
-    );
-  }
+  useEffect(() => {
+    const el = elRef.current;
+    if (!el) return;
 
-  const getInitial = () => {
-    switch (direction) {
-      case 'up':
-        return { opacity: 0, y: distance };
-      case 'down':
-        return { opacity: 0, y: -distance };
-      case 'left':
-        return { opacity: 0, x: distance };
-      case 'right':
-        return { opacity: 0, x: -distance };
-      case 'none':
-        return { opacity: 0 };
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      gsap.set(el, { opacity: 1, x: 0, y: 0 });
+      return;
     }
-  };
+
+    const ctx = gsap.context(() => {
+      let x = 0;
+      let y = 0;
+
+      if (direction === 'up') y = distance;
+      else if (direction === 'down') y = -distance;
+      else if (direction === 'left') x = distance;
+      else if (direction === 'right') x = -distance;
+
+      if (staggerChildren) {
+        const targets = typeof staggerChildren === 'string' 
+          ? el.querySelectorAll(staggerChildren)
+          : el.children;
+
+        gsap.fromTo(
+          targets,
+          { opacity: 0, x, y },
+          {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            duration,
+            delay,
+            stagger: typeof staggerChildren === 'number' ? staggerChildren : 0.08,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: el,
+              start: threshold,
+              toggleActions: 'play none none none',
+              once: true,
+            },
+          }
+        );
+      } else {
+        gsap.fromTo(
+          el,
+          { opacity: 0, x, y },
+          {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            duration,
+            delay,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: el,
+              start: threshold,
+              toggleActions: 'play none none none',
+              once: true,
+            },
+          }
+        );
+      }
+    }, elRef);
+
+    return () => ctx.revert();
+  }, [delay, direction, distance, duration, threshold, staggerChildren]);
 
   return (
-    <motion.div
-      id={id}
-      initial={getInitial()}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{
-        duration,
-        delay,
-        ease: [0.22, 1, 0.36, 1], // refined cubic-bezier easeOut
-      }}
-      className={className}
-    >
+    <div id={id} ref={elRef} className={className}>
       {children}
-    </motion.div>
+    </div>
   );
 };

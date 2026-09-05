@@ -4,6 +4,7 @@
  */
 
 import React, { useState } from 'react';
+import { GSAPScrollProgress } from './components/GSAPScrollProgress';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { TheBigDifference } from './components/TheBigDifference';
@@ -40,6 +41,9 @@ export default function App() {
     <div className={`min-h-screen bg-[#0e100f] text-[#fffce1] flex flex-col font-sans transition-all selection:bg-[#0ae448] selection:text-[#0e100f] ${
       seniorMode ? 'text-lg' : 'text-base'
     }`}>
+      {/* GSAP Scroll Progress Bar */}
+      <GSAPScrollProgress />
+
       {/* Top Sticky Header */}
       <Header
         currentLang={currentLang}
