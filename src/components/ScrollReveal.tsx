@@ -67,6 +67,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
             delay,
             stagger: typeof staggerChildren === 'number' ? staggerChildren : 0.08,
             ease: 'power3.out',
+            clearProps: 'all',
             scrollTrigger: {
               trigger: el,
               start: threshold,
@@ -86,6 +87,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
             duration,
             delay,
             ease: 'power3.out',
+            clearProps: 'all',
             scrollTrigger: {
               trigger: el,
               start: threshold,

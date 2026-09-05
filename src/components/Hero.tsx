@@ -69,35 +69,39 @@ export const Hero: React.FC<HeroProps> = ({
     if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      const tl = gsap.timeline({ 
+        defaults: { ease: 'power3.out' },
+        onComplete: () => {
+          gsap.set(['.hero-badge-item', headlineRef.current, '.hero-sub-item', ctaGroupRef.current, phoneRef.current], {
+            clearProps: 'opacity,transform,scale'
+          });
+        }
+      });
 
-      tl.from('.hero-badge-item', {
-        opacity: 0,
-        y: 16,
-        stagger: 0.08,
-        duration: 0.6,
-      })
-      .from(headlineRef.current, {
-        opacity: 0,
-        y: 32,
-        duration: 0.85,
-      }, '-=0.3')
-      .from('.hero-sub-item', {
-        opacity: 0,
-        y: 20,
-        duration: 0.6,
-      }, '-=0.5')
-      .from(ctaGroupRef.current, {
-        opacity: 0,
-        y: 20,
-        duration: 0.6,
-      }, '-=0.4')
-      .from(phoneRef.current, {
-        opacity: 0,
-        y: 45,
-        scale: 0.96,
-        duration: 0.9,
-      }, '-=0.6');
+      tl.fromTo('.hero-badge-item', 
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, stagger: 0.08, duration: 0.5, clearProps: 'all' }
+      )
+      .fromTo(headlineRef.current, 
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.6, clearProps: 'all' }, 
+        '-=0.2'
+      )
+      .fromTo('.hero-sub-item', 
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.5, clearProps: 'all' }, 
+        '-=0.3'
+      )
+      .fromTo(ctaGroupRef.current, 
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.5, clearProps: 'all' }, 
+        '-=0.3'
+      )
+      .fromTo(phoneRef.current, 
+        { opacity: 0, y: 30, scale: 0.98 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.7, clearProps: 'opacity,scale' }, 
+        '-=0.4'
+      );
 
       // Scroll-triggered subtle parallax on phone mockup
       if (phoneRef.current) {
@@ -180,11 +184,11 @@ export const Hero: React.FC<HeroProps> = ({
                 <span>{t.roleSelectLabel}</span>
                 <span className="text-[#0ae448]">{'}'}</span>
               </div>
-              <div className="inline-flex p-1 rounded-full bg-[#191919] border border-[#42433d] gap-1">
+              <div className="inline-flex max-w-full overflow-x-auto p-1 rounded-full bg-[#191919] border border-[#42433d] gap-1">
                 <button
                   id="toggle-role-traveler"
                   onClick={() => handleRoleSelect('TRAVELER')}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition cursor-pointer ${
+                  className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition cursor-pointer shrink-0 ${
                     activeRole === 'TRAVELER'
                       ? 'bg-[#fffce1] text-[#0e100f]'
                       : 'text-[#7c7c6f] hover:text-[#fffce1]'
@@ -196,7 +200,7 @@ export const Hero: React.FC<HeroProps> = ({
                 <button
                   id="toggle-role-vendor"
                   onClick={() => handleRoleSelect('VENDOR')}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition cursor-pointer ${
+                  className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition cursor-pointer shrink-0 ${
                     activeRole === 'VENDOR'
                       ? 'bg-[#ff8709] text-[#0e100f] font-bold'
                       : 'text-[#7c7c6f] hover:text-[#fffce1]'
@@ -209,33 +213,67 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
 
             {/* Dynamic Role Benefit Highlight Banner on #191919 Surface */}
-            <div className="hero-sub-item p-4 rounded-xl border border-[#42433d] bg-[#191919] transition-all">
+            <div className="hero-sub-item p-4 rounded-xl border border-[#42433d] bg-[#191919]">
               {activeRole === 'TRAVELER' ? (
-                <div className="flex items-start gap-3.5">
-                  <div className="p-2.5 rounded-full bg-[#ff8709]/15 text-[#ff8709] border border-[#ff8709]/40 shrink-0">
-                    <Coffee className="w-5 h-5" />
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3.5">
+                    <div className="p-2.5 rounded-full bg-[#ff8709]/15 text-[#ff8709] border border-[#ff8709]/40 shrink-0">
+                      <Coffee className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="text-sm font-bold text-[#fffce1]">
+                          {t.travelerCardTitle}
+                        </h3>
+                        <span className="text-[10px] font-mono text-[#0ae448] bg-[#0e100f] px-2 py-0.5 rounded-full border border-[#42433d]">
+                          Seat Delivery
+                        </span>
+                      </div>
+                      <p className="text-xs text-[#7c7c6f] mt-1 leading-relaxed">
+                        {t.travelerCardDesc}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-[#fffce1]">
-                      {t.travelerCardTitle}
-                    </h3>
-                    <p className="text-xs text-[#7c7c6f] mt-1 leading-relaxed">
-                      {t.travelerCardDesc}
-                    </p>
+                  <div className="pt-2.5 border-t border-[#42433d]/60 flex items-center justify-between text-xs">
+                    <span className="text-[#7c7c6f] font-mono text-[11px]">Tap to test the commuter hunger flow</span>
+                    <button
+                      onClick={() => onNavigate('commuters')}
+                      className="inline-flex items-center gap-1 text-[#00bae2] hover:text-[#fffce1] font-semibold transition cursor-pointer font-mono"
+                    >
+                      <span>Try Commuter Demo</span>
+                      <span>➔</span>
+                    </button>
                   </div>
                 </div>
               ) : (
-                <div className="flex items-start gap-3.5">
-                  <div className="p-2.5 rounded-full bg-[#0ae448]/15 text-[#0ae448] border border-[#0ae448]/40 shrink-0">
-                    <Store className="w-5 h-5" />
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3.5">
+                    <div className="p-2.5 rounded-full bg-[#0ae448]/15 text-[#0ae448] border border-[#0ae448]/40 shrink-0">
+                      <Store className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="text-sm font-bold text-[#fffce1]">
+                          {t.vendorCardTitle}
+                        </h3>
+                        <span className="text-[10px] font-mono text-[#0ae448] bg-[#0e100f] px-2 py-0.5 rounded-full border border-[#42433d]">
+                          0% Commission
+                        </span>
+                      </div>
+                      <p className="text-xs text-[#7c7c6f] mt-1 leading-relaxed">
+                        {t.vendorCardDesc}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-[#fffce1]">
-                      {t.vendorCardTitle}
-                    </h3>
-                    <p className="text-xs text-[#7c7c6f] mt-1 leading-relaxed">
-                      {t.vendorCardDesc}
-                    </p>
+                  <div className="pt-2.5 border-t border-[#42433d]/60 flex items-center justify-between text-xs">
+                    <span className="text-[#7c7c6f] font-mono text-[11px]">Explore verified hawker coach radar</span>
+                    <button
+                      onClick={() => onNavigate('vendors')}
+                      className="inline-flex items-center gap-1 text-[#0ae448] hover:text-[#fffce1] font-semibold transition cursor-pointer font-mono"
+                    >
+                      <span>Explore Hawker Radar</span>
+                      <span>➔</span>
+                    </button>
                   </div>
                 </div>
               )}
