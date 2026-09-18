@@ -1,6 +1,6 @@
 import { Station, TrainSchedule, CoachDetail, FoodItem } from '../types';
 
-export const OFFICIAL_APK_DOWNLOAD_URL = 'https://github.com/Vortex-16/RailSathi/releases/download/v1.0.0/RailSaathi.apk';
+export const OFFICIAL_APK_DOWNLOAD_URL = 'https://github.com/Vortex-16/RailSathi/releases/download/v1.0.0/RailSathi.apk';
 export const GITHUB_REPO_URL = 'https://github.com/Vortex-16/RailSathi';
 export const APK_VERSION = 'v1.0.0';
 export const APK_SIZE = '24.90 MB';

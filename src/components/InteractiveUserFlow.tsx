@@ -198,7 +198,7 @@ export const InteractiveUserFlow: React.FC<InteractiveUserFlowProps> = ({ curren
             Interactive Core User Journeys (CUJs)
           </div>
           <h2 className={`font-black text-slate-900 tracking-tight ${seniorMode ? 'text-3xl sm:text-4xl' : 'text-2xl sm:text-3xl'}`}>
-            Experience How RailSaathi Works
+            Experience How RailSathi Works
           </h2>
           <p className="mt-2 text-slate-600 text-sm sm:text-base">
             Switch between the commuter, verified hawker, battery state engine, and senior accessibility modes to see authentic Indian Railways workflows in action.
@@ -710,7 +710,7 @@ export const InteractiveUserFlow: React.FC<InteractiveUserFlowProps> = ({ curren
                 Battery-Smart Location State Machine
               </h3>
               <p className="text-xs text-slate-500 mt-0.5">
-                Continuous GPS drains phone batteries on 2-hour suburban commutes. RailSaathi pauses hardware GPS unless all active travel criteria are met.
+                Continuous GPS drains phone batteries on 2-hour suburban commutes. RailSathi pauses hardware GPS unless all active travel criteria are met.
               </p>
             </div>
 

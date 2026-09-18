@@ -40,7 +40,7 @@ export const StickyDownloadBar: React.FC<StickyDownloadBarProps> = ({ currentLan
           </div>
           <div className="min-w-0">
             <div className="text-xs sm:text-sm font-bold text-[#fffce1] flex items-center gap-1.5 truncate">
-              <span className="truncate">RailSaathi APK (v1.0.0)</span>
+              <span className="truncate">RailSathi APK (v1.0.0)</span>
               <span className="text-[10px] bg-[#0e100f] text-[#0ae448] border border-[#42433d] px-1.5 py-0.2 rounded-full font-mono hidden sm:inline">
                 Verified
               </span>
@@ -56,7 +56,7 @@ export const StickyDownloadBar: React.FC<StickyDownloadBarProps> = ({ currentLan
           <a
             id="btn-sticky-download-apk"
             href={OFFICIAL_APK_DOWNLOAD_URL}
-            download="RailSaathi.apk"
+            download="RailSathi.apk"
             className="btn-cta-gradient !py-1.5 !px-3 sm:!py-2 sm:!px-4 text-xs sm:text-sm"
           >
             <Download className="w-3.5 h-3.5 text-[#0ae448]" />

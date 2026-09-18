@@ -60,7 +60,7 @@ export const LowBandwidthShowcase: React.FC<{
             Built for 2G Networks, Tunnels & Dense Crowds
           </h2>
           <p className="mt-2 text-slate-400 text-sm sm:text-base">
-            Millions of Indian train commuters experience network dropouts between stations. RailSaathi is architected to perform flawlessly with zero bars of signal.
+            Millions of Indian train commuters experience network dropouts between stations. RailSathi is architected to perform flawlessly with zero bars of signal.
           </p>
         </div>
 
@@ -127,7 +127,7 @@ export const LowBandwidthShowcase: React.FC<{
                 Hands-On Network Simulator
               </span>
               <h3 className="text-xl font-black text-white">
-                Test RailSaathi Under Adverse Connectivity
+                Test RailSathi Under Adverse Connectivity
               </h3>
             </div>
 

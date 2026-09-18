@@ -91,7 +91,7 @@ export default function App() {
           onRoleChange={setUserRole}
         />
 
-        {/* 2. The Big Difference (Why RailSaathi is NOT Zepto or Blinkit) */}
+        {/* 2. The Big Difference (Why RailSathi is NOT Zepto or Blinkit) */}
         <TheBigDifference
           currentLang={currentLang}
           seniorMode={seniorMode}

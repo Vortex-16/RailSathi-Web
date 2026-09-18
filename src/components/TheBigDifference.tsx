@@ -87,7 +87,7 @@ export const TheBigDifference: React.FC<TheBigDifferenceProps> = ({ currentLang,
             </div>
           </ScrollReveal>
 
-          {/* Card 2: RailSaathi (Winning Card) */}
+          {/* Card 2: RailSathi (Winning Card) */}
           <ScrollReveal delay={0.2} className="h-full">
             <div className="h-full rounded-xl p-6 sm:p-8 bg-[#191919] border border-[#0ae448]/60 relative flex flex-col justify-between overflow-hidden">
               <div>

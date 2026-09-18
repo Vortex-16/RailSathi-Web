@@ -256,7 +256,7 @@ export const CoachRadar: React.FC<{ seniorMode: boolean }> = ({ seniorMode }) =>
                 Suburban stations on Eastern, Western, and Central Railway have painted platform pillar markings (e.g. <em>"12-CAR GS-1"</em>, <em>"LADIES"</em>).
               </p>
               <div className="p-3 rounded-xl bg-[#191919] text-[#fffce1] text-xs border border-[#42433d]">
-                <strong className="text-[#0ae448]">Commuter Pro-Tip:</strong> RailSaathi predicts which platform pillar this coach lines up with before the train enters the platform!
+                <strong className="text-[#0ae448]">Commuter Pro-Tip:</strong> RailSathi predicts which platform pillar this coach lines up with before the train enters the platform!
               </div>
             </div>
           </div>

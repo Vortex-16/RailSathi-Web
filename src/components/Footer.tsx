@@ -60,11 +60,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, seniorMode, currentL
             <a
               id="btn-footer-cta-download"
               href={OFFICIAL_APK_DOWNLOAD_URL}
-              download="RailSaathi.apk"
+              download="RailSathi.apk"
               className="btn-cta-gradient !py-3.5 !px-8 text-sm sm:text-base"
             >
               <Download className="w-4 h-4 text-[#0ae448]" />
-              <span>{t.footerCtaDownload || t.footerCtaBtn || 'Download RailSaathi APK'} ({APK_SIZE})</span>
+              <span>{t.footerCtaDownload || t.footerCtaBtn || 'Download RailSathi APK'} ({APK_SIZE})</span>
             </a>
 
             <a
@@ -79,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, seniorMode, currentL
             </a>
 
             <a
-              href="mailto:support@railsaathi.in"
+              href="mailto:support@railsathi.in"
               className="btn-ghost-cream !py-3 !px-6 text-sm"
             >
               <Mail className="w-4 h-4 text-[#ff8709]" />
@@ -101,7 +101,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, seniorMode, currentL
                 <Train className="w-4 h-4" />
               </div>
               <div>
-                <span className="text-lg font-bold text-[#fffce1] tracking-tight">RailSaathi</span>
+                <span className="text-lg font-bold text-[#fffce1] tracking-tight">RailSathi</span>
               </div>
             </div>
 

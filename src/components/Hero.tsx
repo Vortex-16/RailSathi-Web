@@ -150,7 +150,7 @@ export const Hero: React.FC<HeroProps> = ({
         {/* Curly-Bracket Annotation Eyebrow & Category Label */}
         <div className="flex flex-wrap items-center gap-2.5 mb-6">
           <span className="hero-badge-item font-mono text-xs sm:text-sm text-[#fffce1] tracking-tight">
-            {'{'} RailSaathi® Suburban Companion {'}'}
+            {'{'} RailSathi® Suburban Companion {'}'}
           </span>
           
           <span className="hero-badge-item font-mono text-xs text-[#0ae448] px-3 py-1 rounded-full border border-[#42433d] bg-[#191919]">
@@ -290,7 +290,7 @@ export const Hero: React.FC<HeroProps> = ({
               <a
                 id="btn-hero-download-apk"
                 href={OFFICIAL_APK_DOWNLOAD_URL}
-                download="RailSaathi.apk"
+                download="RailSathi.apk"
                 className="btn-cta-gradient group"
               >
                 <Download className="w-5 h-5 text-[#0ae448] group-hover:scale-110 transition" />
@@ -430,7 +430,7 @@ export const Hero: React.FC<HeroProps> = ({
                     </div>
                     <div className="truncate">
                       <div className="text-xs font-bold leading-tight flex items-center gap-1.5">
-                        <span>RailSaathi</span>
+                        <span>RailSathi</span>
                         <span className="w-1.5 h-1.5 rounded-full bg-[#0ae448] animate-ping" />
                       </div>
                       <div className="text-[10px] text-[#7c7c6f]">
@@ -794,26 +794,26 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
               <h3 className="text-lg font-bold text-[#fffce1]">Scan to Download on Android</h3>
               <p className="text-xs text-[#7c7c6f] mt-1 mb-4">
-                Point your Android camera at the QR code below to download the verified RailSaathi APK directly.
+                Point your Android camera at the QR code below to download the verified RailSathi APK directly.
               </p>
               
               {/* QR Image Representation */}
               <div className="p-4 bg-white rounded-xl inline-block mb-4">
                 <img 
                   src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(OFFICIAL_APK_DOWNLOAD_URL)}`}
-                  alt="RailSaathi APK Download QR Code"
+                  alt="RailSathi APK Download QR Code"
                   className="w-44 h-44 mx-auto"
                   loading="lazy"
                 />
               </div>
 
               <div className="text-xs font-mono text-[#7c7c6f]">
-                RailSaathi {APK_VERSION} • {APK_SIZE}
+                RailSathi {APK_VERSION} • {APK_SIZE}
               </div>
               <div className="mt-4 pt-3 border-t border-[#42433d]">
                 <a
                   href={OFFICIAL_APK_DOWNLOAD_URL}
-                  download="RailSaathi.apk"
+                  download="RailSathi.apk"
                   className="w-full py-2.5 rounded-full border border-[#0ae448] text-[#fffce1] hover:bg-[#0ae448]/10 font-bold text-xs inline-block text-center transition"
                 >
                   Direct Download Link

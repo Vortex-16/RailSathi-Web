@@ -1,5 +1,5 @@
 {
-  "name": "RailSaathi - Indian Railways Companion",
+  "name": "RailSathi - Indian Railways Companion",
   "description": "Smart commute companion for Indian Railways with offline timetables, authentic coach radar, battery-smart location tracking, and direct-to-seat platform vendor ordering.",
   "requestFramePermissions": ["geolocation"],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]

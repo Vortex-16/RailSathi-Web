@@ -116,7 +116,7 @@ export const Header: React.FC<HeaderProps> = ({
           isScrolled ? 'max-h-0 py-0 opacity-0 border-b-0 pointer-events-none' : 'max-h-12 py-1.5 opacity-100'
         }`}
       >
-        <span className="text-[#0ae448] font-bold shrink-0">{'{'} RailSaathi® 24.90 MB {'}'}</span>
+        <span className="text-[#0ae448] font-bold shrink-0">{'{'} RailSathi® 24.90 MB {'}'}</span>
         <span className="text-[#7c7c6f] hidden xs:inline">|</span>
         <span className="text-[#fffce1] truncate">100% Offline SQLite Railway Mesh</span>
         <span className="hidden md:inline text-[#7c7c6f]">· Zero Mobile Internet Required</span>
@@ -156,7 +156,7 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
             <div>
               <span className={`font-bold tracking-tight text-[#fffce1] ${seniorMode ? 'text-lg sm:text-2xl' : 'text-base sm:text-lg'}`}>
-                RailSaathi
+                RailSathi
               </span>
               <p className="text-[11px] font-normal text-[#7c7c6f] hidden md:block">
                 {t.appTagline}
@@ -266,7 +266,7 @@ export const Header: React.FC<HeaderProps> = ({
             <a
               id="btn-header-download-apk"
               href={OFFICIAL_APK_DOWNLOAD_URL}
-              download="RailSaathi.apk"
+              download="RailSathi.apk"
               className="hidden sm:inline-flex items-center gap-2 border border-[#0ae448]/80 hover:border-[#abff84] text-[#fffce1] font-semibold text-xs px-4 py-2 rounded-full transition bg-[#191919] hover:bg-[#0ae448]/10 cursor-pointer shadow-[0_0_12px_rgba(10,228,72,0.15)]"
             >
               <Download className="w-3.5 h-3.5 text-[#0ae448]" />
@@ -376,7 +376,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           <a
             href={OFFICIAL_APK_DOWNLOAD_URL}
-            download="RailSaathi.apk"
+            download="RailSathi.apk"
             className="w-full mt-2 inline-flex items-center justify-center gap-2 border border-[#0ae448] text-[#fffce1] font-semibold text-sm py-2.5 rounded-full bg-[#191919] hover:bg-[#0ae448]/10 shadow-[0_0_15px_rgba(10,228,72,0.2)] transition-colors active:scale-[0.99]"
           >
             <Download className="w-4 h-4 text-[#0ae448]" />

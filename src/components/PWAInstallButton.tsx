@@ -57,7 +57,7 @@ export const PWAInstallButton: React.FC<{ compact?: boolean }> = ({ compact = fa
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0e100f]/80 p-4 backdrop-blur-xs">
             <div className="w-full max-w-sm rounded-2xl bg-[#191919] p-6 shadow-2xl border border-[#42433d] text-[#fffce1]">
               <div className="flex items-center justify-between pb-3 border-b border-[#42433d]">
-                <h3 className="font-bold text-[#fffce1] text-base">Add RailSaathi to iPhone / iPad</h3>
+                <h3 className="font-bold text-[#fffce1] text-base">Add RailSathi to iPhone / iPad</h3>
                 <button
                   onClick={() => setShowIOSGuide(false)}
                   className="rounded-full p-1 text-[#7c7c6f] hover:text-[#fffce1] hover:bg-[#0e100f]"
@@ -76,7 +76,7 @@ export const PWAInstallButton: React.FC<{ compact?: boolean }> = ({ compact = fa
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#0e100f] text-xs font-mono font-bold text-[#0ae448] border border-[#42433d]">3</span>
-                  <p>Tap <strong className="text-[#fffce1]">Add</strong>. RailSaathi will launch with full offline capabilities!</p>
+                  <p>Tap <strong className="text-[#fffce1]">Add</strong>. RailSathi will launch with full offline capabilities!</p>
                 </div>
               </div>
               <button

@@ -14,8 +14,8 @@ export default defineConfig(() => {
         includeAssets: ['train-icon.svg'],
         manifest: {
           id: '/',
-          name: 'RailSaathi - Indian Railways Companion',
-          short_name: 'RailSaathi',
+          name: 'RailSathi - Indian Railways Companion',
+          short_name: 'RailSathi',
           description: 'Smart commute & direct-to-seat vendor companion for Indian Railways.',
           theme_color: '#0e3a6c',
           background_color: '#f8fafc',
