@@ -66,7 +66,7 @@ export const InstallationGuide: React.FC<InstallationGuideProps> = ({ currentLan
     STOCK: {
       title: 'Google Pixel / Motorola / Stock Android',
       steps: [
-        'Tap on the downloaded RailSathi.apk in Chrome notifications or Files app.',
+        'Tap on the downloaded RailSaathi.apk in Chrome notifications or Files app.',
         'When prompted with "Chrome needs permission to install apps", tap Settings.',
         'Toggle ON "Allow from this source".',
         'Tap the Back button and select "Install".'
@@ -75,7 +75,7 @@ export const InstallationGuide: React.FC<InstallationGuideProps> = ({ currentLan
     SAMSUNG: {
       title: 'Samsung Galaxy (One UI)',
       steps: [
-        'Open My Files app > Downloads folder > Tap RailSathi.apk.',
+        'Open My Files app > Downloads folder > Tap RailSaathi.apk.',
         'If prompted about security, tap Settings in the dialog.',
         'Toggle ON "Allow from this source" next to Chrome or My Files.',
         'Tap Install when the One UI package installer appears.'
@@ -84,16 +84,16 @@ export const InstallationGuide: React.FC<InstallationGuideProps> = ({ currentLan
     XIAOMI: {
       title: 'Xiaomi / Redmi / POCO (MIUI / HyperOS)',
       steps: [
-        'Open Downloads or File Manager and tap RailSathi.apk.',
+        'Open Downloads or File Manager and tap RailSaathi.apk.',
         'Allow installation from Unknown Sources when prompted.',
         'Review the 10-second security verification prompt and tap OK.',
-        'Tap Install and RailSathi will be ready on your home screen.'
+        'Tap Install and RailSaathi will be ready on your home screen.'
       ]
     },
     ONEPLUS: {
       title: 'OnePlus / Realme / Oppo (OxygenOS / ColorOS)',
       steps: [
-        'Swipe down the notification shade and tap the completed RailSathi.apk download.',
+        'Swipe down the notification shade and tap the completed RailSaathi.apk download.',
         'Tap Settings on the security pop-up.',
         'Switch ON the toggle for "Allow apps from this source".',
         'Press Back and tap Install.'
@@ -137,7 +137,7 @@ export const InstallationGuide: React.FC<InstallationGuideProps> = ({ currentLan
               <a
                 id="btn-guide-download-apk"
                 href={OFFICIAL_APK_DOWNLOAD_URL}
-                download="RailSathi.apk"
+                download="RailSaathi.apk"
                 className="btn-cta-gradient !py-3 !px-6 text-sm shrink-0"
               >
                 <Download className="w-4 h-4 text-[#0ae448]" />

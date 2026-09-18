@@ -60,7 +60,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, seniorMode, currentL
             <a
               id="btn-footer-cta-download"
               href={OFFICIAL_APK_DOWNLOAD_URL}
-              download="RailSathi.apk"
+              download="RailSaathi.apk"
               className="btn-cta-gradient !py-3.5 !px-8 text-sm sm:text-base"
             >
               <Download className="w-4 h-4 text-[#0ae448]" />

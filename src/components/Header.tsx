@@ -266,7 +266,7 @@ export const Header: React.FC<HeaderProps> = ({
             <a
               id="btn-header-download-apk"
               href={OFFICIAL_APK_DOWNLOAD_URL}
-              download="RailSathi.apk"
+              download="RailSaathi.apk"
               className="hidden sm:inline-flex items-center gap-2 border border-[#0ae448]/80 hover:border-[#abff84] text-[#fffce1] font-semibold text-xs px-4 py-2 rounded-full transition bg-[#191919] hover:bg-[#0ae448]/10 cursor-pointer shadow-[0_0_12px_rgba(10,228,72,0.15)]"
             >
               <Download className="w-3.5 h-3.5 text-[#0ae448]" />
@@ -376,7 +376,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           <a
             href={OFFICIAL_APK_DOWNLOAD_URL}
-            download="RailSathi.apk"
+            download="RailSaathi.apk"
             className="w-full mt-2 inline-flex items-center justify-center gap-2 border border-[#0ae448] text-[#fffce1] font-semibold text-sm py-2.5 rounded-full bg-[#191919] hover:bg-[#0ae448]/10 shadow-[0_0_15px_rgba(10,228,72,0.2)] transition-colors active:scale-[0.99]"
           >
             <Download className="w-4 h-4 text-[#0ae448]" />

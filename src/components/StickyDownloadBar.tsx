@@ -56,7 +56,7 @@ export const StickyDownloadBar: React.FC<StickyDownloadBarProps> = ({ currentLan
           <a
             id="btn-sticky-download-apk"
             href={OFFICIAL_APK_DOWNLOAD_URL}
-            download="RailSathi.apk"
+            download="RailSaathi.apk"
             className="btn-cta-gradient !py-1.5 !px-3 sm:!py-2 sm:!px-4 text-xs sm:text-sm"
           >
             <Download className="w-3.5 h-3.5 text-[#0ae448]" />

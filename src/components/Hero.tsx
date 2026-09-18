@@ -290,7 +290,7 @@ export const Hero: React.FC<HeroProps> = ({
               <a
                 id="btn-hero-download-apk"
                 href={OFFICIAL_APK_DOWNLOAD_URL}
-                download="RailSathi.apk"
+                download="RailSaathi.apk"
                 className="btn-cta-gradient group"
               >
                 <Download className="w-5 h-5 text-[#0ae448] group-hover:scale-110 transition" />
@@ -813,7 +813,7 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="mt-4 pt-3 border-t border-[#42433d]">
                 <a
                   href={OFFICIAL_APK_DOWNLOAD_URL}
-                  download="RailSathi.apk"
+                  download="RailSaathi.apk"
                   className="w-full py-2.5 rounded-full border border-[#0ae448] text-[#fffce1] hover:bg-[#0ae448]/10 font-bold text-xs inline-block text-center transition"
                 >
                   Direct Download Link

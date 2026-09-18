@@ -1,12 +1,12 @@
 import { Station, TrainSchedule, CoachDetail, FoodItem } from '../types';
 
-export const OFFICIAL_APK_DOWNLOAD_URL = 'https://github.com/Vortex-16/RailSathi/releases/download/v1.0.0/RailSathi.apk';
+export const OFFICIAL_APK_DOWNLOAD_URL = 'https://github.com/Vortex-16/RailSathi/releases/download/v1.0.0/RailSaathi.apk';
 export const GITHUB_REPO_URL = 'https://github.com/Vortex-16/RailSathi';
 export const APK_VERSION = 'v1.0.0';
 export const APK_SIZE = '24.90 MB';
 export const MIN_ANDROID_VERSION = 'Android 8.0 (API 26+)';
 export const TARGET_ANDROID_VERSION = 'Android 15 (API 35)';
-export const SHA256_CHECKSUM = '7b9e38d4f2a1c099308bb8742e91ca0f72bc942b03657bfdfbb3971e48f7d983';
+export const SHA256_CHECKSUM = '9bba72ca2c9a00e7c9f6a78d55dff61fb8e3b9a0a9b46dc8e1fe33b4a4bbd99f';
 
 export const STATIONS: Station[] = [
   // Eastern Railway (Sealdah & Howrah)
