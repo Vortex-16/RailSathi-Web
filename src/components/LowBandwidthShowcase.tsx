@@ -48,95 +48,95 @@ export const LowBandwidthShowcase: React.FC<{
   };
 
   return (
-    <section id="low-bandwidth" className="py-14 sm:py-20 bg-slate-900 text-white border-b border-slate-800">
+    <section id="low-bandwidth" className="py-14 sm:py-20 bg-[#f2ee98] text-[#10380b] border-b-2 border-[#10380b]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-500/20 text-blue-300 border border-blue-400/30 mb-3">
-            <Gauge className="w-3.5 h-3.5 text-amber-400" />
-            Optimized for Indian Telecom Realities
+          <div className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#fce519] text-[#10380b] border border-[#10380b] mb-3 shadow-[2px_2px_0px_0px_#10380b]">
+            <Gauge className="w-3.5 h-3.5 text-[#10380b]" />
+            // Optimized for Indian Telecom Realities //
           </div>
-          <h2 className={`font-black text-white tracking-tight ${seniorMode ? 'text-3xl sm:text-4xl' : 'text-2xl sm:text-3xl'}`}>
+          <h2 className={`font-display font-bold text-[#10380b] tracking-tight ${seniorMode ? 'text-4xl sm:text-5xl' : 'text-3xl sm:text-4xl lg:text-5xl'}`}>
             Built for 2G Networks, Tunnels & Dense Crowds
           </h2>
-          <p className="mt-2 text-slate-400 text-sm sm:text-base">
+          <p className="mt-2 text-[#10380b]/80 text-sm sm:text-base font-medium">
             Millions of Indian train commuters experience network dropouts between stations. RailSathi is architected to perform flawlessly with zero bars of signal.
           </p>
         </div>
 
         {/* 4 Pillars Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <div className="p-6 rounded-2xl bg-slate-800/80 border border-slate-700/80 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center">
-              <Database className="w-5 h-5" />
+          <div className="p-6 rounded-[28px] bg-[#fefde6] border-2 border-[#10380b] shadow-[6px_6px_0px_0px_#10380b] space-y-3">
+            <div className="w-12 h-12 rounded-2xl bg-[#fce519] text-[#10380b] border-2 border-[#10380b] flex items-center justify-center shadow-[2px_2px_0px_0px_#10380b]">
+              <Database className="w-6 h-6" />
             </div>
-            <h3 className="font-extrabold text-white text-base">Pre-Bundled SQLite</h3>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <h3 className="font-display font-bold text-[#10380b] text-lg">Pre-Bundled SQLite</h3>
+            <p className="text-xs text-[#10380b]/80 leading-relaxed font-medium">
               Every station coordinate, platform count, and timetable is stored locally. Searching or filtering trains makes zero network calls.
             </p>
-            <div className="text-[11px] font-mono text-emerald-400 font-semibold">
+            <div className="text-[11px] font-mono text-[#10380b] font-bold bg-[#dbe8ac] px-2.5 py-1 rounded-full border border-[#10380b] inline-block">
               Latency: &lt; 2ms • Data: 0 KB
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-slate-800/80 border border-slate-700/80 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center">
-              <Zap className="w-5 h-5" />
+          <div className="p-6 rounded-[28px] bg-[#fefde6] border-2 border-[#10380b] shadow-[6px_6px_0px_0px_#10380b] space-y-3">
+            <div className="w-12 h-12 rounded-2xl bg-[#fce519] text-[#10380b] border-2 border-[#10380b] flex items-center justify-center shadow-[2px_2px_0px_0px_#10380b]">
+              <Zap className="w-6 h-6" />
             </div>
-            <h3 className="font-extrabold text-white text-base">Micro-Payloads (&lt;200B)</h3>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <h3 className="font-display font-bold text-[#10380b] text-lg">Micro-Payloads (&lt;200B)</h3>
+            <p className="text-xs text-[#10380b]/80 leading-relaxed font-medium">
               Hunger Signal broadcasts are compressed into ultra-compact byte payloads, successfully transmitting even on shaky 2G EDGE connections.
             </p>
-            <div className="text-[11px] font-mono text-amber-400 font-semibold">
-              Payload: 182 Bytes vs 45 KB standard
+            <div className="text-[11px] font-mono text-[#10380b] font-bold bg-[#fce519] px-2.5 py-1 rounded-full border border-[#10380b] inline-block">
+              Payload: 182 Bytes vs 45 KB
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-slate-800/80 border border-slate-700/80 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center">
-              <HardDrive className="w-5 h-5" />
+          <div className="p-6 rounded-[28px] bg-[#fefde6] border-2 border-[#10380b] shadow-[6px_6px_0px_0px_#10380b] space-y-3">
+            <div className="w-12 h-12 rounded-2xl bg-[#fce519] text-[#10380b] border-2 border-[#10380b] flex items-center justify-center shadow-[2px_2px_0px_0px_#10380b]">
+              <HardDrive className="w-6 h-6" />
             </div>
-            <h3 className="font-extrabold text-white text-base">Store-and-Forward Queue</h3>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <h3 className="font-display font-bold text-[#10380b] text-lg">Store-and-Forward</h3>
+            <p className="text-xs text-[#10380b]/80 leading-relaxed font-medium">
               If an order or route bookmark is initiated inside a tunnel, it is safely queued locally and dispatched the moment signal returns.
             </p>
-            <div className="text-[11px] font-mono text-purple-400 font-semibold">
+            <div className="text-[11px] font-mono text-[#10380b] font-bold bg-[#dbe8ac] px-2.5 py-1 rounded-full border border-[#10380b] inline-block">
               Guaranteed Eventual Delivery
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-slate-800/80 border border-slate-700/80 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
-              <TrendingDown className="w-5 h-5" />
+          <div className="p-6 rounded-[28px] bg-[#fefde6] border-2 border-[#10380b] shadow-[6px_6px_0px_0px_#10380b] space-y-3">
+            <div className="w-12 h-12 rounded-2xl bg-[#fce519] text-[#10380b] border-2 border-[#10380b] flex items-center justify-center shadow-[2px_2px_0px_0px_#10380b]">
+              <TrendingDown className="w-6 h-6" />
             </div>
-            <h3 className="font-extrabold text-white text-base">92% Less Bandwidth</h3>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <h3 className="font-display font-bold text-[#10380b] text-lg">92% Less Bandwidth</h3>
+            <p className="text-xs text-[#10380b]/80 leading-relaxed font-medium">
               Eliminates heavy JavaScript bundles, video backgrounds, and marketing trackers. Total app shell weighs only ~18 MB.
             </p>
-            <div className="text-[11px] font-mono text-emerald-400 font-semibold">
+            <div className="text-[11px] font-mono text-[#10380b] font-bold bg-[#fce519] px-2.5 py-1 rounded-full border border-[#10380b] inline-block">
               Low-RAM & 2G Friendly
             </div>
           </div>
         </div>
 
         {/* Live Interactive Network Simulator */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-slate-950 border border-slate-800 shadow-2xl">
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-800">
+        <div className="p-6 sm:p-8 rounded-[36px] bg-[#fefde6] border-2 border-[#10380b] shadow-[8px_8px_0px_0px_#10380b]">
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b-2 border-[#10380b]/20">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
-                Hands-On Network Simulator
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#10380b]/70">
+                // Hands-On Network Simulator //
               </span>
-              <h3 className="text-xl font-black text-white">
+              <h3 className="text-xl sm:text-2xl font-display font-bold text-[#10380b]">
                 Test RailSathi Under Adverse Connectivity
               </h3>
             </div>
 
             {/* Profile Buttons */}
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <button
                 onClick={() => handleTestNetwork('4G')}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${
-                  activePreset === '4G' ? 'bg-blue-600 text-white shadow-xs' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                className={`px-4 py-2 rounded-full text-xs font-bold transition flex items-center gap-1.5 cursor-pointer border-2 border-[#10380b] ${
+                  activePreset === '4G' ? 'bg-[#10380b] text-[#fefde6] shadow-[2px_2px_0px_0px_#10380b]' : 'bg-[#f2ee98] text-[#10380b] hover:bg-[#fce519]'
                 }`}
               >
                 <Wifi className="w-3.5 h-3.5" />
@@ -145,8 +145,8 @@ export const LowBandwidthShowcase: React.FC<{
 
               <button
                 onClick={() => handleTestNetwork('2G')}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${
-                  activePreset === '2G' ? 'bg-amber-600 text-white shadow-xs' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                className={`px-4 py-2 rounded-full text-xs font-bold transition flex items-center gap-1.5 cursor-pointer border-2 border-[#10380b] ${
+                  activePreset === '2G' ? 'bg-[#10380b] text-[#fefde6] shadow-[2px_2px_0px_0px_#10380b]' : 'bg-[#f2ee98] text-[#10380b] hover:bg-[#fce519]'
                 }`}
               >
                 <Gauge className="w-3.5 h-3.5" />
@@ -155,8 +155,8 @@ export const LowBandwidthShowcase: React.FC<{
 
               <button
                 onClick={() => handleTestNetwork('TUNNEL')}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${
-                  activePreset === 'TUNNEL' ? 'bg-rose-600 text-white shadow-xs' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                className={`px-4 py-2 rounded-full text-xs font-bold transition flex items-center gap-1.5 cursor-pointer border-2 border-[#10380b] ${
+                  activePreset === 'TUNNEL' ? 'bg-[#10380b] text-[#fefde6] shadow-[2px_2px_0px_0px_#10380b]' : 'bg-[#f2ee98] text-[#10380b] hover:bg-[#fce519]'
                 }`}
               >
                 <WifiOff className="w-3.5 h-3.5" />
@@ -167,28 +167,28 @@ export const LowBandwidthShowcase: React.FC<{
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 items-center">
             <div className="space-y-1">
-              <div className="text-xs text-slate-400 font-medium">Active Network Simulation</div>
-              <div className="text-2xl font-black font-mono text-white">
+              <div className="text-xs text-[#10380b]/70 font-bold uppercase font-mono">Active Network Simulation</div>
+              <div className="text-xl sm:text-2xl font-bold font-mono text-[#10380b]">
                 {activePreset === '4G' ? '4G LTE (15 Mbps)' : activePreset === '2G' ? '2G EDGE (64 kbps)' : 'Zero Cellular Signal'}
               </div>
-              <div className="text-xs text-slate-500">
+              <div className="text-xs text-[#10380b]/70 font-medium">
                 {activePreset === 'TUNNEL' ? 'Offline SQLite Cache Activated' : 'Cloud Sync Operational'}
               </div>
             </div>
 
             <div className="space-y-1">
-              <div className="text-xs text-slate-400 font-medium">Data Consumed For Schedule Query</div>
-              <div className="text-2xl font-black font-mono text-emerald-400">
+              <div className="text-xs text-[#10380b]/70 font-bold uppercase font-mono">Data Consumed For Schedule</div>
+              <div className="text-xl sm:text-2xl font-bold font-mono text-[#10380b]">
                 {activePreset === 'TUNNEL' ? '0 KB (Local)' : '0.18 KB (Micro-Sync)'}
               </div>
-              <div className="text-xs text-slate-500">
+              <div className="text-xs text-[#10380b]/70 font-medium">
                 Compared to ~3.8 MB on standard web apps
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
-              <div className="text-[10px] uppercase font-bold text-slate-400 font-mono">Engine Log Output:</div>
-              <p className="text-xs font-mono text-amber-300">
+            <div className="p-4 rounded-2xl bg-[#f2ee98] border-2 border-[#10380b] space-y-1 shadow-[3px_3px_0px_0px_#10380b]">
+              <div className="text-[10px] uppercase font-bold text-[#10380b] font-mono">// Engine Log Output:</div>
+              <p className="text-xs font-mono font-bold text-[#10380b]">
                 {testLog}
               </p>
             </div>

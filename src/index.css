@@ -2,29 +2,25 @@
 
 @layer base {
   :root {
-    /* GSAP Style Reference Colors */
-    --color-just-black: #0e100f;
-    --color-surface-cream: #fffce1;
-    --color-surface-50: #7c7c6f;
-    --color-surface-25: #42433d;
-    --color-off-black: #191919;
-    --color-shockingly-green: #0ae448;
-    --color-light-green: #abff84;
-    --color-orangey: #ff8709;
-    --color-pink: #fec5fb;
-    --color-lilac: #9d95ff;
-    --color-blue: #00bae2;
-    --color-core-green: #dfffd1;
-    --color-lipstick-pink: #f100cb;
+    /* Textla Tokens — Sunlit Retro Botanical Almanac */
+    --color-sunlit-cream: #f2ee98;
+    --color-forest-ink: #10380b;
+    --color-marigold: #fce519;
+    --color-sage-wash: #dbe8ac;
+    --color-vivid-fern: #30be60;
+    --color-parchment: #fefde6;
+    --color-snowcap: #ffffff;
 
-    /* Gradient definitions */
-    --gradient-shockingly-green: linear-gradient(114.41deg, #0ae448 20.74%, #abff84 65.5%);
+    --font-display: 'Oswald', 'National 2 Condensed', -apple-system, sans-serif;
+    --font-sans: 'Rethink Sans', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --shadow-subtle: 8px 8px 0px 0px #10380b;
   }
 
   body {
-    background-color: #0e100f;
-    color: #fffce1;
-    font-family: 'DM Sans', 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f2ee98;
+    color: #10380b;
+    font-family: 'Rethink Sans', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 600;
     overflow-x: clip;
     width: 100%;
   }
@@ -35,127 +31,201 @@
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
   }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Oswald', 'National 2 Condensed', -apple-system, sans-serif;
+    letter-spacing: -0.03em;
+  }
 }
 
-/* Primary and Ghost Outlined Buttons from GSAP Tokens */
+/* Hard Offset Neobrutalist Shadows */
+.shadow-hard {
+  box-shadow: 8px 8px 0px 0px #10380b;
+}
+
+.shadow-hard-sm {
+  box-shadow: 4px 4px 0px 0px #10380b;
+}
+
+.shadow-hard-lg {
+  box-shadow: 12px 12px 0px 0px #10380b;
+}
+
+/* Textla Buttons */
+.btn-marigold-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: #fce519;
+  color: #10380b;
+  border: 1.5px solid #10380b;
+  border-radius: 9999px;
+  padding: 0.75rem 1.75rem;
+  font-family: 'Rethink Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .btn-marigold-pill {
+    font-size: 1.125rem;
+    padding: 0.85rem 2rem;
+  }
+}
+
+.btn-marigold-pill:hover {
+  background-color: #fff03d;
+  transform: translateY(-1px);
+}
+
+.btn-marigold-pill:active {
+  transform: translate(2px, 2px);
+}
+
+.btn-forest-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: #10380b;
+  color: #f2ee98;
+  border: 1.5px solid #10380b;
+  border-radius: 9999px;
+  padding: 0.75rem 1.75rem;
+  font-family: 'Rethink Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .btn-forest-pill {
+    font-size: 1.125rem;
+    padding: 0.85rem 2rem;
+  }
+}
+
+.btn-forest-pill:hover {
+  background-color: #1b5314;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-forest-pill:active {
+  transform: translate(2px, 2px);
+}
+
+.btn-ghost-forest {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #10380b;
+  border: 1.5px solid #10380b;
+  border-radius: 9999px;
+  padding: 0.65rem 1.4rem;
+  font-family: 'Rethink Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-ghost-forest:hover {
+  background-color: rgba(16, 56, 11, 0.08);
+}
+
+/* Backward compatibility aliases */
+.btn-cta-gradient {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: #fce519;
+  color: #10380b;
+  border: 1.5px solid #10380b;
+  border-radius: 9999px;
+  padding: 0.75rem 1.75rem;
+  font-family: 'Rethink Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-cta-gradient:hover {
+  background-color: #fff03d;
+  transform: translateY(-1px);
+}
+
 .btn-ghost-cream {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   background: transparent;
-  color: #fffce1;
-  border: 1px solid #fffce1;
-  border-radius: 100px;
-  padding: 0.75rem 1.25rem;
+  color: #10380b;
+  border: 1.5px solid #10380b;
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Rethink Sans', sans-serif;
   font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.15;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-weight: 700;
+  transition: all 0.15s ease;
   text-decoration: none;
   cursor: pointer;
-}
-
-@media (min-width: 640px) {
-  .btn-ghost-cream {
-    padding: 0.85rem 1.5rem;
-    font-size: 1.125rem;
-  }
 }
 
 .btn-ghost-cream:hover {
-  border-color: rgba(255, 252, 225, 0.7);
-  background: rgba(255, 252, 225, 0.06);
-  transform: translateY(-1px);
+  background-color: rgba(16, 56, 11, 0.08);
 }
 
-.btn-ghost-cream-sm {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  background: transparent;
-  color: #fffce1;
-  border: 1px solid rgba(255, 252, 225, 0.6);
-  border-radius: 100px;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  text-decoration: none;
-  cursor: pointer;
+/* Card Surface Helpers */
+.card-parchment {
+  background-color: #fefde6;
+  border: 1.5px solid #10380b;
+  border-radius: 40px;
+  box-shadow: 8px 8px 0px 0px #10380b;
 }
 
-.btn-ghost-cream-sm:hover {
-  border-color: #fffce1;
-  background: rgba(255, 252, 225, 0.08);
-}
-
-/* Primary CTA with 1.5-2px gradient stroke */
-.btn-cta-gradient {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background: transparent;
-  color: #fffce1;
-  border-radius: 100px;
-  padding: 0.75rem 1.25rem;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.15;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 1;
-}
-
-@media (min-width: 640px) {
-  .btn-cta-gradient {
-    padding: 0.85rem 1.6rem;
-    font-size: 1.125rem;
-  }
-}
-
-.btn-cta-gradient::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 100px;
-  padding: 1.5px;
-  background: linear-gradient(114.41deg, #0ae448 20.74%, #abff84 65.5%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-
-.btn-cta-gradient:hover {
-  background: rgba(10, 228, 72, 0.08);
-  transform: translateY(-1px);
-  box-shadow: 0 0 20px rgba(10, 228, 72, 0.25);
+.card-sage {
+  background-color: #dbe8ac;
+  border: 1.5px solid #10380b;
+  border-radius: 40px;
+  box-shadow: 8px 8px 0px 0px #10380b;
 }
 
 /* Hairline Divider */
 .hairline-divider {
   width: 100%;
-  height: 1px;
-  background-color: #42433d;
+  height: 1.5px;
+  background-color: #10380b;
 }
 
-/* Custom Chalkboard Scrollbars */
+/* Custom Botanical Scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0e100f;
+  background: #f2ee98;
 }
 ::-webkit-scrollbar-thumb {
-  background: #42433d;
+  background: #10380b;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #7c7c6f;
+  background: #1b5314;
 }

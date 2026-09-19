@@ -16,102 +16,102 @@ export const CoreFeaturesGrid: React.FC<CoreFeaturesGridProps> = ({ currentLang,
   const [activeInteractiveTool, setActiveInteractiveTool] = useState<'NONE' | 'RADAR' | 'TIMETABLE'>('NONE');
 
   return (
-    <section id="features" className="py-16 sm:py-24 bg-[#0e100f] border-b border-[#42433d]">
+    <section id="features" className="py-16 sm:py-24 bg-[#f2ee98] border-b-2 border-[#10380b] text-[#10380b]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <ScrollReveal className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#191919] border border-[#42433d] text-xs font-mono text-[#0ae448] mb-4">
-            <span>{'{'}</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#fce519] border border-[#10380b] text-xs font-mono font-bold text-[#10380b] mb-4 shadow-[2px_2px_0px_0px_#10380b]">
+            <span>//</span>
             <span>{t.featBadge}</span>
-            <span>{'}'}</span>
+            <span>//</span>
           </div>
-          <h2 className={`font-semibold tracking-[-0.03em] text-[#fffce1] mb-4 ${seniorMode ? 'text-3xl sm:text-4xl' : 'text-3xl sm:text-4xl lg:text-5xl'}`}>
+          <h2 className={`font-display font-bold tracking-tight text-[#10380b] mb-4 ${seniorMode ? 'text-4xl sm:text-5xl' : 'text-3xl sm:text-4xl lg:text-5xl'}`}>
             {t.featTitle}
           </h2>
-          <p className="text-[#7c7c6f] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="text-[#10380b]/80 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto font-medium">
             {t.featSubhead}
           </p>
         </ScrollReveal>
 
         {/* 4-Item Grid with Taxonomy Colors */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mb-12">
           
-          {/* Feature 1: Zero Battery Drain - Orange */}
+          {/* Feature 1: Zero Battery Drain */}
           <ScrollReveal delay={0.05} className="h-full">
-            <div className="h-full p-6 rounded-xl bg-[#191919] border border-[#42433d] hover:border-[#ff8709]/60 transition flex flex-col justify-between">
+            <div className="h-full p-6 rounded-[28px] bg-[#fefde6] border-2 border-[#10380b] shadow-[6px_6px_0px_0px_#10380b] hover:translate-y-[-2px] transition flex flex-col justify-between">
               <div>
-                <div className="w-10 h-10 rounded-full border border-[#42433d] bg-[#0e100f] text-[#ff8709] flex items-center justify-center mb-4">
-                  <BatteryCharging className="w-5 h-5" />
+                <div className="w-12 h-12 rounded-2xl border-2 border-[#10380b] bg-[#fce519] text-[#10380b] flex items-center justify-center mb-4 shadow-[2px_2px_0px_0px_#10380b]">
+                  <BatteryCharging className="w-6 h-6" />
                 </div>
-                <h3 className="text-base sm:text-lg font-bold text-[#fffce1] mb-2">
+                <h3 className="text-lg sm:text-xl font-display font-bold text-[#10380b] mb-2">
                   {t.f1Title}
                 </h3>
-                <p className="text-[#7c7c6f] text-xs sm:text-sm leading-relaxed">
+                <p className="text-[#10380b]/80 text-xs sm:text-sm leading-relaxed font-medium">
                   {t.f1Desc}
                 </p>
               </div>
-              <div className="mt-4 pt-3 border-t border-[#42433d] text-xs font-mono text-[#ff8709]">
+              <div className="mt-5 pt-3 border-t-2 border-[#10380b]/20 text-xs font-mono font-bold text-[#10380b]">
                 {t.f1Tag}
               </div>
             </div>
           </ScrollReveal>
 
-          {/* Feature 2: Works 100% Offline - Pink */}
+          {/* Feature 2: Works 100% Offline */}
           <ScrollReveal delay={0.12} className="h-full">
-            <div className="h-full p-6 rounded-xl bg-[#191919] border border-[#42433d] hover:border-[#fec5fb]/60 transition flex flex-col justify-between">
+            <div className="h-full p-6 rounded-[28px] bg-[#fefde6] border-2 border-[#10380b] shadow-[6px_6px_0px_0px_#10380b] hover:translate-y-[-2px] transition flex flex-col justify-between">
               <div>
-                <div className="w-10 h-10 rounded-full border border-[#42433d] bg-[#0e100f] text-[#fec5fb] flex items-center justify-center mb-4">
-                  <WifiOff className="w-5 h-5" />
+                <div className="w-12 h-12 rounded-2xl border-2 border-[#10380b] bg-[#fce519] text-[#10380b] flex items-center justify-center mb-4 shadow-[2px_2px_0px_0px_#10380b]">
+                  <WifiOff className="w-6 h-6" />
                 </div>
-                <h3 className="text-base sm:text-lg font-bold text-[#fffce1] mb-2">
+                <h3 className="text-lg sm:text-xl font-display font-bold text-[#10380b] mb-2">
                   {t.f2Title}
                 </h3>
-                <p className="text-[#7c7c6f] text-xs sm:text-sm leading-relaxed">
+                <p className="text-[#10380b]/80 text-xs sm:text-sm leading-relaxed font-medium">
                   {t.f2Desc}
                 </p>
               </div>
-              <div className="mt-4 pt-3 border-t border-[#42433d] text-xs font-mono text-[#fec5fb]">
+              <div className="mt-5 pt-3 border-t-2 border-[#10380b]/20 text-xs font-mono font-bold text-[#10380b]">
                 {t.f2Tag}
               </div>
             </div>
           </ScrollReveal>
 
-          {/* Feature 3: Full Coach Radar - Violet */}
+          {/* Feature 3: Full Coach Radar */}
           <ScrollReveal delay={0.19} className="h-full">
-            <div className="h-full p-6 rounded-xl bg-[#191919] border border-[#42433d] hover:border-[#9d95ff]/60 transition flex flex-col justify-between">
+            <div className="h-full p-6 rounded-[28px] bg-[#fefde6] border-2 border-[#10380b] shadow-[6px_6px_0px_0px_#10380b] hover:translate-y-[-2px] transition flex flex-col justify-between">
               <div>
-                <div className="w-10 h-10 rounded-full border border-[#42433d] bg-[#0e100f] text-[#9d95ff] flex items-center justify-center mb-4">
-                  <Compass className="w-5 h-5" />
+                <div className="w-12 h-12 rounded-2xl border-2 border-[#10380b] bg-[#fce519] text-[#10380b] flex items-center justify-center mb-4 shadow-[2px_2px_0px_0px_#10380b]">
+                  <Compass className="w-6 h-6" />
                 </div>
-                <h3 className="text-base sm:text-lg font-bold text-[#fffce1] mb-2">
+                <h3 className="text-lg sm:text-xl font-display font-bold text-[#10380b] mb-2">
                   {t.f3Title}
                 </h3>
-                <p className="text-[#7c7c6f] text-xs sm:text-sm leading-relaxed">
+                <p className="text-[#10380b]/80 text-xs sm:text-sm leading-relaxed font-medium">
                   {t.f3Desc}
                 </p>
               </div>
-              <div className="mt-4 pt-3 border-t border-[#42433d] text-xs font-mono text-[#9d95ff]">
+              <div className="mt-5 pt-3 border-t-2 border-[#10380b]/20 text-xs font-mono font-bold text-[#10380b]">
                 {t.f3Tag}
               </div>
             </div>
           </ScrollReveal>
 
-          {/* Feature 4: Regulated Rail Tariffs - Green */}
+          {/* Feature 4: Regulated Rail Tariffs */}
           <ScrollReveal delay={0.26} className="h-full">
-            <div className="h-full p-6 rounded-xl bg-[#191919] border border-[#42433d] hover:border-[#0ae448]/60 transition flex flex-col justify-between">
+            <div className="h-full p-6 rounded-[28px] bg-[#fefde6] border-2 border-[#10380b] shadow-[6px_6px_0px_0px_#10380b] hover:translate-y-[-2px] transition flex flex-col justify-between">
               <div>
-                <div className="w-10 h-10 rounded-full border border-[#42433d] bg-[#0e100f] text-[#0ae448] flex items-center justify-center mb-4">
-                  <ShieldCheck className="w-5 h-5" />
+                <div className="w-12 h-12 rounded-2xl border-2 border-[#10380b] bg-[#fce519] text-[#10380b] flex items-center justify-center mb-4 shadow-[2px_2px_0px_0px_#10380b]">
+                  <ShieldCheck className="w-6 h-6" />
                 </div>
-                <h3 className="text-base sm:text-lg font-bold text-[#fffce1] mb-2">
+                <h3 className="text-lg sm:text-xl font-display font-bold text-[#10380b] mb-2">
                   {t.f4Title}
                 </h3>
-                <p className="text-[#7c7c6f] text-xs sm:text-sm leading-relaxed">
+                <p className="text-[#10380b]/80 text-xs sm:text-sm leading-relaxed font-medium">
                   {t.f4Desc}
                 </p>
               </div>
-              <div className="mt-4 pt-3 border-t border-[#42433d] text-xs font-mono text-[#0ae448]">
+              <div className="mt-5 pt-3 border-t-2 border-[#10380b]/20 text-xs font-mono font-bold text-[#10380b]">
                 {t.f4Tag}
               </div>
             </div>
@@ -124,13 +124,13 @@ export const CoreFeaturesGrid: React.FC<CoreFeaturesGridProps> = ({ currentLang,
           <button
             id="btn-toggle-radar-drawer"
             onClick={() => setActiveInteractiveTool(prev => prev === 'RADAR' ? 'NONE' : 'RADAR')}
-            className={`px-5 py-2.5 rounded-full font-semibold text-xs sm:text-sm flex items-center gap-2 transition cursor-pointer border ${
+            className={`px-6 py-3 rounded-full font-bold text-xs sm:text-sm flex items-center gap-2 transition cursor-pointer border-2 border-[#10380b] ${
               activeInteractiveTool === 'RADAR'
-                ? 'bg-[#fffce1] text-[#0e100f] border-[#fffce1]'
-                : 'bg-transparent text-[#fffce1] border-[#42433d] hover:border-[#fffce1]'
+                ? 'bg-[#10380b] text-[#fefde6] shadow-[3px_3px_0px_0px_#10380b]'
+                : 'bg-[#fefde6] text-[#10380b] shadow-[3px_3px_0px_0px_#10380b] hover:bg-[#fce519]'
             }`}
           >
-            <Compass className="w-4 h-4 text-[#9d95ff]" />
+            <Compass className="w-4 h-4 text-[#10380b]" />
             <span>{activeInteractiveTool === 'RADAR' ? t.hideRadar : t.toggleRadar}</span>
             {activeInteractiveTool === 'RADAR' ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </button>
@@ -138,13 +138,13 @@ export const CoreFeaturesGrid: React.FC<CoreFeaturesGridProps> = ({ currentLang,
           <button
             id="btn-toggle-timetable-drawer"
             onClick={() => setActiveInteractiveTool(prev => prev === 'TIMETABLE' ? 'NONE' : 'TIMETABLE')}
-            className={`px-5 py-2.5 rounded-full font-semibold text-xs sm:text-sm flex items-center gap-2 transition cursor-pointer border ${
+            className={`px-6 py-3 rounded-full font-bold text-xs sm:text-sm flex items-center gap-2 transition cursor-pointer border-2 border-[#10380b] ${
               activeInteractiveTool === 'TIMETABLE'
-                ? 'bg-[#fffce1] text-[#0e100f] border-[#fffce1]'
-                : 'bg-transparent text-[#fffce1] border-[#42433d] hover:border-[#fffce1]'
+                ? 'bg-[#10380b] text-[#fefde6] shadow-[3px_3px_0px_0px_#10380b]'
+                : 'bg-[#fefde6] text-[#10380b] shadow-[3px_3px_0px_0px_#10380b] hover:bg-[#fce519]'
             }`}
           >
-            <Train className="w-4 h-4 text-[#0ae448]" />
+            <Train className="w-4 h-4 text-[#10380b]" />
             <span>{activeInteractiveTool === 'TIMETABLE' ? t.hideTimetable : t.toggleTimetable}</span>
             {activeInteractiveTool === 'TIMETABLE' ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </button>
@@ -152,13 +152,13 @@ export const CoreFeaturesGrid: React.FC<CoreFeaturesGridProps> = ({ currentLang,
 
         {/* Expanded Tool Container */}
         {activeInteractiveTool === 'RADAR' && (
-          <div className="rounded-2xl border border-[#42433d] overflow-hidden mb-12 bg-[#191919]">
+          <div className="rounded-[32px] border-2 border-[#10380b] overflow-hidden mb-12 shadow-[8px_8px_0px_0px_#10380b]">
             <CoachRadar seniorMode={seniorMode ?? false} />
           </div>
         )}
 
         {activeInteractiveTool === 'TIMETABLE' && (
-          <div className="rounded-2xl border border-[#42433d] overflow-hidden mb-12 bg-[#191919]">
+          <div className="rounded-[32px] border-2 border-[#10380b] overflow-hidden mb-12 shadow-[8px_8px_0px_0px_#10380b]">
             <OfflineTimetable seniorMode={seniorMode ?? false} />
           </div>
         )}

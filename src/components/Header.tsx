@@ -103,69 +103,67 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header
       ref={headerRef}
-      className={`sticky top-0 z-40 w-full transition-all duration-300 bg-[#0e100f]/95 backdrop-blur-md ${
+      className={`sticky top-0 z-40 w-full transition-all duration-300 bg-[#f2ee98]/95 backdrop-blur-md ${
         isScrolled 
-          ? 'shadow-[0_8px_30px_rgba(0,0,0,0.85)]' 
-          : ''
+          ? 'shadow-[0_4px_12px_rgba(16,56,11,0.15)] border-b border-[#10380b]' 
+          : 'border-b border-[#10380b]/30'
       }`}
     >
-      {/* Announcement Banner: Smoothly collapses on scroll to maximize viewport height */}
+      {/* Announcement Banner: Botanical Almanac Style */}
       <div 
         id="announcement-banner"
-        className={`w-full bg-[#191919] border-b border-[#42433d] px-3 sm:px-4 text-center text-[11px] sm:text-xs tracking-tight text-[#fffce1] flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 font-mono select-none transition-all duration-300 overflow-hidden ${
+        className={`w-full bg-[#dbe8ac] border-b border-[#10380b] px-3 sm:px-4 text-center text-[11px] sm:text-xs tracking-tight text-[#10380b] flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 font-mono select-none transition-all duration-300 overflow-hidden ${
           isScrolled ? 'max-h-0 py-0 opacity-0 border-b-0 pointer-events-none' : 'max-h-12 py-1.5 opacity-100'
         }`}
       >
-        <span className="text-[#0ae448] font-bold shrink-0">{'{'} RailSathi® 24.90 MB {'}'}</span>
-        <span className="text-[#7c7c6f] hidden xs:inline">|</span>
-        <span className="text-[#fffce1] truncate">100% Offline SQLite Railway Mesh</span>
-        <span className="hidden md:inline text-[#7c7c6f]">· Zero Mobile Internet Required</span>
+        <span className="font-bold shrink-0 bg-[#fce519] text-[#10380b] px-2 py-0.5 rounded-full border border-[#10380b]">RailSathi® 24.90 MB</span>
+        <span className="text-[#10380b]/50 hidden xs:inline">•</span>
+        <span className="font-semibold text-[#10380b] truncate">100% Offline SQLite Railway Mesh</span>
+        <span className="hidden md:inline text-[#10380b]/70 font-sans">· Zero Mobile Internet Required</span>
       </div>
 
       {/* Offline Alert Banner */}
       {(!isOnline || simulatedOffline) && (
-        <div className="bg-[#191919] border-b border-[#ff8709] text-[#ff8709] px-3 sm:px-4 py-1.5 text-xs font-mono flex items-center justify-between transition-all duration-300 gap-2">
+        <div className="bg-[#fce519] border-b border-[#10380b] text-[#10380b] px-3 sm:px-4 py-1.5 text-xs font-mono flex items-center justify-between transition-all duration-300 gap-2">
           <div className="flex items-center gap-2 truncate">
             <WifiOff className="w-3.5 h-3.5 animate-pulse shrink-0" />
-            <span className="truncate">
-              {simulatedOffline ? '{ Simulated Tunnel }' : '{ Offline Rail }'}: Local SQLite & Radar 100% active.
+            <span className="truncate font-bold">
+              {simulatedOffline ? '[ Simulated Tunnel ]' : '[ Offline Rail ]'}: Local SQLite & Radar 100% active.
             </span>
           </div>
           <button
             onClick={onToggleSimulateOffline}
-            className="text-[11px] bg-[#42433d] hover:bg-[#7c7c6f] active:scale-95 text-[#fffce1] px-2.5 py-0.5 rounded-full font-medium transition-all duration-200 cursor-pointer shrink-0"
+            className="text-[11px] bg-[#10380b] hover:bg-[#1b5314] text-[#f2ee98] px-2.5 py-0.5 rounded-full font-bold transition-all duration-200 cursor-pointer shrink-0"
           >
-            {simulatedOffline ? 'Online' : 'Dismiss'}
+            {simulatedOffline ? 'Go Online' : 'Dismiss'}
           </button>
         </div>
       )}
 
       {/* Main Navbar Bar */}
-      <div className={`w-full border-b transition-colors duration-300 ${
-        isScrolled ? 'border-[#42433d]' : 'border-[#42433d]/70'
-      }`}>
+      <div className="w-full">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14 sm:h-18">
-          {/* Logo & Identity (Hindi word removed) */}
+          {/* Logo & Identity */}
           <div 
             onClick={() => handleNavClick('hero')} 
             className="flex items-center gap-2 sm:gap-3 cursor-pointer group select-none shrink-0"
           >
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-[#0ae448]/60 bg-[#191919] flex items-center justify-center text-[#fffce1] group-hover:scale-105 transition shrink-0 shadow-[0_0_12px_rgba(10,228,72,0.2)]">
-              <Train className="w-4 h-4 sm:w-5 sm:h-5 text-[#0ae448]" />
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-[#10380b] bg-[#10380b] flex items-center justify-center text-[#f2ee98] group-hover:scale-105 transition shrink-0 shadow-sm">
+              <Train className="w-4 h-4 sm:w-5 sm:h-5 text-[#fce519]" />
             </div>
             <div>
-              <span className={`font-bold tracking-tight text-[#fffce1] ${seniorMode ? 'text-lg sm:text-2xl' : 'text-base sm:text-lg'}`}>
+              <span className={`font-display font-bold tracking-tight text-[#10380b] ${seniorMode ? 'text-lg sm:text-2xl' : 'text-lg sm:text-xl'}`}>
                 RailSathi
               </span>
-              <p className="text-[11px] font-normal text-[#7c7c6f] hidden md:block">
+              <p className="text-[11px] font-semibold text-[#10380b]/70 hidden md:block">
                 {t.appTagline}
               </p>
             </div>
           </div>
 
-          {/* Desktop Navigation Links — Ghost Nav Links with tight group spacing */}
-          <nav className="hidden lg:flex items-center gap-1.5">
+          {/* Desktop Navigation Links — Retro Botanical Pill Links */}
+          <nav className="hidden lg:flex items-center gap-2">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
               return (
@@ -173,11 +171,11 @@ export const Header: React.FC<HeaderProps> = ({
                   key={item.id}
                   id={`nav-${item.id}`}
                   onClick={() => handleNavClick(item.id)}
-                  className={`px-3.5 py-2 rounded-full font-medium transition text-sm cursor-pointer ${
+                  className={`px-4 py-1.5 rounded-full font-bold transition text-sm cursor-pointer ${
                     isActive
-                      ? 'text-[#fffce1] bg-[#191919] border border-[#fffce1]/60'
-                      : 'text-[#7c7c6f] hover:text-[#fffce1] hover:bg-[#191919]/60'
-                  } ${seniorMode ? 'text-base font-bold' : ''}`}
+                      ? 'text-[#10380b] bg-[#fefde6] border border-[#10380b] shadow-[2px_2px_0px_0px_#10380b]'
+                      : 'text-[#10380b]/80 hover:text-[#10380b] hover:bg-[#dbe8ac]/60'
+                  } ${seniorMode ? 'text-base' : ''}`}
                 >
                   {item.label}
                 </button>
@@ -192,22 +190,22 @@ export const Header: React.FC<HeaderProps> = ({
               id="btn-toggle-offline-sim"
               onClick={onToggleSimulateOffline}
               title={isOnline ? 'Simulate train tunnel dead-zone' : 'Resume network'}
-              className={`hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono border transition cursor-pointer ${
+              className={`hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono border border-[#10380b] transition cursor-pointer ${
                 isOnline
-                  ? 'bg-[#191919] text-[#abff84] border-[#42433d] hover:border-[#abff84]/50'
-                  : 'bg-[#ff8709]/10 text-[#ff8709] border-[#ff8709]/50'
+                  ? 'bg-[#fefde6] text-[#10380b] hover:bg-[#dbe8ac]'
+                  : 'bg-[#fce519] text-[#10380b]'
               }`}
             >
               {isOnline ? (
                 <>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#0ae448] animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-[#30be60] animate-pulse" />
                   <Wifi className="w-3.5 h-3.5" />
-                  <span>{t.online}</span>
+                  <span className="font-bold">{t.online}</span>
                 </>
               ) : (
                 <>
                   <WifiOff className="w-3.5 h-3.5" />
-                  <span>{t.tunnelMode}</span>
+                  <span className="font-bold">{t.tunnelMode}</span>
                 </>
               )}
             </button>
@@ -217,10 +215,10 @@ export const Header: React.FC<HeaderProps> = ({
               id="btn-toggle-low-data"
               onClick={onToggleLowBandwidth}
               title="Toggle 2G/3G low-data mode (lightweight rendering)"
-              className={`hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono border transition cursor-pointer ${
+              className={`hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono border border-[#10380b] transition cursor-pointer ${
                 lowBandwidthMode
-                  ? 'bg-[#00bae2]/20 text-[#00bae2] border-[#00bae2]'
-                  : 'bg-[#191919] text-[#7c7c6f] border-[#42433d] hover:text-[#fffce1] hover:border-[#fffce1]/40'
+                  ? 'bg-[#dbe8ac] text-[#10380b] font-bold'
+                  : 'bg-[#fefde6] text-[#10380b]/80 hover:text-[#10380b] hover:bg-[#dbe8ac]'
               }`}
             >
               <Gauge className="w-3.5 h-3.5" />
@@ -232,29 +230,29 @@ export const Header: React.FC<HeaderProps> = ({
               id="btn-toggle-senior-mode"
               onClick={onToggleSeniorMode}
               title="Toggle high-contrast large touch target mode for seniors"
-              className={`flex items-center gap-1 p-2 sm:px-3 sm:py-1.5 rounded-full text-xs font-mono border transition cursor-pointer ${
+              className={`flex items-center gap-1 p-2 sm:px-3 sm:py-1.5 rounded-full text-xs font-mono border border-[#10380b] transition cursor-pointer ${
                 seniorMode
-                  ? 'bg-[#fffce1] text-[#0e100f] border-[#fffce1] font-bold'
-                  : 'bg-[#191919] text-[#7c7c6f] border-[#42433d] hover:text-[#fffce1] hover:border-[#fffce1]/40'
+                  ? 'bg-[#10380b] text-[#f2ee98] font-bold'
+                  : 'bg-[#fefde6] text-[#10380b]/80 hover:text-[#10380b] hover:bg-[#dbe8ac]'
               }`}
             >
               <Eye className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">{t.seniorMode}</span>
+              <span className="hidden sm:inline font-bold">{t.seniorMode}</span>
             </button>
 
             {/* Language Selector */}
             <div className="relative inline-block">
-              <div className="flex items-center gap-1 bg-[#191919] border border-[#42433d] rounded-full px-2 py-1 sm:px-2.5 sm:py-1.5">
-                <Globe className="w-3.5 h-3.5 text-[#7c7c6f] shrink-0" />
+              <div className="flex items-center gap-1 bg-[#fefde6] border border-[#10380b] rounded-full px-2 py-1 sm:px-2.5 sm:py-1.5">
+                <Globe className="w-3.5 h-3.5 text-[#10380b] shrink-0" />
                 <select
                   id="select-language"
                   value={currentLang}
                   onChange={(e) => onLanguageChange(e.target.value as LanguageCode)}
-                  className="bg-transparent text-xs font-medium text-[#fffce1] cursor-pointer focus:outline-hidden max-w-[65px] xs:max-w-[80px] sm:max-w-none"
+                  className="bg-transparent text-xs font-bold text-[#10380b] cursor-pointer focus:outline-hidden max-w-[65px] xs:max-w-[80px] sm:max-w-none"
                   aria-label="Select Language"
                 >
                   {LANGUAGES.map((lang) => (
-                    <option key={lang.code} value={lang.code} className="bg-[#191919] text-[#fffce1]">
+                    <option key={lang.code} value={lang.code} className="bg-[#fefde6] text-[#10380b]">
                       {lang.native} ({lang.code.toUpperCase()})
                     </option>
                   ))}
@@ -262,14 +260,14 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
             </div>
 
-            {/* Direct APK Download CTA — Gradient-Stroked Pill Button */}
+            {/* Direct APK Download CTA — Marigold Pill Button with Forest Ink Border */}
             <a
               id="btn-header-download-apk"
               href={OFFICIAL_APK_DOWNLOAD_URL}
-              download="RailSathi.apk"
-              className="hidden sm:inline-flex items-center gap-2 border border-[#0ae448]/80 hover:border-[#abff84] text-[#fffce1] font-semibold text-xs px-4 py-2 rounded-full transition bg-[#191919] hover:bg-[#0ae448]/10 cursor-pointer shadow-[0_0_12px_rgba(10,228,72,0.15)]"
+              download="RailSathi-debug.apk"
+              className="hidden sm:inline-flex items-center gap-2 border border-[#10380b] bg-[#fce519] hover:bg-[#fff03d] text-[#10380b] font-bold text-xs px-4 py-2 rounded-full transition cursor-pointer shadow-[2px_2px_0px_0px_#10380b] active:translate-x-0.5 active:translate-y-0.5"
             >
-              <Download className="w-3.5 h-3.5 text-[#0ae448]" />
+              <Download className="w-3.5 h-3.5 text-[#10380b]" />
               <span>{t.getApk} (24.9 MB)</span>
             </a>
 
@@ -278,43 +276,40 @@ export const Header: React.FC<HeaderProps> = ({
               <PWAInstallButton compact={true} />
             </div>
 
-            {/* Mobile Menu Toggle with Smooth CSS 3-Bar Morph Transition */}
+            {/* Mobile Menu Toggle */}
             <button
               id="btn-mobile-menu"
               type="button"
               onClick={() => setMobileMenuOpen(prev => !prev)}
-              className={`lg:hidden w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#0ae448]/50 ${
+              className={`lg:hidden w-10 h-10 rounded-full border border-[#10380b] flex items-center justify-center transition-all duration-300 cursor-pointer ${
                 mobileMenuOpen 
-                  ? 'border-[#0ae448] bg-[#191919] text-[#0ae448] shadow-[0_0_12px_rgba(10,228,72,0.25)]' 
-                  : 'border-[#42433d] bg-[#191919]/90 text-[#fffce1] hover:border-[#0ae448]/50 hover:bg-[#191919]'
+                  ? 'bg-[#10380b] text-[#f2ee98]' 
+                  : 'bg-[#fefde6] text-[#10380b] hover:bg-[#dbe8ac]'
               }`}
               aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={mobileMenuOpen}
             >
               <span className="sr-only">{mobileMenuOpen ? 'Close menu' : 'Open menu'}</span>
               <div className="w-5 h-3.5 relative flex flex-col justify-between items-center pointer-events-none">
-                {/* Top bar - translates down and rotates 45deg */}
                 <span
                   className={`w-5 h-[2px] rounded-full transition-all duration-300 ease-in-out transform origin-center ${
                     mobileMenuOpen
-                      ? 'rotate-45 translate-y-[6px] bg-[#0ae448]'
-                      : 'bg-[#fffce1]'
+                      ? 'rotate-45 translate-y-[6px] bg-[#f2ee98]'
+                      : 'bg-[#10380b]'
                   }`}
                 />
-                {/* Middle bar - smoothly scales down and fades out */}
                 <span
                   className={`w-5 h-[2px] rounded-full transition-all duration-200 ease-in-out ${
                     mobileMenuOpen
-                      ? 'opacity-0 scale-x-0 bg-[#0ae448]'
-                      : 'opacity-100 bg-[#fffce1]'
+                      ? 'opacity-0 scale-x-0 bg-[#f2ee98]'
+                      : 'opacity-100 bg-[#10380b]'
                   }`}
                 />
-                {/* Bottom bar - translates up and rotates -45deg */}
                 <span
                   className={`w-5 h-[2px] rounded-full transition-all duration-300 ease-in-out transform origin-center ${
                     mobileMenuOpen
-                      ? '-rotate-45 -translate-y-[6px] bg-[#0ae448]'
-                      : 'bg-[#fffce1]'
+                      ? '-rotate-45 -translate-y-[6px] bg-[#f2ee98]'
+                      : 'bg-[#10380b]'
                   }`}
                 />
               </div>
@@ -324,15 +319,15 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
     </div>
 
-    {/* Mobile Navigation Dropdown with Smooth CSS Expand/Fade Transition */}
+    {/* Mobile Navigation Dropdown */}
     <div
       className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
         mobileMenuOpen
-          ? 'max-h-[600px] opacity-100 border-t border-[#42433d]'
+          ? 'max-h-[600px] opacity-100 border-t border-[#10380b]'
           : 'max-h-0 opacity-0 border-t-0 pointer-events-none'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 space-y-3 bg-[#0e100f]/98 backdrop-blur-xl">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 space-y-3 bg-[#fefde6] border-b border-[#10380b]">
         <div className="grid grid-cols-1 gap-1 pb-3">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
@@ -340,10 +335,10 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`w-full text-left px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 cursor-pointer flex items-center justify-between ${
+                className={`w-full text-left px-3.5 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 cursor-pointer flex items-center justify-between ${
                   isActive
-                    ? 'bg-[#191919] text-[#0ae448] font-semibold border border-[#0ae448]/30'
-                    : 'text-[#7c7c6f] hover:text-[#fffce1] hover:bg-[#191919]'
+                    ? 'bg-[#fce519] text-[#10380b] border border-[#10380b]'
+                    : 'text-[#10380b]/80 hover:text-[#10380b] hover:bg-[#dbe8ac]'
                 }`}
               >
                 <span>{item.label}</span>
@@ -353,22 +348,22 @@ export const Header: React.FC<HeaderProps> = ({
           })}
         </div>
 
-        <div className="pt-3 border-t border-[#42433d] flex flex-col gap-2.5">
-          <div className="flex items-center justify-between text-xs text-[#7c7c6f] px-1">
+        <div className="pt-3 border-t border-[#10380b] flex flex-col gap-2.5">
+          <div className="flex items-center justify-between text-xs text-[#10380b] px-1 font-semibold">
             <span>Tunnel Mode Simulator</span>
             <button
               onClick={onToggleSimulateOffline}
-              className="font-mono text-[#0ae448] underline cursor-pointer hover:text-[#abff84] transition-colors"
+              className="font-mono text-[#10380b] underline cursor-pointer hover:text-[#1b5314] font-bold"
             >
               {simulatedOffline ? 'Switch Online' : 'Simulate Offline'}
             </button>
           </div>
 
-          <div className="flex items-center justify-between text-xs text-[#7c7c6f] px-1">
+          <div className="flex items-center justify-between text-xs text-[#10380b] px-1 font-semibold">
             <span>2G/3G Low-Data Mode</span>
             <button
               onClick={onToggleLowBandwidth}
-              className="font-mono text-[#00bae2] underline cursor-pointer hover:text-[#fffce1] transition-colors"
+              className="font-mono text-[#10380b] underline cursor-pointer hover:text-[#1b5314] font-bold"
             >
               {lowBandwidthMode ? 'Turn Off' : 'Turn On'}
             </button>
@@ -376,10 +371,10 @@ export const Header: React.FC<HeaderProps> = ({
 
           <a
             href={OFFICIAL_APK_DOWNLOAD_URL}
-            download="RailSathi.apk"
-            className="w-full mt-2 inline-flex items-center justify-center gap-2 border border-[#0ae448] text-[#fffce1] font-semibold text-sm py-2.5 rounded-full bg-[#191919] hover:bg-[#0ae448]/10 shadow-[0_0_15px_rgba(10,228,72,0.2)] transition-colors active:scale-[0.99]"
+            download="RailSathi-debug.apk"
+            className="w-full mt-2 inline-flex items-center justify-center gap-2 border border-[#10380b] text-[#10380b] font-bold text-sm py-2.5 rounded-full bg-[#fce519] hover:bg-[#fff03d] shadow-[4px_4px_0px_0px_#10380b] transition-all active:translate-x-0.5 active:translate-y-0.5"
           >
-            <Download className="w-4 h-4 text-[#0ae448]" />
+            <Download className="w-4 h-4 text-[#10380b]" />
             <span>Download Android APK (24.90 MB)</span>
           </a>
 

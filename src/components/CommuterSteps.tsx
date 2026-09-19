@@ -54,20 +54,20 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
   };
 
   return (
-    <section id="commuters" className="py-16 sm:py-24 bg-[#0e100f] border-b border-[#42433d]">
+    <section id="commuters" className="py-16 sm:py-24 bg-[#f2ee98] border-b-2 border-[#10380b]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <ScrollReveal className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#191919] border border-[#42433d] text-xs font-mono text-[#00bae2] mb-4">
-            <span>{'{'}</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#fce519] border border-[#10380b] text-xs font-mono font-bold text-[#10380b] mb-4 shadow-[2px_2px_0px_0px_#10380b]">
+            <span>//</span>
             <span>{t.commuterBadge || t.stepsBadge || 'Built For Suburban Commuters'}</span>
-            <span>{'}'}</span>
+            <span>//</span>
           </div>
-          <h2 className={`font-semibold tracking-[-0.03em] text-[#fffce1] mb-4 ${seniorMode ? 'text-3xl sm:text-4xl' : 'text-3xl sm:text-4xl lg:text-5xl'}`}>
+          <h2 className={`font-display font-bold tracking-tight text-[#10380b] mb-4 ${seniorMode ? 'text-4xl sm:text-5xl' : 'text-3xl sm:text-4xl lg:text-5xl'}`}>
             {t.commuterTitle || t.stepsHeadline || 'How Commuters Get Food in 3 Easy Steps'}
           </h2>
-          <p className="text-[#7c7c6f] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="text-[#10380b]/80 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto font-medium">
             {t.commuterSubhead || t.stepsSubhead || 'Never risk missing your local train again. Order right from your coach without stepping onto the crowded platform.'}
           </p>
         </ScrollReveal>
@@ -77,25 +77,25 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
           
           {/* Step 1 */}
           <ScrollReveal delay={0.08} className="h-full">
-            <div className="h-full relative p-6 sm:p-8 rounded-xl bg-[#191919] border border-[#42433d] flex flex-col justify-between group">
+            <div className="h-full relative p-6 sm:p-8 rounded-[32px] bg-[#fefde6] border-2 border-[#10380b] shadow-[6px_6px_0px_0px_#10380b] flex flex-col justify-between group">
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <span className="text-3xl sm:text-4xl font-mono font-bold text-[#00bae2]">
+                  <span className="text-3xl sm:text-4xl font-display font-bold text-[#10380b]">
                     01
                   </span>
-                  <div className="w-10 h-10 rounded-full border border-[#00bae2]/50 bg-[#0e100f] text-[#00bae2] flex items-center justify-center">
+                  <div className="w-11 h-11 rounded-full border-1.5 border-[#10380b] bg-[#fce519] text-[#10380b] flex items-center justify-center shadow-[2px_2px_0px_0px_#10380b]">
                     <Compass className="w-5 h-5" />
                   </div>
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-[#fffce1] mb-2">
+                <h3 className="text-xl font-bold text-[#10380b] mb-2 font-display">
                   {t.step1Title}
                 </h3>
-                <p className="text-[#7c7c6f] text-sm leading-relaxed">
+                <p className="text-[#10380b]/80 text-sm leading-relaxed font-medium">
                   {t.step1Desc}
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-[#42433d] text-xs font-mono text-[#00bae2] flex items-center gap-1.5">
-                <Check className="w-4 h-4 text-[#0ae448]" />
+              <div className="mt-6 pt-4 border-t border-[#10380b]/20 text-xs font-mono font-bold text-[#10380b] flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-[#10380b]" />
                 <span>{t.step1Sub || 'Offline timetable auto-populates stops'}</span>
               </div>
             </div>
@@ -103,25 +103,25 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
 
           {/* Step 2 */}
           <ScrollReveal delay={0.16} className="h-full">
-            <div className="h-full relative p-6 sm:p-8 rounded-xl bg-[#191919] border border-[#42433d] flex flex-col justify-between group">
+            <div className="h-full relative p-6 sm:p-8 rounded-[32px] bg-[#fefde6] border-2 border-[#10380b] shadow-[6px_6px_0px_0px_#10380b] flex flex-col justify-between group">
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <span className="text-3xl sm:text-4xl font-mono font-bold text-[#ff8709]">
+                  <span className="text-3xl sm:text-4xl font-display font-bold text-[#10380b]">
                     02
                   </span>
-                  <div className="w-10 h-10 rounded-full border border-[#ff8709]/50 bg-[#0e100f] text-[#ff8709] flex items-center justify-center">
+                  <div className="w-11 h-11 rounded-full border-1.5 border-[#10380b] bg-[#fce519] text-[#10380b] flex items-center justify-center shadow-[2px_2px_0px_0px_#10380b]">
                     <BellRing className="w-5 h-5" />
                   </div>
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-[#fffce1] mb-2">
+                <h3 className="text-xl font-bold text-[#10380b] mb-2 font-display">
                   {t.step2Title}
                 </h3>
-                <p className="text-[#7c7c6f] text-sm leading-relaxed">
+                <p className="text-[#10380b]/80 text-sm leading-relaxed font-medium">
                   {t.step2Desc}
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-[#42433d] text-xs font-mono text-[#ff8709] flex items-center gap-1.5">
-                <Check className="w-4 h-4 text-[#0ae448]" />
+              <div className="mt-6 pt-4 border-t border-[#10380b]/20 text-xs font-mono font-bold text-[#10380b] flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-[#10380b]" />
                 <span>{t.step2Sub || 'Broadcasting across all compartments'}</span>
               </div>
             </div>
@@ -129,25 +129,25 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
 
           {/* Step 3 */}
           <ScrollReveal delay={0.24} className="h-full">
-            <div className="h-full relative p-6 sm:p-8 rounded-xl bg-[#191919] border border-[#42433d] flex flex-col justify-between group">
+            <div className="h-full relative p-6 sm:p-8 rounded-[32px] bg-[#fefde6] border-2 border-[#10380b] shadow-[6px_6px_0px_0px_#10380b] flex flex-col justify-between group">
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <span className="text-3xl sm:text-4xl font-mono font-bold text-[#0ae448]">
+                  <span className="text-3xl sm:text-4xl font-display font-bold text-[#10380b]">
                     03
                   </span>
-                  <div className="w-10 h-10 rounded-full border border-[#0ae448]/50 bg-[#0e100f] text-[#0ae448] flex items-center justify-center">
+                  <div className="w-11 h-11 rounded-full border-1.5 border-[#10380b] bg-[#fce519] text-[#10380b] flex items-center justify-center shadow-[2px_2px_0px_0px_#10380b]">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-[#fffce1] mb-2">
+                <h3 className="text-xl font-bold text-[#10380b] mb-2 font-display">
                   {t.step3Title}
                 </h3>
-                <p className="text-[#7c7c6f] text-sm leading-relaxed">
+                <p className="text-[#10380b]/80 text-sm leading-relaxed font-medium">
                   {t.step3Desc}
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-[#42433d] text-xs font-mono text-[#0ae448] flex items-center gap-1.5">
-                <Check className="w-4 h-4 text-[#0ae448]" />
+              <div className="mt-6 pt-4 border-t border-[#10380b]/20 text-xs font-mono font-bold text-[#10380b] flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-[#10380b]" />
                 <span>{t.step3Sub || 'Hassle-free UPI or exact cash'}</span>
               </div>
             </div>
@@ -157,16 +157,16 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
 
         {/* Interactive Commuter Hunger Signal Mini-Simulator */}
         <ScrollReveal delay={0.1} className="max-w-3xl mx-auto">
-          <div className="rounded-2xl bg-[#191919] text-[#fffce1] p-6 sm:p-8 border border-[#42433d]">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#42433d] gap-4">
+          <div className="rounded-[36px] bg-[#fefde6] text-[#10380b] p-6 sm:p-8 border-2 border-[#10380b] shadow-[8px_8px_0px_0px_#10380b]">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#10380b]/20 gap-4">
             <div>
               <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-[#ff8709]" />
-                <span className="text-xs font-mono uppercase tracking-wider text-[#ff8709]">{t.simBadge || 'Interactive Simulator'}</span>
+                <Sparkles className="w-4 h-4 text-[#10380b]" />
+                <span className="text-xs font-mono uppercase tracking-wider text-[#10380b] font-bold">{t.simBadge || 'Interactive Simulator'}</span>
               </div>
-              <h4 className="text-xl font-bold text-[#fffce1] mt-1">{t.simTitle || 'Send a Hunger Signal'}</h4>
+              <h4 className="text-2xl font-display font-bold text-[#10380b] mt-1">{t.simTitle || 'Send a Hunger Signal'}</h4>
             </div>
-            <span className="text-xs bg-[#0e100f] text-[#7c7c6f] px-3 py-1 rounded-full border border-[#42433d] font-mono">
+            <span className="text-xs bg-[#fce519] text-[#10380b] px-3.5 py-1.5 rounded-full border border-[#10380b] font-mono font-bold shadow-[2px_2px_0px_0px_#10380b]">
               {t.simTrain || 'Simulated EMU Local • Thane Special'}
             </span>
           </div>
@@ -174,10 +174,10 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
           <div className="py-6 space-y-6">
             {/* Step A: Choose Food */}
             <div>
-              <label className="text-xs font-mono uppercase tracking-wider text-[#7c7c6f] mb-3 block">
+              <label className="text-xs font-mono uppercase tracking-wider text-[#10380b]/70 font-bold mb-3 block">
                 {t.simCraving || t.simStep1Label || '1. Choose Item'}
               </label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {foodChoices.map((food) => {
                   const isSelected = selectedItem.name === food.name;
                   return (
@@ -187,19 +187,19 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
                         setSelectedItem(food);
                         setSignalSent(false);
                       }}
-                      className={`flex items-center justify-between p-3 rounded-xl border text-left transition cursor-pointer ${
+                      className={`flex items-center justify-between p-3.5 rounded-2xl border-2 text-left transition cursor-pointer ${
                         isSelected
-                          ? 'bg-[#0e100f] border-[#ff8709] text-[#fffce1]'
-                          : 'bg-[#0e100f] border-[#42433d] text-[#7c7c6f] hover:text-[#fffce1] hover:border-[#7c7c6f]'
+                          ? 'bg-[#fce519] border-[#10380b] text-[#10380b] shadow-[3px_3px_0px_0px_#10380b]'
+                          : 'bg-[#f2ee98] border-[#10380b] text-[#10380b] hover:bg-[#dbe8ac]'
                       }`}
                     >
                       <div>
-                        <div className="text-sm font-semibold flex items-center gap-1.5">
+                        <div className="text-sm font-bold flex items-center gap-1.5">
                           <span>{food.name}</span>
                         </div>
-                        <div className="text-xs text-[#7c7c6f] mt-0.5">{food.native}</div>
+                        <div className="text-xs text-[#10380b]/75 font-medium mt-0.5">{food.native}</div>
                       </div>
-                      <span className="text-xs font-mono font-bold text-[#ff8709] bg-[#191919] px-2.5 py-1 rounded-full border border-[#42433d] shrink-0">
+                      <span className="text-xs font-mono font-bold text-[#10380b] bg-[#fefde6] px-3 py-1 rounded-full border border-[#10380b] shrink-0 shadow-[1px_1px_0px_0px_#10380b]">
                         ₹{food.price}
                       </span>
                     </button>
@@ -211,7 +211,7 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
             {/* Step B: Coach and Seat Details */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs font-mono uppercase tracking-wider text-[#7c7c6f] mb-2 block">
+                <label className="text-xs font-mono uppercase tracking-wider text-[#10380b]/70 font-bold mb-2 block">
                   {t.simSelectCoach || t.simStep2Label || '2. Coach / Compartment'}
                 </label>
                 <select
@@ -220,7 +220,7 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
                     setSelectedCoach(e.target.value);
                     setSignalSent(false);
                   }}
-                  className="w-full bg-[#0e100f] border border-[#42433d] rounded-xl px-3 py-2.5 text-sm text-[#fffce1] focus:outline-hidden focus:border-[#fffce1]"
+                  className="w-full bg-[#f2ee98] border-2 border-[#10380b] rounded-2xl px-3.5 py-2.5 text-sm text-[#10380b] font-medium focus:outline-hidden focus:bg-[#fce519]"
                 >
                   <option>GS-1 (Coach 2 - General)</option>
                   <option>GS-2 (Coach 4 - Middle)</option>
@@ -231,7 +231,7 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
               </div>
 
               <div>
-                <label className="text-xs font-mono uppercase tracking-wider text-[#7c7c6f] mb-2 block">
+                <label className="text-xs font-mono uppercase tracking-wider text-[#10380b]/70 font-bold mb-2 block">
                   {t.simStep3Label || '3. Seat / Window Note (Optional)'}
                 </label>
                 <input
@@ -242,28 +242,28 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
                     setSignalSent(false);
                   }}
                   placeholder="e.g. Near Door 2, Window"
-                  className="w-full bg-[#0e100f] border border-[#42433d] rounded-xl px-3 py-2.5 text-sm text-[#fffce1] focus:outline-hidden focus:border-[#fffce1]"
+                  className="w-full bg-[#f2ee98] border-2 border-[#10380b] rounded-2xl px-3.5 py-2.5 text-sm text-[#10380b] font-medium placeholder:text-[#10380b]/50 focus:outline-hidden focus:bg-[#fce519]"
                 />
               </div>
             </div>
 
             {/* Signal Result or CTA */}
             {signalSent ? (
-              <div className="p-4 rounded-xl bg-[#0e100f] border border-[#0ae448]/60 text-[#fffce1] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="p-5 rounded-2xl bg-[#dbe8ac] border-2 border-[#10380b] text-[#10380b] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-[4px_4px_0px_0px_#10380b]">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full border border-[#0ae448] text-[#0ae448] flex items-center justify-center font-bold shrink-0">
+                  <div className="w-10 h-10 rounded-full border-2 border-[#10380b] bg-[#fce519] text-[#10380b] flex items-center justify-center font-bold shrink-0 shadow-[2px_2px_0px_0px_#10380b]">
                     ✓
                   </div>
                   <div>
-                    <div className="font-bold text-sm text-[#fffce1]">{t.simBroadcastActive || t.simBroadcastSuccess || 'Hunger Signal Active!'} ({selectedCoach})</div>
-                    <div className="text-xs font-mono text-[#0ae448]">
+                    <div className="font-bold text-base text-[#10380b]">{t.simBroadcastActive || t.simBroadcastSuccess || 'Hunger Signal Active!'} ({selectedCoach})</div>
+                    <div className="text-xs font-mono font-bold text-[#10380b]">
                       {t.simOrderPlaced || t.simVendorAccepted || 'Vendor notified and approaching'} • ₹{selectedItem.price}
                     </div>
                   </div>
                 </div>
                 <button
                   onClick={() => setSignalSent(false)}
-                  className="btn-ghost-cream !py-1.5 !px-3 text-xs"
+                  className="btn-marigold-pill !py-2 !px-4 text-xs font-bold"
                 >
                   {t.simReset || t.simResetBtn || 'Send Another Signal'}
                 </button>
@@ -273,13 +273,13 @@ export const CommuterSteps: React.FC<CommuterStepsProps> = ({ currentLang, senio
                 id="btn-simulate-hunger-signal"
                 onClick={handleSendSignal}
                 disabled={isSimulating}
-                className="w-full py-3 px-4 sm:py-3.5 sm:px-6 rounded-full border border-[#0ae448] text-[#fffce1] hover:bg-[#0ae448]/15 font-bold flex items-center justify-center gap-2 transition cursor-pointer text-xs sm:text-sm"
+                className="w-full py-3.5 px-6 rounded-full border-2 border-[#10380b] bg-[#10380b] text-[#fefde6] hover:bg-[#10380b]/90 font-bold flex items-center justify-center gap-2 transition cursor-pointer text-sm shadow-[4px_4px_0px_0px_#fce519]"
               >
                 {isSimulating ? (
                   <span className="font-mono text-center">{t.simSignalBroadcasting || t.simBroadcasting || 'Broadcasting Signal to Nearby Hawkers...'}</span>
                 ) : (
                   <>
-                    <BellRing className="w-4 h-4 text-[#0ae448] shrink-0" />
+                    <BellRing className="w-4 h-4 text-[#fce519] shrink-0" />
                     <span className="text-center">{t.simSendSignal || t.simSendBtn || 'Send Hunger Signal'} • ₹{selectedItem.price}</span>
                   </>
                 )}

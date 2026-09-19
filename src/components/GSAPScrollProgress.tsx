@@ -44,19 +44,19 @@ export const GSAPScrollProgress: React.FC = () => {
 
   return (
     <div 
-      className="fixed top-0 left-0 right-0 z-50 pointer-events-none h-1 bg-[#191919] border-b border-[#42433d]/40"
+      className="fixed top-0 left-0 right-0 z-50 pointer-events-none h-1.5 bg-[#f2ee98] border-b-2 border-[#10380b]"
       aria-hidden="true"
     >
       <div
         ref={progressBarRef}
-        className="h-full bg-gradient-to-r from-[#0ae448] via-[#00bae2] to-[#ff8709] relative shadow-[0_0_8px_rgba(10,228,72,0.6)]"
+        className="h-full bg-[#10380b] relative"
       >
         {/* Little commuter train head gliding at the edge */}
         <div 
           ref={trainRef}
-          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-4 h-4 rounded-full bg-[#0e100f] border border-[#0ae448] flex items-center justify-center text-[#0ae448] shadow-md shadow-[#0ae448]/30"
+          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-5 h-5 rounded-full bg-[#fce519] border-2 border-[#10380b] flex items-center justify-center text-[#10380b] shadow-[1px_1px_0px_0px_#10380b]"
         >
-          <Train className="w-2.5 h-2.5" />
+          <Train className="w-3 h-3" />
         </div>
       </div>
     </div>

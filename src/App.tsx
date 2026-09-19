@@ -59,7 +59,7 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen bg-[#0e100f] text-[#fffce1] flex flex-col font-sans transition-all selection:bg-[#0ae448] selection:text-[#0e100f] ${
+    <div className={`min-h-screen bg-[#f2ee98] text-[#10380b] flex flex-col font-sans transition-all selection:bg-[#10380b] selection:text-[#fce519] ${
       seniorMode ? 'text-lg' : 'text-base'
     }`}>
       {/* GSAP Scroll Progress Bar */}
